@@ -1,6 +1,6 @@
 # SARS-CoV-2 || EPOCH Laboratory 2021
 
-**Project ID: ehrZl0nn**
+**Project ID:** ehrZl0nn
 
 #### Severe acute respiratory syndrome coronavirus 2 (COVID-19)
 Abstract: **
@@ -15,5 +15,5 @@ NCBI RefSeq SARS-CoV-2 genome sequence record - https://www.ncbi.nlm.nih.gov/nuc
 - SideFX Houdini
 
 ### Acknowledgments
-Dr Jeroen Claus - Rendering the coronavirus spike protein - https://youtu.be/M3ldQBVb-ZA
+Dr Jeroen Claus - Rendering the coronavirus spike protein - https://youtu.be/M3ldQBVb-ZA<br />
 Ultrastructural analysis of SARS-CoV-2 interactions with the host cell via high resolution scanning electron microscopy - https://www.nature.com/articles/s41598-020-73162-5

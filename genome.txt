@@ -1,5 +1,4 @@
 Genome Reference Sequence (NC_045512) - https://www.ncbi.nlm.nih.gov/nuccore/NC_045512
-Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1, complete genome
 
 LOCUS       NC_045512              29903 bp ss-RNA     linear   VRL 18-JUL-2020
 DEFINITION  Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1,

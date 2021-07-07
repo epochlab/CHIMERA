@@ -1,4 +1,4 @@
-# SARS-CoV-2 || EPOCH Laboratory 2021
+# SARS-CoV-2
 
 **Project ID:** ehrZl0nn
 

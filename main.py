@@ -6,14 +6,12 @@ nucleotides = ['A', 'C', 'G', 'T']
 file = open('genome.txt')
 
 data = str(file.readlines()[692:1191])
-for s in "[]\ n,'0123456789":
-    data = data.replace(s, '')
-data = data.upper()
+genome = [ele for ele in data.upper() if (ele in nucleotides)]
+genome = ''.join(genome)
 
-print(data)
+length = len(genome)
+dst = zlib.compress(genome.encode("utf-8"))
 
-length = len(data)
-dst = zlib.compress(data.encode("utf-8"))
-
-print('Length:', length)
+print(genome)
+print('Base Pairs:', length)
 print('Compression:', len(dst))

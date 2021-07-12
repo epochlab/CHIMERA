@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
+import zlib
 
-import re
+nucleotides = ['A', 'C', 'G', 'T']
 
-data = 'genome.txt'
-nucleobases = ['a', 'c', 'g', 't']
+file = open('genome.txt')
 
-sequence = []
-with open(data) as f:
-    line = sorted(f.readlines()[692:1191])
-    sequence.append(line)
+data = str(file.readlines()[692:1191])
+for s in "[]\ n,'0123456789":
+    data = data.replace(s, '')
+data = data.upper()
 
-sequence = str(sequence)[:100]
-print(sequence)
+print(data)
+
+length = len(data)
+dst = zlib.compress(data.encode("utf-8"))
+
+print('Nucleotides:', length)
+print('Compression:', len(dst))

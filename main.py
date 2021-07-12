@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 import zlib
 
 nucleotides = ['A', 'C', 'G', 'T']

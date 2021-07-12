@@ -15,5 +15,5 @@ print(data)
 length = len(data)
 dst = zlib.compress(data.encode("utf-8"))
 
-print('Nucleotides:', length)
+print('Length:', length)
 print('Compression:', len(dst))

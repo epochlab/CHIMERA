@@ -6,7 +6,7 @@ nucleotides = ['A', 'C', 'G', 'T']
 file = open('genome.txt')
 
 data = str(file.readlines()[692:1191])
-genome = [ele for ele in data.upper() if (ele in nucleotides)]
+genome = [x for x in data.upper() if (x in nucleotides)]
 genome = ''.join(genome)
 
 length = len(genome)

@@ -51,7 +51,7 @@ def decode(seq):
     return protein
 
 prt = decode(genome)
-print(prt)
+print(prt.split("STOP"))
 
-index = "MYSFVSEETGTLIV"
+index = "MYSFVSEETGTLIVNSVLLFLAFVVFLLVTLAILTALRLCAYCCNIVNVSLVKPSFYVYSRVKNLNSSRVPDLLV"
 print("Search:", index, prt.count(index))

@@ -17,32 +17,44 @@ print(genome)
 print('Base Pairs:', length)
 print('Compression:', len(dst))
 
-table = {
-    'ATA':'I', 'ATC':'I', 'ATT':'I', 'ATG':'M',
-    'ACA':'T', 'ACC':'T', 'ACG':'T', 'ACT':'T',
-    'AAC':'N', 'AAT':'N', 'AAA':'K', 'AAG':'K',
-    'AGC':'S', 'AGT':'S', 'AGA':'R', 'AGG':'R',
-    'CTA':'L', 'CTC':'L', 'CTG':'L', 'CTT':'L',
-    'CCA':'P', 'CCC':'P', 'CCG':'P', 'CCT':'P',
-    'CAC':'H', 'CAT':'H', 'CAA':'Q', 'CAG':'Q',
-    'CGA':'R', 'CGC':'R', 'CGG':'R', 'CGT':'R',
-    'GTA':'V', 'GTC':'V', 'GTG':'V', 'GTT':'V',
-    'GCA':'A', 'GCC':'A', 'GCG':'A', 'GCT':'A',
-    'GAC':'D', 'GAT':'D', 'GAA':'E', 'GAG':'E',
-    'GGA':'G', 'GGC':'G', 'GGG':'G', 'GGT':'G',
-    'TCA':'S', 'TCC':'S', 'TCG':'S', 'TCT':'S',
-    'TTC':'F', 'TTT':'F', 'TTA':'L', 'TTG':'L',
-    'TAC':'Y', 'TAT':'Y', 'TAA':'_', 'TAG':'_',
-    'TGC':'C', 'TGT':'C', 'TGA':'_', 'TGG':'W',
-}
+mRNA_dict = {
+    'Ala / A': ['GCU', 'GCC', 'GCA', 'GCG'],
+    'Ile / I': ['AUU', 'AUC', 'AUA'],
+    'Arg / R': ['CGU', 'CGC', 'CGA', 'CGG', 'AGA', 'AGG'],
+    'Leu / L': ['CUU', 'CUC', 'CUA', 'CUG', 'UUA', 'UUG'],
+    'Asn / N': ['AAU', 'AAC'],
+    'Lys / K': ['AAA', 'AAG'],
+    'Asp / D': ['GAU', 'GAC'],
+    'Met / M': ['AUG'],
+    'Phe / F': ['UUU', 'UUC'],
+    'Cys / C': ['UGU', 'UGC'],
+    'Pro / P': ['CCU', 'CCC', 'CCA', 'CCG'],
+    'Gln / Q': ['CAA', 'CAG'],
+    'Ser / S': ['UCU', 'UCC', 'UCA', 'UCG',  'AGU', 'AGC'],
+    'Glu / E': ['GAA', 'GAG'],
+    'Thr / T': ['ACU', 'ACC', 'ACA', 'ACG'],
+    'Trp / W': ['UGG'],
+    'Gly / G': ['GGU', 'GGC', 'GGA', 'GGG'],
+    'Tyr / Y': ['UAU', 'UAC'],
+    'His / H': ['CAU', 'CAC'],
+    'Val / V': ['GUU', 'GUC', 'GUA', 'GUG'],
+    'STOP': ['UAA', 'UGA', 'UAG'],
+    }
+
+# x = [k for k, v in table.items() if 'GCU' in v]
+# print(str(x).split('/')[1].replace("']", "").strip())
 
 def decode(seq):
     protein = ''
     for i in range(0, len(seq)-3, 3):
         codon = seq[i:i + 3]
-        protein += table[codon]
-    return protein
+        print(codon)
+        protein = [k for k, v in mRNA_dict.items() if codon in v]
+        print(protein)
+    #     if codon in table:
+    #         protein += table[codon]
+    # return protein
 
 prt = decode(genome)
 print(prt)
-print(prt.find('NFCGPDGYP'))
+# print(prt.find('NFCGPDGYF'))

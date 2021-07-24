@@ -17,7 +17,7 @@ print(genome)
 print('Base Pairs:', length)
 print('Compression:', len(dst))
 
-codon = {
+table = {
     'ATA':'I', 'ATC':'I', 'ATT':'I', 'ATG':'M',
     'ACA':'T', 'ACC':'T', 'ACG':'T', 'ACT':'T',
     'AAC':'N', 'AAT':'N', 'AAA':'K', 'AAG':'K',
@@ -35,3 +35,13 @@ codon = {
     'TAC':'Y', 'TAT':'Y', 'TAA':'_', 'TAG':'_',
     'TGC':'C', 'TGT':'C', 'TGA':'_', 'TGG':'W',
 }
+
+def translate(seq):
+    protein = ''
+    for i in range(0, len(seq), 3):
+        codon = seq[i:i + 3]
+        protein += table[codon]
+    return protein
+
+prt = translate(genome)
+print(prt)

@@ -36,12 +36,12 @@ table = {
     'TGC':'C', 'TGT':'C', 'TGA':'_', 'TGG':'W',
 }
 
-def translate(seq):
+def decode(seq):
     protein = ''
-    for i in range(0, len(seq), 3):
+    for i in range(0, len(seq)-3, 3):
         codon = seq[i:i + 3]
         protein += table[codon]
     return protein
 
-prt = translate(genome)
+prt = decode(genome)
 print(prt)

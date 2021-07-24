@@ -53,5 +53,5 @@ def decode(seq):
 prt = decode(genome)
 print(prt)
 
-index = "STOP"
-print("Search:", index, prt.find(index))
+index = "MYSFVSEETGTLIV"
+print("Search:", index, prt.count(index))

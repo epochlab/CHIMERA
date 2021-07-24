@@ -38,23 +38,20 @@ mRNA_dict = {
     'Tyr / Y': ['UAU', 'UAC'],
     'His / H': ['CAU', 'CAC'],
     'Val / V': ['GUU', 'GUC', 'GUA', 'GUG'],
-    'STOP': ['UAA', 'UGA', 'UAG'],
+    'End / STOP': ['UAA', 'UGA', 'UAG'],
     }
 
-# x = [k for k, v in table.items() if 'GCU' in v]
-# print(str(x).split('/')[1].replace("']", "").strip())
-
 def decode(seq):
-    protein = ''
+    protein = ""
     for i in range(0, len(seq)-3, 3):
         codon = seq[i:i + 3].replace('T', 'U')
-        print(codon)
-        protein = [k for k, v in mRNA_dict.items() if codon in v]
-        print(protein)
-    #     if codon in table:
-    #         protein += table[codon]
-    # return protein
+        amino = [k for k, v in mRNA_dict.items() if codon in v]
+        char = str(amino).split('/')[1].replace("']", "").strip()
+        protein += str(char)
+    return protein
 
 prt = decode(genome)
 print(prt)
-# print(prt.find('NFCGPDGYF'))
+
+index = "STOP"
+print("Search:", index, prt.find(index))

@@ -45,3 +45,4 @@ def decode(seq):
 
 prt = decode(genome)
 print(prt)
+print(prt.find('NFCGPDGYP'))

@@ -47,7 +47,7 @@ mRNA_dict = {
 def decode(seq):
     protein = ''
     for i in range(0, len(seq)-3, 3):
-        codon = seq[i:i + 3]
+        codon = seq[i:i + 3].replace('T', 'U')
         print(codon)
         protein = [k for k, v in mRNA_dict.items() if codon in v]
         print(protein)

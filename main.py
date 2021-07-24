@@ -41,6 +41,8 @@ mRNA_dict = {
     'End / STOP': ['UAA', 'UGA', 'UAG'],
     }
 
+print("Amino acid keys:", len(mRNA_dict.items()))
+
 def decode(seq):
     protein = ""
     for i in range(0, len(seq)-3, 3):
@@ -51,7 +53,11 @@ def decode(seq):
     return protein
 
 prt = decode(genome)
-print(prt.split("STOP"))
+print(prt.split('STOP'))
 
-index = "MYSFVSEETGTLIVNSVLLFLAFVVFLLVTLAILTALRLCAYCCNIVNVSLVKPSFYVYSRVKNLNSSRVPDLLV"
+index = "MFHLVDFQVTIAEILLIIMRTFKVSIWNLDYIINLIIKNLSKSLTENKYSQLDEEQPMEID"
 print("Search:", index, prt.count(index))
+
+gene_id = (27202, 27387)
+ORF1ab = decode(genome[gene_id[0]-1: gene_id[1]])
+print(ORF1ab)

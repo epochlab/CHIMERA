@@ -1,15 +1,11 @@
 #!/usr/bin/env python3
 
 import zlib
-from libtools import compress, translate
+from libtools import load, compress, translate
 
-nucleotides = ['A', 'C', 'G', 'T']
+sars_cov_2 = ('genome/sars_cov_2.txt', (692, 1191))
 
-file = open('genome/sars_cov_2.txt')
-
-data = str(file.readlines()[692:1191])
-genome = [x for x in data.upper() if (x in nucleotides)]
-genome = ''.join(genome)
+genome = load(sars_cov_2)
 
 length = len(genome)
 dst = compress(genome)

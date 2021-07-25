@@ -41,7 +41,7 @@ dict = {
     'End / STOP': ['UAA', 'UGA', 'UAG'],
     }
 
-print("Amino acid keys:", len(dict.items()))
+print("Amino acids:", len(dict.items()))
 
 def translate(seq):
     polypeptide = ""
@@ -55,14 +55,15 @@ def translate(seq):
 pc = translate(genome)
 print(pc.split('STOP'))
 
-ORF1ab_polyprotein = (266, 13483)
-SPIKE_glycoprotein = (21563, 25384)
+ORF1a_polyprotein = (266, 13483)
+ORF1b_polyprotein = (13468, 21555)
+S_glycoprotein = (21563, 25384)
 ORF6_protein = (27202, 27387)
 
 gene_id = ORF6_protein
 
-protein = translate(genome[gene_id[0]-1: gene_id[1]])
-print(protein, len(protein))
+gene = translate(genome[gene_id[0]-1: gene_id[1]])
+print(gene_id, gene, len(gene))
 
 index = "MFHLVDFQVTIAEILLIIMRTFKVSIWNLDYIINLIIKNLSKSLTENKYSQLDEEQPMEID"
 print("Search:", index, pc.count(index))

@@ -12,16 +12,18 @@ Ebola = ('genome/Ebola_sudan.txt', (371, 686))
 
 genome = load(SARS_CoV_2)
 
-# print(genome)
-print('Base Pairs:', len(genome))
-print('G-C Content:', ((genome.count('G') + genome.count('G')) / len(genome) * 100))
+print(genome)
+print('Base pairs:', len(genome))
+print('G-C content:', ((genome.count('G') + genome.count('G')) / len(genome) * 100))
+print('Reading frame:', genome.find('ATG'))
+
 print('Compression:', len(zlib.compress(genome.encode("utf-8"))))
 
 dict = rna_codon()
 print("Amino acids:", len(dict.items()))
 
 pc = translate(genome, dict)
-print(pc.split('*'))
+# print(pc.split('*'))
 
 index = "MFHLVDFQVTIAEILLIIMRTFKVSIWNLDYIINLIIKNLSKSLTENKYSQLDEEQPMEID"
 print("Search:", index, pc.count(index))

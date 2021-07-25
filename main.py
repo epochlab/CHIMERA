@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import zlib
-from libtools import load, compress, translate
+from libtools import load, translate
 from codon import rna_codon
 
 sars_cov_2 = ('genome/sars_cov_2.txt', (692, 1191))
@@ -11,14 +11,11 @@ genome = load(sars_cov_2)
 
 print(genome)
 print('Base Pairs:', len(genome))
-print('Compression:', len(compress(genome)))
+print('Compression:', len(zlib.compress(genome.encode("utf-8"))))
 print("Amino acids:", len(dict.items()))
 
 pc = translate(genome, dict)
 print(pc.split('*'))
-
-index = "MFHLVDFQVTIAEILLIIMRTFKVSIWNLDYIINLIIKNLSKSLTENKYSQLDEEQPMEID"
-print("Search:", index, pc.count(index))
 
 ORF1a = translate(genome[266-1: 13483], dict)                                         # ORF1a polyprotein - 4405
 ORF1b = translate(genome[13468-1: 21555], dict)                                       # ORF1b polyprotein - 2695 overlap sequence
@@ -33,5 +30,8 @@ ORF8 = translate(genome[27894-1: 28259], dict)                                  
 N = translate(genome[28274-1: 29533], dict)                                           # ORF9 nucleocapsid phosphoprotein (structural) - 419
 ORF10 = translate(genome[29558-1: 29674], dict)                                       # ORF10 protein - 38
 
-disp = ORF1b
+disp = S
 print(disp, len(disp))
+
+index = "MFHLVDFQVTIAEILLIIMRTFKVSIWNLDYIINLIIKNLSKSLTENKYSQLDEEQPMEID"
+print("Search:", index, pc.count(index))

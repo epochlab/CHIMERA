@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-import zlib
-
 def load(input):
     nucleotides = ['A', 'C', 'G', 'T']
     file = open(input[0])
@@ -9,9 +7,6 @@ def load(input):
     genome = [x for x in data.upper() if (x in nucleotides)]
     genome = ''.join(genome)
     return genome
-
-def compress(genome):
-    return zlib.compress(genome.encode("utf-8"))
 
 def translate(seq, dict):
     polypeptide = ""

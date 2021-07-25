@@ -17,7 +17,7 @@ print(genome)
 print('Base Pairs:', length)
 print('Compression:', len(dst))
 
-mRNA_dict = {
+dict = {
     'Ala / A': ['GCU', 'GCC', 'GCA', 'GCG'],
     'Ile / I': ['AUU', 'AUC', 'AUA'],
     'Arg / R': ['CGU', 'CGC', 'CGA', 'CGG', 'AGA', 'AGG'],
@@ -41,23 +41,28 @@ mRNA_dict = {
     'End / STOP': ['UAA', 'UGA', 'UAG'],
     }
 
-print("Amino acid keys:", len(mRNA_dict.items()))
+print("Amino acid keys:", len(dict.items()))
 
-def decode(seq):
-    protein = ""
+def translate(seq):
+    polypeptide = ""
     for i in range(0, len(seq)-3, 3):
         codon = seq[i:i + 3].replace('T', 'U')
-        amino = [k for k, v in mRNA_dict.items() if codon in v]
+        amino = [k for k, v in dict.items() if codon in v]
         char = str(amino).split('/')[1].replace("']", "").strip()
-        protein += str(char)
-    return protein
+        polypeptide += str(char)
+    return polypeptide
 
-prt = decode(genome)
-print(prt.split('STOP'))
+pc = translate(genome)
+print(pc.split('STOP'))
+
+ORF1ab_polyprotein = (266, 13483)
+spike_glycoprotein = (21563, 25384)
+ORF6_protein = (27202, 27387)
+
+gene_id = ORF6_protein
+
+protein = translate(genome[gene_id[0]-1: gene_id[1]])
+print(protein, len(protein))
 
 index = "MFHLVDFQVTIAEILLIIMRTFKVSIWNLDYIINLIIKNLSKSLTENKYSQLDEEQPMEID"
-print("Search:", index, prt.count(index))
-
-gene_id = (27202, 27387)
-ORF1ab = decode(genome[gene_id[0]-1: gene_id[1]])
-print(ORF1ab)
+print("Search:", index, pc.count(index))

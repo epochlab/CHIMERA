@@ -56,7 +56,7 @@ pc = translate(genome)
 print(pc.split('STOP'))
 
 ORF1ab_polyprotein = (266, 13483)
-spike_glycoprotein = (21563, 25384)
+SPIKE_glycoprotein = (21563, 25384)
 ORF6_protein = (27202, 27387)
 
 gene_id = ORF6_protein

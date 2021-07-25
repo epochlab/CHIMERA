@@ -12,10 +12,13 @@ Ebola = ('genome/Ebola_sudan.txt', (371, 686))
 
 genome = load(SARS_CoV_2)
 
-print(genome)
+# print(genome)
 print('Base pairs:', len(genome))
 print('G-C content:', ((genome.count('G') + genome.count('C')) / len(genome) * 100))
-print('Reading frame:', genome.find('ATG'))
+
+rf = genome.find('ATG')
+if rf % 3==1:
+    print('Reading frame:', rf)
 
 print('Compression:', len(zlib.compress(genome.encode("utf-8"))))
 
@@ -26,7 +29,7 @@ pc = translate(genome, dict)
 # print(pc.split('*'))
 
 index = "MFHLVDFQVTIAEILLIIMRTFKVSIWNLDYIINLIIKNLSKSLTENKYSQLDEEQPMEID"
-print("Search:", index, pc.count(index))
+print("Chain search:", index, pc.find(index))
 
 # ORF1a = translate(genome[266-1: 13483], dict)                                         # ORF1a polyprotein - 4405
 # ORF1b = translate(genome[13468-1: 21555], dict)                                       # ORF1b polyprotein - 2695 overlap sequence

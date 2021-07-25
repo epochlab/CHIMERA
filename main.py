@@ -31,9 +31,9 @@ pc = translate(genome, dict)
 index = "MFHLVDFQVTIAEILLIIMRTFKVSIWNLDYIINLIIKNLSKSLTENKYSQLDEEQPMEID"
 print("Chain search:", index, pc.find(index))
 
-### Identified - SARS_CoV_2 only
+### Identified proteins and amino acid count (SARS_CoV_2 only)
 ORF1a = translate(genome[266-1: 13483], dict)                                         # ORF1a polyprotein - 4405
-ORF1b = translate(genome[13468-1: 21555], dict)                                       # ORF1b polyprotein - 2695 overlap sequence
+ORF1b = translate(genome[13468-1: 21555], dict)                                       # ORF1b polyprotein - 2695 overlapping sequence w/ ORF1a
 S = translate(genome[21563-1: 25384], dict)                                           # Spike glycoprotein (structural) - 1273
 ORF3a = translate(genome[25393-1: 26220], dict)                                       # ORF3a protein - 275
 E = translate(genome[26245-1: 26472], dict)                                           # ORF4 envelope protein (structural) - 75

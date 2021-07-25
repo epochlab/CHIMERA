@@ -4,7 +4,7 @@ import zlib
 
 nucleotides = ['A', 'C', 'G', 'T']
 
-file = open('genome.txt')
+file = open('genome/sars_cov_2.txt')
 
 data = str(file.readlines()[692:1191])
 genome = [x for x in data.upper() if (x in nucleotides)]

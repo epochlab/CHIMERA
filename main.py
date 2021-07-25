@@ -55,15 +55,21 @@ def translate(seq):
 pc = translate(genome)
 print(pc.split('STOP'))
 
-ORF1a_polyprotein = (266, 13483)
-ORF1b_polyprotein = (13468, 21555)
-S_glycoprotein = (21563, 25384)
-ORF6_protein = (27202, 27387)
-
-gene_id = ORF6_protein
-
-gene = translate(genome[gene_id[0]-1: gene_id[1]])
-print(gene_id, gene, len(gene))
-
 index = "MFHLVDFQVTIAEILLIIMRTFKVSIWNLDYIINLIIKNLSKSLTENKYSQLDEEQPMEID"
 print("Search:", index, pc.count(index))
+
+ORF1a = translate(genome[266-1: 13483])                                         # ORF1a polyprotein - 4405
+ORF1b = translate(genome[13468-1: 21555])                                       # ORF1b polyprotein - ???? 2695
+S = translate(genome[21563-1: 25384])                                           # Spike glycoprotein (structural) - ???? 1273
+ORF3a = translate(genome[25393-1: 26220])                                       # ORF3a protein - 275
+E = translate(genome[26245-1: 26472])                                           # ORF4 envelope protein (structural) - 75
+M = translate(genome[26523-1: 27191])                                           # ORF5 membrane glycoprotein (structural) - 222
+ORF6 = translate(genome[27202-1: 27387])                                        # ORF6 protein - 61
+ORF7a = translate(genome[27394-1: 27759])                                       # ORF7a protein - 121
+ORF7b = translate(genome[27756-1: 27887])                                       # ORF7b protein - 43
+ORF8 = translate(genome[27894-1: 28259])                                        # ORF8 protein - 121
+N = translate(genome[28274-1: 29533])                                           # ORF9 nucleocapsid phosphoprotein (structural) ???? 419
+ORF10 = translate(genome[29558-1: 29674])                                       # ORF10 protein - ???? 38
+
+disp = ORF1a
+print(disp, len(disp))

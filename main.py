@@ -14,7 +14,7 @@ genome = load(SARS_CoV_2)
 
 print(genome)
 print('Base pairs:', len(genome))
-print('G-C content:', ((genome.count('G') + genome.count('G')) / len(genome) * 100))
+print('G-C content:', ((genome.count('G') + genome.count('C')) / len(genome) * 100))
 print('Reading frame:', genome.find('ATG'))
 
 print('Compression:', len(zlib.compress(genome.encode("utf-8"))))

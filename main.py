@@ -8,7 +8,7 @@ SARS_CoV_2 = ('genome/SARS_CoV_2.txt', (692, 1191))
 SARS_Tor2 = ('genome/SARS_Tor2.txt', (640, 1136))
 MERS = ('genome/MERS.txt', (611, 1113))
 HIV = ('genome/HIV.txt', (454, 608))
-Ebola = ('genome/Ebola_sudan.txt', (371, 686))
+Ebola = ('genome/Ebola.txt', (371, 686))
 
 genome = load(SARS_CoV_2)
 # print(genome)

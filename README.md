@@ -1,4 +1,4 @@
-# nucleo
+# SARS-CoV-2
 
 **Project ID:** ehrZl0nn
 

@@ -2,7 +2,7 @@
 
 nucleotides = ['A', 'C', 'G', 'T']
 
-def rna_codon():
+def rna_table():
     dict = {
         'Ala / A': ['GCU', 'GCC', 'GCA', 'GCG'],
         'Ile / I': ['AUU', 'AUC', 'AUA'],

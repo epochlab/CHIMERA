@@ -17,6 +17,7 @@ genome = load(SARS_CoV_2)
 print('Nucleobases:', len(genome))
 print('C-G content:', ((genome.count('C') + genome.count('G')) / len(genome) * 100), "%")
 
+#Reading frame = START
 rf = genome.find('ATG')
 if rf % 3==1:
     print('Reading frame:', rf)
@@ -26,8 +27,8 @@ print('Compression:', len(zlib.compress(genome.encode("utf-8"))))
 dict = rna_table()
 print("Amino acids:", len(dict.items()))
 
-pc = translate(genome, dict)
-print(pc.split('*'))
+pc = translate(genome, dict).split('*')
+print(pc)
 
 # >>> Explore SARS_CoV_2 - https://www.ncbi.nlm.nih.gov/nuccore/NC_045512
 

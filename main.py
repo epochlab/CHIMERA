@@ -10,7 +10,7 @@ MERS = ('genome/MERS.txt', (611, 1113))
 HIV = ('genome/HIV.txt', (454, 608))
 Ebola = ('genome/Ebola.txt', (371, 686))
 
-genome = load(Ebola)
+genome = load(SARS_CoV_2)
 # print(genome)
 
 #DNA: ACGT | RNA: ACGU

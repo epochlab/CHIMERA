@@ -11,10 +11,11 @@ HIV = ('genome/HIV.txt', (454, 608))
 Ebola = ('genome/Ebola_sudan.txt', (371, 686))
 
 genome = load(SARS_CoV_2)
-
 # print(genome)
-print('Base pairs:', len(genome))
-print('G-C content:', ((genome.count('G') + genome.count('C')) / len(genome) * 100))
+
+#DNA: ACGT | RNA: ACGU
+print('Nucleobases:', len(genome))
+print('C-G content:', ((genome.count('G') + genome.count('C')) / len(genome) * 100))
 
 rf = genome.find('ATG')
 if rf % 3==1:

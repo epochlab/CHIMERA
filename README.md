@@ -5,7 +5,7 @@
 ![alt text](https://github.com/epochlab/SARS-Cov-2/blob/main/sample.png)
 
 #### Severe acute respiratory syndrome coronavirus 2 (COVID-19)
-Abstract: *SARS-CoV-2 is the virus that causes COVID-19 (coronavirus disease 2019), a positive-sense single-stranded RNA virus[14] that is contagious in humans and responsible for the COVID-19 pandemic.*
+Abstract: *SARS-CoV-2 is the virus that causes COVID-19 (coronavirus disease 2019), a positive-sense single-stranded RNA virus, that is contagious in humans and responsible for the COVID-19 pandemic.*
 
 ### Dataset
 NCBI RefSeq SARS-CoV-2 genome sequence record - https://www.ncbi.nlm.nih.gov/nuccore/NC_045512

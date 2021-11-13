@@ -15,7 +15,7 @@ genome = load(SARS_CoV_2)
 
 #DNA: ACGT | RNA: ACGU
 print('Nucleobases:', len(genome))
-print('C-G content:', ((genome.count('G') + genome.count('C')) / len(genome) * 100))
+print('C-G content:', ((genome.count('C') + genome.count('G')) / len(genome) * 100), "%")
 
 rf = genome.find('ATG')
 if rf % 3==1:

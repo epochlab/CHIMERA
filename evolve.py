@@ -15,6 +15,12 @@ def splice(sequence, epitope, mutant):
 def evolve(sequence, epitope):
     return
 
+dict = rna_table()
+
 genome = load(('genome/SARS_CoV_2.txt', (692, 1191)))
-pc = translate(genome, rna_table()).split('*')
-print(pc)
+residue = translate(genome, dict).split('*')
+
+for pid, polypeptide in enumerate(residue):
+    if pid==0:
+        print("Sequence:", pid, "| Length:", len(polypeptide))
+        print(polypeptide)

@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 
 from libtools import load, translate
-from codon import rna_table, molecular_weight, halflife
+from dict import mRNA_codon, molecular_weight, halflife
 
 def lookup_weight(acid):
     weight = [v for k, v in molecular_weight().items() if acid in k.split('/')[1]][0][0]
     return weight
 
 def lookup_halflife(acid, hostid):
-    weight = [v for k, v in halflife().items() if acid in k.split('/')[1]][0][hostid]
-    return weight
+    period = [v for k, v in halflife().items() if acid in k.split('/')[1]][0][hostid]
+    return period
 
 def score(aa):
     return
@@ -24,7 +24,7 @@ def evolve(sequence, epitope):
     return
 
 genome = load(('genome/SARS_CoV_2.txt', (692, 1191)))
-residue = translate(genome, rna_table()).split('*')
+residue = translate(genome, mRNA_codon()).split('*')
 
 index = 0
 

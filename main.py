@@ -2,7 +2,7 @@
 
 import zlib
 from libtools import load, translate
-from codon import rna_table
+from dict import mRNA_codon
 
 SARS_CoV_2 = ('genome/SARS_CoV_2.txt', (692, 1191))
 SARS_Tor2 = ('genome/SARS_Tor2.txt', (640, 1136))
@@ -24,7 +24,7 @@ if rf % 3==1:
 
 print('Compression:', len(zlib.compress(genome.encode("utf-8"))))
 
-dict = rna_table()
+dict = mRNA_codon()
 print("Amino acids:", len(dict.items()))
 
 residue = translate(genome, dict)

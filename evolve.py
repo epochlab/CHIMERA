@@ -29,8 +29,8 @@ index = 12
 for pid, polypeptide in enumerate(residue):
     if pid==index:
         mw = 0.0
-        for char in polypeptide:
-            mw += molecularweight(char, dict)
+        for acid in polypeptide:
+            mw += molecularweight(acid, dict)
 
         print("Sequence:", pid, "| Length:", len(polypeptide), "| Molecular Weight:", mw)
         print(polypeptide)

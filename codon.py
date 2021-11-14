@@ -29,8 +29,6 @@ def rna_table():
         }
     return dict
 
-
-# Molecular Weight | Half-life | Grand Average
 def molecular_weight():
     dict = {
         'Ala / A': [89.09],
@@ -53,6 +51,34 @@ def molecular_weight():
         'Tyr / Y': [181.19],
         'His / H': [155.16],
         'Val / V': [117.15],
+        'STOP / *': [],
+        }
+    return dict
+
+# Mammalian | Yeast | E.Coli
+# Unit: Minutes
+def halflife():
+    dict = {
+        'Ala / A': [264, 1200, 600],
+        'Ile / I': [1200, 30, 600],
+        'Arg / R': [60, 2, 2],
+        'Leu / L': [330, 3, 2],
+        'Asn / N': [84, 3, 600],
+        'Lys / K': [78, 3, 2],
+        'Asp / D': [66, 3, 600],
+        'Met / M': [1800, 1200, 600],
+        'Phe / F': [66, 3, 2],
+        'Cys / C': [72, 1200, 600],
+        'Pro / P': [1200, 1200, ""],
+        'Gln / Q': [48, 10, 600],
+        'Ser / S': [114, 1200, 600],
+        'Glu / E': [60, 30, 600],
+        'Thr / T': [432, 1200, 600],
+        'Trp / W': [168, 3, 2],
+        'Gly / G': [1800, 1200, 600],
+        'Tyr / Y': [168, 10, 2],
+        'His / H': [210, 10, 600],
+        'Val / V': [6000, 1200, 600],
         'STOP / *': [],
         }
     return dict

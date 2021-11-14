@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
 from libtools import load, translate
-from codon import rna_table
+from codon import rna_table, molecular_weight
 
-def molecularweight(acid, dict):
-    lookup = float([v for k, v in dict.items() if acid in k.split('/')[1]][0][0])
-    return lookup
+def lookup_weight(acid):
+    weight = [v for k, v in molecular_weight().items() if acid in k.split('/')[1]][0][0]
+    return weight
 
 def score(aa):
     return
@@ -19,18 +19,16 @@ def splice(sequence, epitope, mutant):
 def evolve(sequence, epitope):
     return
 
-dict = rna_table()
-
 genome = load(('genome/SARS_CoV_2.txt', (692, 1191)))
-residue = translate(genome, dict).split('*')
+residue = translate(genome, rna_table()).split('*')
 
-index = 12
+index = 1
 
 for pid, polypeptide in enumerate(residue):
     if pid==index:
         mw = 0.0
         for acid in polypeptide:
-            mw += molecularweight(acid, dict)
+            mw += lookup_weight(acid)
 
         print("Sequence:", pid, "| Length:", len(polypeptide), "| Molecular Weight:", mw)
         print(polypeptide)

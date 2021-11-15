@@ -5,6 +5,10 @@ import collections
 from libtools import load, translate
 from dict import mRNA_codon, molecular_weight, halflife
 
+def lookup_acid(acid):
+    terminus = [k for k, v in codon.items() if acid in k.split('/')[1]][0]
+    return terminus
+
 def lookup_weight(acid):
     weight = [v for k, v in molecular_weight().items() if acid in k.split('/')[1]][0][0]
     return weight
@@ -12,10 +16,6 @@ def lookup_weight(acid):
 def lookup_halflife(acid):
     period = [v for k, v in halflife().items() if acid in k.split('/')[1]][0]
     return period
-
-def lookup_acid(polypeptide, acid):
-    terminus = [k for k, v in codon.items() if acid in k.split('/')[1]][0]
-    return terminus
 
 def amino_count(polypeptide):
     count = dict(collections.Counter(polypeptide))
@@ -45,8 +45,8 @@ for pid, polypeptide in enumerate(residue):
     if pid==index:
 
         length = len(polypeptide)
-        n_terminus = lookup_acid(polypeptide, polypeptide[0])
-        c_terminus = lookup_acid(polypeptide, polypeptide[-1])
+        n_terminus = lookup_acid(polypeptide[0])
+        c_terminus = lookup_acid(polypeptide[-1])
 
         mw = 0.0
         for acid in polypeptide:

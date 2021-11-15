@@ -13,13 +13,13 @@ def lookup_halflife(acid):
     period = [v for k, v in halflife().items() if acid in k.split('/')[1]][0]
     return period
 
+def lookup_acid(polypeptide, acid):
+    terminus = [k for k, v in codon.items() if acid in k.split('/')[1]][0]
+    return terminus
+
 def amino_count(polypeptide):
     count = dict(collections.Counter(polypeptide))
     return count
-
-def lookup_terminus(sequence, tid):
-    terminus = [k for k, v in codon.items() if tid in k.split('/')[1]][0]
-    return terminus
 
 def score(aa):
     return
@@ -45,8 +45,8 @@ for pid, polypeptide in enumerate(residue):
     if pid==index:
 
         length = len(polypeptide)
-        n_terminus = lookup_terminus(polypeptide, polypeptide[0])
-        c_terminus = lookup_terminus(polypeptide, polypeptide[-1])
+        n_terminus = lookup_acid(polypeptide, polypeptide[0])
+        c_terminus = lookup_acid(polypeptide, polypeptide[-1])
 
         mw = 0.0
         for acid in polypeptide:

@@ -51,7 +51,7 @@ for pid, polypeptide in enumerate(residue):
         mw = 0.0
         for acid in polypeptide:
             mw += lookup_weight(acid)
-        mw -= water_atomicweight * (length - 1)
+        mw -= water_atomicweight * (length-1)
 
         decay_rate = lookup_halflife(polypeptide[0])
 

@@ -33,12 +33,11 @@ def splice(sequence, epitope, mutant):
 def evolve(sequence, epitope):
     return
 
-water_mass = 18.01524
-
-codon = mRNA_codon()
-
 genome = load(('genome/SARS_CoV_2.txt', (692, 1191)))
+codon = mRNA_codon()
 residue = translate(genome, codon)
+
+water_mass = 18.01524
 
 index = 5
 for pid, peptide in enumerate(residue.split('*')):
@@ -69,4 +68,4 @@ for pid, peptide in enumerate(residue.split('*')):
         print(composition)
 
         for a, c in composition.items():
-            print(a + ':', "{:.3f}".format(c * (100.0/length)), "%")
+            print(a, c * (100.0/length), "%")

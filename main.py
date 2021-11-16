@@ -22,7 +22,7 @@ if rf % 3==1:
     print('Reading frame:', rf)
 
 print('Nucleobases:', len(genome))
-print('C-G Content:', "{:.3f}".format(((genome.count('C') + genome.count('G')) / len(genome)*100)), "%")
+print('C-G Content:', (genome.count('C') + genome.count('G')) / len(genome)*100, "%")
 print('Compression:', len(zlib.compress(genome.encode("utf-8"))))
 
 residue = translate(genome, codon)

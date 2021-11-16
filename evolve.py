@@ -49,7 +49,7 @@ for pid, peptide in enumerate(residue.split('*')):
 
         length = len(peptide)
 
-        if length > 2 and length < 20:
+        if length >= 2 and length <= 20:
             type = "Oligopeptide"
         else:
             type = "Polypeptide"

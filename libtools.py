@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+import collections
+from dict import *
+
 def load(input):
     nucleotides = ['A', 'C', 'G', 'T']
     file = open(input[0])
@@ -16,3 +19,30 @@ def translate(seq, dict):
         char = str(amino).split('/')[1].replace("']", "").strip()
         polypeptide += str(char)
     return polypeptide
+
+def lookup_acid(acid):
+    terminus = [k for k, v in mRNA_codon().items() if acid in k.split('/')[1]][0]
+    return terminus
+
+def amino_count(peptide):
+    count = dict(collections.Counter(peptide))
+    return count
+
+def lookup_weight(peptide):
+    water_mass = 18.01524
+    weight = 0
+    for i in peptide:
+        weight += [v for k, v in molecular_weight().items() if i in k.split('/')[1]][0][0]
+    weight -= water_mass * (len(peptide)-1)
+    return weight
+
+def lookup_halflife(acid):
+    period = [v for k, v in halflife().items() if acid in k.split('/')[1]][0]
+    return period
+
+def hydropathy_index(peptide):
+    index = 0
+    for i in peptide:
+         index += float([v for k, v in hydropathy().items() if i in k.split('/')[1]][0][0])
+    index /= len(peptide)
+    return index

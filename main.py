@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import zlib
-from libtools import load, translate
+from libtools import *
 from dict import mRNA_codon
 
 SARS_CoV_2 = ('genome/SARS_CoV_2.txt', (692, 1191))
@@ -28,7 +28,7 @@ print('Compression:', len(zlib.compress(genome.encode("utf-8"))))
 residue = translate(genome, codon)
 # print(residue.split('*'))
 
-### Identified proteins and amino acid count (SARS_CoV_2 only)
+# >>> Identified proteins and amino acid count (SARS_CoV_2 only)
 ORF1a = translate(genome[266-1: 13483], codon)                                         # ORF1a polyprotein - 4405
 ORF1b = translate(genome[13468-1: 21555], codon)                                       # ORF1b polyprotein - 2695 overlapping sequence w/ ORF1a
 S = translate(genome[21563-1: 25384], codon)                                           # Spike glycoprotein (structural) - 1273
@@ -43,3 +43,31 @@ N = translate(genome[28274-1: 29533], codon)                                    
 ORF10 = translate(genome[29558-1: 29674], codon)                                       # ORF10 protein - 38
 
 # print(ORF6)
+
+index = 12
+for pid, peptide in enumerate(residue.split('*')):
+    if pid==index:
+
+        n_terminus = lookup_acid(peptide[0])
+        c_terminus = lookup_acid(peptide[-1])
+
+        length = len(peptide)
+
+        if length >= 2 and length <= 20:
+            type = "Oligopeptide"
+        else:
+            type = "Polypeptide"
+
+        mw = lookup_weight(peptide)
+        hp = hydropathy_index(peptide)
+        decay_rate = lookup_halflife(peptide[0])
+        composition = amino_count(peptide)
+
+        print(peptide)
+        print("N-Terminus:", n_terminus, "| C-Terminus:", c_terminus)
+        print("Sequence:", pid, "| Length:", length,  "| Type:", type, "| Molecular Weight (Da):", mw, "| Half-life (N-end):", decay_rate)
+        print("Grand average of hydropathicity:", hp)
+        print("Chain Search:", residue.find(peptide))
+        print(composition)
+        for a, c in composition.items():
+            print(a, c * (100.0/length), "%")

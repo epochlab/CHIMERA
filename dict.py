@@ -2,7 +2,6 @@
 
 nucleotides = ['A', 'C', 'G', 'T']
 
-# Amino acid | Molecular weight | GRAVY | Codon
 def mRNA_codon():
     dict = {
         'Ala / A': ['GCU', 'GCC', 'GCA', 'GCG'],

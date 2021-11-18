@@ -22,7 +22,7 @@ if rf % 3==1:
     print('Reading frame:', rf)
 
 print('Nucleobases:', len(genome))
-print('C-G Content:', (genome.count('C') + genome.count('G')) / len(genome)*100, "%")
+print('C-G Content:', round((genome.count('C') + genome.count('G')) / len(genome)*100, 3), "%")
 print('Compression:', len(zlib.compress(genome.encode("utf-8"))))
 
 residue = translate(genome, codon)
@@ -65,9 +65,9 @@ for pid, peptide in enumerate(residue.split('*')):
 
         print(peptide)
         print("N-Terminus:", n_terminus, "| C-Terminus:", c_terminus)
-        print("Sequence:", pid, "| Length:", length,  "| Type:", type, "| Molecular Weight (Da):", mw, "| Half-life (N-end):", decay_rate)
-        print("Grand average of hydropathicity:", hp)
+        print("Sequence:", pid, "| Length:", length,  "| Type:", type, "| Molecular Weight (Da):", round(mw, 2), "| Half-life (N-end):", decay_rate)
+        print("Grand average of hydropathicity:", round(hp, 3))
         print("Chain Search:", residue.find(peptide))
         print(composition)
         for a, c in composition.items():
-            print(a, c * (100.0/length), "%")
+            print(a, round(c * (100.0/length), 1), "%")

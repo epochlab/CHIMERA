@@ -44,7 +44,7 @@ ORF10 = translate(genome[29558-1: 29674], codon)                                
 
 # print(ORF6)
 
-index = 12
+index = 0
 for pid, peptide in enumerate(residue.split('*')):
     if pid==index:
 

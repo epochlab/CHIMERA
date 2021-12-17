@@ -1,5 +1,34 @@
 #!/usr/bin/env python3
 
+      # A: Ala, name: Alanine
+      # I: Ile, name: Isoleucine
+      # R: Arg, name: Arginine
+      # L: Leu, name: Leucine
+      # N: Asn, name: Asparagine
+      # K: Lys, name: Lysine
+      # D: Asp, name: Aspartic Acid
+      # M: Met, name: Methionine
+      # F: Phe, name: Phenylalanine
+      # C: Cys, name: Cysteine
+      # P: Pro, name: Proline
+      # Q: Gln, name: Glutamine
+      # S: Ser, name: Serine
+      # E: Glu, name: Glutamic Acid
+      # T: Thr, name: Threonine
+      # W: Trp, name: Tryptophan
+      # G: Gly, name: Glycine
+      # Y: Tyr, name: Tyrosine
+      # H: His, name: Histidine
+      # V: Val, name: Valine
+      #
+      # U: Sec, name: Selenocysteine # uga (stop)
+      # O: Pyl  # uag (stop)
+      #
+      # B: Asx  # D/N
+      # Z: Glx  # E/Q
+      # J: Xle  # I/L # => Illigal in protparams
+      # X: Xaa  # unknown
+
 nucleotides = ['A', 'C', 'G', 'T']
 
 def mRNA_codon():
@@ -105,6 +134,58 @@ def hydropathy():
         'His / H': [-3.2],
         'Val / V': [4.2],
         'STOP / *': [],
+        }
+    return dict
+
+def intrinsic_disorder():
+    dict = {
+        'Ala / A': [0.06],
+        'Ile / I': [-0.486],
+        'Arg / R': [0.180],
+        'Leu / L': [-0.326],
+        'Asn / N': [0.007],
+        'Lys / K': [0.586],
+        'Asp / D': [0.192],
+        'Met / M': [-0.397],
+        'Phe / F': [-0.697],
+        'Cys / C': [0.02],
+        'Pro / P': [0.987],
+        'Gln / Q': [0.318],
+        'Ser / S': [0.341],
+        'Glu / E': [0.736],
+        'Thr / T': [0.059],
+        'Trp / W': [-0.884],
+        'Gly / G': [0.166],
+        'Tyr / Y': [-0.510],
+        'His / H': [0.303],
+        'Val / V': [-0.121],
+        'STOP / *': [0.02],
+        }
+    return dict
+
+def average_mass():
+    dict = {
+        'Ala / A': [71.0788],
+        'Ile / I': [113.1594],
+        'Arg / R': [156.1875],
+        'Leu / L': [113.1594],
+        'Asn / N': [114.1038],
+        'Lys / K': [128.1741],
+        'Asp / D': [115.0886],
+        'Met / M': [131.1926],
+        'Phe / F': [147.1766],
+        'Cys / C': [103.1388],
+        'Pro / P': [97.1167],
+        'Gln / Q': [128.1307],
+        'Ser / S': [87.0782],
+        'Glu / E': [129.1155],
+        'Thr / T': [101.1051],
+        'Trp / W': [186.2132],
+        'Gly / G': [57.0519],
+        'Tyr / Y': [163.1760],
+        'His / H': [137.1411],
+        'Val / V': [99.1326],
+        'STOP / *': [150.0388],
         }
     return dict
 

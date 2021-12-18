@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import numpy as np
 import collections
 from dict import *
 
@@ -46,3 +47,25 @@ def hydropathy_index(peptide):
          index += float([v for k, v in hydropathy().items() if i in k.split('/')[1]][0][0])
     index /= len(peptide)
     return index
+
+def atomic_composition(peptide):
+    chain = np.zeros((1,5), dtype=int)[0]
+    for i in peptide:
+        val = [v for k, v in atom().items() if i in k.split('/')[1]][0]
+        chain = np.add(chain, val)
+
+    atoms = ["C", "H", "N", "O", "S"]
+
+    formula = []
+    for tid, t in enumerate(chain):
+        if tid == 1: # Hydrogen
+            t -= (len(peptide)-1)*2
+        if tid == 3: # Oxygen
+            t -= (len(peptide)-1)
+        group = atoms[tid]+str(t)
+        formula.append(group)
+
+    formula = ''.join(formula)
+    nb_atoms = sum(chain) - (len(peptide)-1)*3
+
+    return formula, nb_atoms

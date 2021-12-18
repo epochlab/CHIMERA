@@ -189,28 +189,28 @@ def average_mass():
         }
     return dict
 
-def atom():
+def atom():    # C = Carbon | H = Hydrogen | N = Nitrogen | O = Oxygen | S = Sulfur
     dict = {
-        'Ala / A': {C: 3, H: 7 , O: 2, N: 1, S: 0}, # C3H7NO2
-        'Ile / I': {C: 6, H: 13, O: 2, N: 1, S: 0}, # C6H13NO2
-        'Arg / R': {C: 6, H: 14, O: 2, N: 4, S: 0}, # C6H14N4O2
-        'Leu / L': {C: 6, H: 13, O: 2, N: 1, S: 0}, # C6H13NO2
-        'Asn / N': {C: 4, H: 8 , O: 3, N: 2, S: 0}, # C4H8N2O3
-        'Lys / K': {C: 6, H: 14, O: 2, N: 2, S: 0}, # C6H14N2O2
-        'Asp / D': {C: 4, H: 7 , O: 4, N: 1, S: 0}, # C4H7NO4
-        'Met / M': {C: 5, H: 11 ,O: 2, N: 1, S: 1}, # C5H11NO2S
-        'Phe / F': {C: 9, H: 11, O: 2, N: 1, S: 0}, # C9H11NO2
-        'Cys / C': {C: 3, H: 7 , O: 2, N: 1, S: 1}, # C3H7NO2S
-        'Pro / P': {C: 5, H: 9 , O: 2, N: 1, S: 0}, # C5H9NO2
-        'Gln / Q': {C: 5, H: 10, O: 3, N: 2, S: 0}, # C5H10N2O3
-        'Ser / S': {C: 3, H: 7 , O: 3, N: 1, S: 0}, # C3H7NO3
-        'Glu / E': {C: 5, H: 9 , O: 4, N: 1, S: 0}, # C5H9NO4
-        'Thr / T': {C: 4, H: 9 , O: 3, N: 1, S: 0}, # C4H9NO3
-        'Trp / W': {C: 11,H: 12, O: 2, N: 2, S: 0}, # C11H12N2O2
-        'Gly / G': {C: 2, H: 5 , O: 2, N: 1, S: 0}, # C2H5NO2
-        'Tyr / Y': {C: 9, H: 11, O: 3, N: 1, S: 0}, # C9H11NO3
-        'His / H': {C: 6, H: 9 , O: 2, N: 3, S: 0}, # C6H9N3O2
-        'Val / V': {C: 5, H: 11, O: 2, N: 1, S: 0}, # C5H11NO2
+        'Ala / A': (3, 7, 1, 2, 0), # C3H7NO2
+        'Ile / I': [6, 13, 1, 2, 0], # C6H13NO2
+        'Arg / R': [6, 14, 4, 2, 0], # C6H14N4O2
+        'Leu / L': [6, 13, 1, 2, 0], # C6H13NO2
+        'Asn / N': [4, 8, 2, 3, 0], # C4H8N2O3
+        'Lys / K': [6, 14, 2, 2, 0], # C6H14N2O2
+        'Asp / D': [4, 7, 1, 4, 0], # C4H7NO4
+        'Met / M': [5, 11, 1, 2, 1], # C5H11NO2S
+        'Phe / F': [9, 11, 1, 2, 0], # C9H11NO2
+        'Cys / C': [3, 7, 1, 2, 1], # C3H7NO2S
+        'Pro / P': [5, 9, 1, 2, 0], # C5H9NO2
+        'Gln / Q': [5, 10, 2, 3, 0], # C5H10N2O3
+        'Ser / S': [3, 7, 1, 3, 0], # C3H7NO3
+        'Glu / E': [5, 9, 1, 4, 0], # C5H9NO4
+        'Thr / T': [4, 9, 1, 3, 0], # C4H9NO3
+        'Trp / W': [11, 12, 2, 2, 0], # C11H12N2O2
+        'Gly / G': [2, 5, 1, 2, 0], # C2H5NO2
+        'Tyr / Y': [9, 11, 1, 3, 0], # C9H11NO3
+        'His / H': [6, 9, 3, 2, 0], # C6H9N3O2
+        'Val / V': [5, 11, 1, 2, 0], # C5H11NO2
         'STOP / *': [],
         }
     return dict

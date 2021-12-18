@@ -14,7 +14,6 @@ Ebola = ('genome/Ebola.txt', (371, 686))
 genome = load(SARS_CoV_2)
 # print(genome)
 
-#DNA: ACGT | RNA: ACGU
 codon = mRNA_codon()
 
 #Reading frame = START (ATG)
@@ -42,10 +41,9 @@ ORF7b = translate(genome[27756-1: 27887], codon)                                
 ORF8 = translate(genome[27894-1: 28259], codon)                                        # ORF8 protein - 121
 N = translate(genome[28274-1: 29533], codon)                                           # ORF9 nucleocapsid phosphoprotein (structural) - 419
 ORF10 = translate(genome[29558-1: 29674], codon)                                       # ORF10 protein - 38
-
 # print(ORF6)
 
-index = 1
+index = 0
 for pid, peptide in enumerate(residue.split('*')):
     if pid==index:
 
@@ -64,6 +62,7 @@ for pid, peptide in enumerate(residue.split('*')):
         decay = lookup_halflife(peptide[0])
         aa_count = amino_count(peptide)
         formula, nb_atoms = atomic_composition(peptide)
+        pos, neg = charged_residues(peptide)
 
         print("Chain Search:", residue.find(peptide))
         print(peptide)
@@ -76,3 +75,6 @@ for pid, peptide in enumerate(residue.split('*')):
         print(aa_count)
         for a, c in aa_count.items():
             print(a, round(c * (100.0/length), 1), "%")
+
+        print("+ charged residues (Arg | Lys | His):", pos)
+        print("- charged residues (Asp | Glu):", neg)

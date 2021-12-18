@@ -69,3 +69,15 @@ def atomic_composition(peptide):
     nb_atoms = sum(chain) - (len(peptide)-1)*3
 
     return formula, nb_atoms
+
+def charged_residues(peptide):
+    pos = 0
+    neg = 0
+
+    for i in peptide:
+        if i == 'R' or i == 'K' or i == 'H':
+            pos += 1
+        if i == 'D' or i == 'E':
+            neg += 1
+
+    return pos, neg

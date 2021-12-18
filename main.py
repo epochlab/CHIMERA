@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import zlib
+import numpy as np
 from libtools import *
 from dict import mRNA_codon
 
@@ -26,7 +27,7 @@ print('C-G Content:', round((genome.count('C') + genome.count('G')) / len(genome
 print('Compression:', len(zlib.compress(genome.encode("utf-8"))))
 
 residue = translate(genome, codon)
-# print(residue.split('*'))
+print(residue.split('*'))
 
 # >>> Identified proteins and amino acid count (SARS_CoV_2 only)
 ORF1a = translate(genome[266-1: 13483], codon)                                         # ORF1a polyprotein - 4405
@@ -44,7 +45,7 @@ ORF10 = translate(genome[29558-1: 29674], codon)                                
 
 # print(ORF6)
 
-index = 0
+index = 1
 for pid, peptide in enumerate(residue.split('*')):
     if pid==index:
 
@@ -60,14 +61,18 @@ for pid, peptide in enumerate(residue.split('*')):
 
         mw = lookup_weight(peptide)
         hp = hydropathy_index(peptide)
-        decay_rate = lookup_halflife(peptide[0])
-        composition = amino_count(peptide)
+        decay = lookup_halflife(peptide[0])
+        aa_count = amino_count(peptide)
+        formula, nb_atoms = atomic_composition(peptide)
 
-        print(peptide)
-        print("N-Terminus:", n_terminus, "| C-Terminus:", c_terminus)
-        print("Sequence:", pid, "| Length:", length,  "| Type:", type, "| Molecular Weight (Da):", round(mw, 2), "| Half-life (N-end):", decay_rate)
-        print("Grand average of hydropathicity:", round(hp, 3))
         print("Chain Search:", residue.find(peptide))
-        print(composition)
-        for a, c in composition.items():
+        print(peptide)
+
+        print("N-Terminus:", n_terminus, "| C-Terminus:", c_terminus)
+        print("Sequence:", pid, "| Length:", length,  "| Type:", type, "| Molecular Weight (Da):", round(mw, 2), "| Half-life (N-end):", decay)
+        print("Atomic Formula:", formula, "| Number of Atoms:", nb_atoms)
+        print("Hydropathicity Index (GRAND Average):", round(hp, 3))
+
+        print(aa_count)
+        for a, c in aa_count.items():
             print(a, round(c * (100.0/length), 1), "%")

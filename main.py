@@ -78,3 +78,8 @@ for pid, peptide in enumerate(residue.split('*')):
 
         print("+ charged residues (Arg | Lys | His):", pos)
         print("- charged residues (Asp | Glu):", neg)
+
+        detected = peptide.find('W')
+
+        if detected:
+            print("This protein does not contain any Trp residues. Experience shows that this could result in more than 10% error in the computed extinction coefficient.")

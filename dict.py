@@ -2,34 +2,29 @@
 
 nucleotides = ['A', 'C', 'G', 'T']
 
-      # A: Ala, name: Alanine
-      # I: Ile, name: Isoleucine
-      # R: Arg, name: Arginine
-      # L: Leu, name: Leucine
-      # N: Asn, name: Asparagine
-      # K: Lys, name: Lysine
-      # D: Asp, name: Aspartic Acid
-      # M: Met, name: Methionine
-      # F: Phe, name: Phenylalanine
-      # C: Cys, name: Cysteine
-      # P: Pro, name: Proline
-      # Q: Gln, name: Glutamine
-      # S: Ser, name: Serine
-      # E: Glu, name: Glutamic Acid
-      # T: Thr, name: Threonine
-      # W: Trp, name: Tryptophan
-      # G: Gly, name: Glycine
-      # Y: Tyr, name: Tyrosine
-      # H: His, name: Histidine
-      # V: Val, name: Valine
-      #
-      # U: Sec, name: Selenocysteine # uga (stop)
-      # O: Pyl  # uag (stop)
-      #
-      # B: Asx  # D/N
-      # Z: Glx  # E/Q
-      # J: Xle  # I/L # => Illigal in protparams
-      # X: Xaa  # unknown
+# A: Ala, name: Alanine
+# I: Ile, name: Isoleucine
+# R: Arg, name: Arginine
+# L: Leu, name: Leucine
+# N: Asn, name: Asparagine
+# K: Lys, name: Lysine
+# D: Asp, name: Aspartic Acid
+# M: Met, name: Methionine
+# F: Phe, name: Phenylalanine
+# C: Cys, name: Cysteine
+# P: Pro, name: Proline
+# Q: Gln, name: Glutamine
+# S: Ser, name: Serine
+# E: Glu, name: Glutamic Acid
+# T: Thr, name: Threonine
+# W: Trp, name: Tryptophan
+# G: Gly, name: Glycine
+# Y: Tyr, name: Tyrosine
+# H: His, name: Histidine
+# V: Val, name: Valine
+#
+# U: Sec, name: Selenocysteine # uga (STOP)
+# O: Pyl  # uag (STOP)
 
 def mRNA_codon():
     dict = {
@@ -59,26 +54,26 @@ def mRNA_codon():
 
 def molecular_weight():
     dict = {
-        'Ala / A': [89.09],
-        'Ile / I': [131.18],
-        'Arg / R': [174.20],
-        'Leu / L': [131.18],
-        'Asn / N': [132.12],
-        'Lys / K': [146.19],
-        'Asp / D': [133.10],
-        'Met / M': [149.21],
-        'Phe / F': [165.19],
-        'Cys / C': [121.16],
-        'Pro / P': [115.13],
-        'Gln / Q': [146.15],
-        'Ser / S': [105.09],
-        'Glu / E': [147.13],
-        'Thr / T': [119.12],
-        'Trp / W': [204.23],
-        'Gly / G': [75.07],
-        'Tyr / Y': [181.19],
-        'His / H': [155.16],
-        'Val / V': [117.15],
+        'Ala / A': 89.09,
+        'Ile / I': 131.18,
+        'Arg / R': 174.20,
+        'Leu / L': 131.18,
+        'Asn / N': 132.12,
+        'Lys / K': 146.19,
+        'Asp / D': 133.10,
+        'Met / M': 149.21,
+        'Phe / F': 165.19,
+        'Cys / C': 121.16,
+        'Pro / P': 115.13,
+        'Gln / Q': 146.15,
+        'Ser / S': 105.09,
+        'Glu / E': 147.13,
+        'Thr / T': 119.12,
+        'Trp / W': 204.23,
+        'Gly / G': 75.07,
+        'Tyr / Y': 181.19,
+        'His / H': 155.16,
+        'Val / V': 117.15,
         'STOP / *': [],
         }
     return dict
@@ -113,31 +108,31 @@ def halflife():
 
 def hydropathy():
     dict = {
-        'Ala / A': [1.8],
-        'Ile / I': [4.5],
-        'Arg / R': [-4.5],
-        'Leu / L': [3.8],
-        'Asn / N': [-3.5],
-        'Lys / K': [-3.9],
-        'Asp / D': [-3.5],
-        'Met / M': [1.9],
-        'Phe / F': [2.8],
-        'Cys / C': [2.5],
-        'Pro / P': [-1.6],
-        'Gln / Q': [-3.5],
-        'Ser / S': [-0.8],
-        'Glu / E': [-3.5],
-        'Thr / T': [-0.7],
-        'Trp / W': [-0.9],
-        'Gly / G': [-0.4],
-        'Tyr / Y': [-1.3],
-        'His / H': [-3.2],
-        'Val / V': [4.2],
+        'Ala / A': 1.8,
+        'Ile / I': 4.5,
+        'Arg / R': -4.5,
+        'Leu / L': 3.8,
+        'Asn / N': -3.5,
+        'Lys / K': -3.9,
+        'Asp / D': -3.5,
+        'Met / M': 1.9,
+        'Phe / F': 2.8,
+        'Cys / C': 2.5,
+        'Pro / P': -1.6,
+        'Gln / Q': -3.5,
+        'Ser / S': -0.8,
+        'Glu / E': -3.5,
+        'Thr / T': -0.7,
+        'Trp / W': -0.9,
+        'Gly / G': -0.4,
+        'Tyr / Y': -1.3,
+        'His / H': -3.2,
+        'Val / V': 4.2,
         'STOP / *': [],
         }
     return dict
 
-def atom():    # C = Carbon | H = Hydrogen | N = Nitrogen | O = Oxygen | S = Sulfur
+def atomic():    # C = Carbon | H = Hydrogen | N = Nitrogen | O = Oxygen | S = Sulfur
     dict = {
         'Ala / A': (3, 7, 1, 2, 0), # C3H7NO2
         'Ile / I': [6, 13, 1, 2, 0], # C6H13NO2

@@ -29,7 +29,7 @@ def lookup_weight(peptide):
     water_mass = 18.01524
     weight = 0
     for i in peptide:
-        weight += [v for k, v in molecular_weight().items() if i in k.split('/')[1]][0][0]
+        weight += [v for k, v in molecular_weight().items() if i in k.split('/')[1]][0]
     weight -= water_mass * (len(peptide)-1)
     return weight
 
@@ -40,14 +40,14 @@ def lookup_halflife(acid):
 def hydropathy_index(peptide):
     index = 0
     for i in peptide:
-         index += float([v for k, v in hydropathy().items() if i in k.split('/')[1]][0][0])
+         index += float([v for k, v in hydropathy().items() if i in k.split('/')[1]][0])
     index /= len(peptide)
     return index
 
 def atomic_composition(peptide):
     chain = np.zeros((1,5), dtype=int)[0]
     for i in peptide:
-        val = [v for k, v in atom().items() if i in k.split('/')[1]][0]
+        val = [v for k, v in atomic().items() if i in k.split('/')[1]][0]
         chain = np.add(chain, val)
 
     atoms = ["C", "H", "N", "O", "S"]

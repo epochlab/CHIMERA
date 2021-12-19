@@ -71,13 +71,11 @@ def amino_count(peptide):
     return count
 
 def charged_residues(peptide):
-    pos = 0
-    neg = 0
-
+    pos, neg = 0, 0
     for i in peptide:
-        if i == 'R' or i == 'K' or i == 'H':
+        if i == "R" or i == "K" or i == "H":
             pos += 1
-        if i == 'D' or i == 'E':
+        if i == "D" or i == "E":
             neg += 1
 
     return pos, neg

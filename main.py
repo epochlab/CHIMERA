@@ -43,7 +43,7 @@ N = translate(genome[28274-1: 29533], codon)                                    
 ORF10 = translate(genome[29558-1: 29674], codon)                                       # ORF10 protein - 38
 # print(ORF6)
 
-index = 10
+index = 0
 for pid, peptide in enumerate(residue.split('*')):
     if pid==index:
 
@@ -76,10 +76,8 @@ for pid, peptide in enumerate(residue.split('*')):
         for a, c in aa_count.items():
             print(a, round(c * (100.0/length), 1), "%")
 
-        print("+ charged residues (Arg | Lys | His):", pos)
-        print("- charged residues (Asp | Glu):", neg)
+        print("+ charged residues (Arg | Lys | His):", charged_residues(peptide)[0])
+        print("- charged residues (Asp | Glu):", charged_residues(peptide)[1])
 
-        detected = peptide.find('W')
-
-        if detected:
+        if peptide.find('W') == -1:
             print("This protein does not contain any Trp residues. Experience shows that this could result in more than 10% error in the computed extinction coefficient.")

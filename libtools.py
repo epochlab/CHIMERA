@@ -25,10 +25,6 @@ def lookup_acid(acid):
     terminus = [k for k, v in mRNA_codon().items() if acid in k.split('/')[1]][0]
     return terminus
 
-def amino_count(peptide):
-    count = dict(collections.Counter(peptide))
-    return count
-
 def lookup_weight(peptide):
     water_mass = 18.01524
     weight = 0
@@ -69,6 +65,10 @@ def atomic_composition(peptide):
     nb_atoms = sum(chain) - (len(peptide)-1)*3
 
     return formula, nb_atoms
+
+def amino_count(peptide):
+    count = dict(collections.Counter(peptide))
+    return count
 
 def charged_residues(peptide):
     pos = 0

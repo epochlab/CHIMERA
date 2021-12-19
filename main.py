@@ -43,7 +43,7 @@ N = translate(genome[28274-1: 29533], codon)                                    
 ORF10 = translate(genome[29558-1: 29674], codon)                                       # ORF10 protein - 38
 # print(ORF6)
 
-index = 0
+index = 10
 for pid, peptide in enumerate(residue.split('*')):
     if pid==index:
 
@@ -69,8 +69,8 @@ for pid, peptide in enumerate(residue.split('*')):
 
         print("N-Terminus:", n_terminus, "| C-Terminus:", c_terminus)
         print("Sequence:", pid, "| Length:", length,  "| Type:", type, "| Molecular Weight (Da):", round(mw, 2), "| Half-life (N-end):", decay)
-        print("Atomic Formula:", formula, "| Number of Atoms:", nb_atoms)
         print("Hydropathicity Index (GRAND Average):", round(hp, 3))
+        print("Atomic Formula:", formula, "| Number of Atoms:", nb_atoms)
 
         print(aa_count)
         for a, c in aa_count.items():

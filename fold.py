@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# >>> TEMPLATE SCRIPT FROM OPENMM - https://openmm.org
+
 from openmm.app import *
 from openmm import *
 from openmm.unit import *

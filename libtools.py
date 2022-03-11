@@ -12,6 +12,12 @@ def load(input):
     genome = ''.join(genome)
     return genome
 
+def reading_frame(seq):
+    for i in range(3, len(seq)+1, 3):
+        codon = seq[i-3:i]
+        if codon == 'ATG':
+            return i//3
+
 def translate(seq, dict):
     polypeptide = ""
     for i in range(0, len(seq)-3, 3):

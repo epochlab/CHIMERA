@@ -21,13 +21,10 @@ print('C-G Content:', round((genome.count('C') + genome.count('G')) / len(genome
 print('Compression:', len(zlib.compress(genome.encode("utf-8"))))
 print('[START] Frame:', reading_frame(genome))
 
-# Sequential CGG position - Doesn't not align with a modulo of 3.
-print('CpG:', genome.find('CGGCGG'))
-
 residue = translate(genome, codon_table)
 # print(residue.split('*'))
 
-# Identified proteins and amino acid count (SARS_CoV_2 only)
+# Reverse-engineered proteins (SARS_CoV_2 only)
 # ORF = Open Reading Frame
 ORF1a = translate(genome[266-1: 13483], codon_table)                                         # ORF1a polyprotein - 4405
 ORF1b = translate(genome[13468-1: 21555], codon_table)                                       # ORF1b polyprotein - 2695 overlapping sequence w/ ORF1a
@@ -41,8 +38,16 @@ ORF7b = translate(genome[27756-1: 27887], codon_table)                          
 ORF8 = translate(genome[27894-1: 28259], codon_table)                                        # ORF8 protein - 121
 N = translate(genome[28274-1: 29533], codon_table)                                           # ORF9 nucleocapsid phosphoprotein (structural) - 419
 ORF10 = translate(genome[29558-1: 29674], codon_table)                                       # ORF10 protein - 38
-# print(ORF6)
+# print(S)
 
+# Identify FURIN cleavage site in spike protein
+FURIN_loc = S.find('PRRAR')
+print('FURIN site position (Spike):', FURIN_loc)
+
+# Sequential CGG position - Does NOT align with a modulo of 3
+print('CpG Islands:', genome.find('CGGCGG'))
+
+# Compute protparams
 index = 0
 for pid, peptide in enumerate(residue.split('*')):
     if pid==index:

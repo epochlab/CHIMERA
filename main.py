@@ -92,4 +92,7 @@ for pid, peptide in enumerate(residue.split('*')):
         print("Ext. coefficient:", ext_coeff)
         print("Abs 0.1% (=1 g/l):", round(ext_coeff/mw, 3))
 
-        # Search Function | Theoreitcal pI (Isoelectric Point) | Instability Index | Aliphatic Index
+        # Search Function | Extinction coefficient testing.
+        # Theoreitcal pI (Isoelectric Point) | Instability Index | Aliphatic Index
+        # Protein Folding
+        # Genome Evolution

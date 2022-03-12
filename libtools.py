@@ -86,18 +86,17 @@ def charged_residues(peptide):
 
     return pos, neg
 
-# Solve pI value with bisect algorithm
-def solve_pI(charges):
-    state = {
-        'ph': 0.0,
-        'charges': charges,
-        'pI': None,
-        'ph_prev': 0.0,
-        'ph_next': 14.0,
-        'net_charge': 0.0
-    }
+def extinction_coefficient(peptide):
+    n_Tyr, n_Trp, n_Cys = 0, 0, 0
 
-    error = False
-    epsilon = 0.001         # Pricision [pI = pH + eps]
+    for i in peptide:
+        if i == "Y":
+            n_Tyr += 1
+        if i == "W":
+            n_Trp += 1
+        if i == "C":
+            n_Cys += 1
 
-    return state
+    # ext_Tyr = 1490 | ext_Trp = 5500 | ext_Cys = 125
+    ext_coeff = (n_Tyr * 1490) + (n_Trp * 5500) + (n_Cys * 125)
+    return ext_coeff

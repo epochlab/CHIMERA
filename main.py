@@ -41,7 +41,7 @@ ORF10 = translate(genome[29558-1: 29674], codon_table)                          
 # print(S)
 
 # Identify FURIN cleavage site in spike protein
-print('FURIN site position (Spike):', S.find('PRRAR'))
+print('FURIN cleavage site (Spike):', S.find('PRRAR'))
 
 # Sequential CGG position - Does NOT align with a modulo of 3
 print('CpG Islands:', genome.find('CGGCGG'))
@@ -67,12 +67,13 @@ for pid, peptide in enumerate(residue.split('*')):
         aa_count = amino_count(peptide)
         formula, nb_atoms = atomic_composition(peptide)
         pos, neg = charged_residues(peptide)
+        ext_coeff = extinction_coefficient(peptide)
 
         print("Chain Search:", residue.find(peptide))
         print(peptide)
 
         print("N-Terminus:", n_terminus, "| C-Terminus:", c_terminus)
-        print("Sequence:", pid, "| Length:", length,  "| Type:", type, "| Molecular Weight (Da):", round(mw, 2), "| Half-life (N-end):", decay)
+        print("Sequence ID:", pid, "| Length:", length,  "| Type:", type, "| Molecular Weight (Da):", round(mw, 2), "| Half-life (N-end):", decay)
         print("Hydropathicity Index (GRAND Average):", round(hp, 3))
         print("Atomic Formula:", formula, "| Number of Atoms:", nb_atoms)
 
@@ -86,8 +87,9 @@ for pid, peptide in enumerate(residue.split('*')):
         if peptide.find('W') == -1:
             print("This protein does not contain any Trp residues. Experience shows that this could result in more than 10% error in the computed extinction coefficient.")
 
-        # Calculate Theoretical pI -
-        state = solve_pI(123)
-        print(state)
+        print("Extinction coefficients are in units of M-1 cm-1, at 280 nm measured in water.")
 
-        # Ext. coefficient, Instability index
+        print("Ext. coefficient:", ext_coeff)
+        print("Abs 0.1% (=1 g/l):", round(ext_coeff/mw, 3))
+
+        # Theoreitcal pI (Isoelectric Point) | Instability Index | Aliphatic Index

@@ -12,8 +12,7 @@ NCBI RefSeq SARS-CoV-2 genome sequence record - https://www.ncbi.nlm.nih.gov/nuc
 
 ### Table of Contents
 Title | Notes
-------- | --------
-
+------- | -------
 [DNA](https://en.wikipedia.org/wiki/DNA) | Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions for the development.
 [RNA](https://en.wikipedia.org/wiki/DNA) | Ribonucleic acid (RNA) is a polymeric molecule essential in various biological roles in coding, decoding, regulation and expression of genes.
 [Genome](https://en.wikipedia.org/wiki/Genome) | A genome is the complete set of genetic information in an organism. It provides all of the information the organism requires to function.

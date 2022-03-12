@@ -18,7 +18,7 @@ Title | Notes
 [Genome](https://en.wikipedia.org/wiki/Genome) | A genome is the complete set of genetic information in an organism. It provides all of the information the organism requires to function.
 [Transcription](https://en.wikipedia.org/wiki/Transcription_(biology)) | Transcription is the first step in gene expression. It involves copying a gene's DNA sequence to make an RNA molecule.
 [Translation](https://en.wikipedia.org/wiki/Translation) | Messenger RNA (mRNA) is decoded in a ribosome, outside the nucleus, to produce a specific amino acid chain, or polypeptide.
-[GC Content](https://en.wikipedia.org/wiki/GC-content) | Higher GC content has higher thermal stability; meaning a RNA with more GC-content is highly stable due to the presence of more hydrogen bonds.
+[GC-Content](https://en.wikipedia.org/wiki/GC-content) | Higher GC content has higher thermal stability; meaning a RNA with more GC-content is highly stable due to the presence of more hydrogen bonds.
 
 ### Packages
 `numpy` `OpenMM`

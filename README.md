@@ -13,9 +13,9 @@ NCBI RefSeq SARS-CoV-2 genome sequence record - https://www.ncbi.nlm.nih.gov/nuc
 ### Table of Contents
 Title | Notes
 ------- | --------
-Nucleotide | https://en.wikipedia.org/wiki/Nucleotide
-Genome | https://en.wikipedia.org/wiki/Genome
-Translation | https://en.wikipedia.org/wiki/Translation
+[Nucleotide](https://en.wikipedia.org/wiki/Nucleotide) | abc
+[Genome](https://en.wikipedia.org/wiki/Genome) | def
+[Translation](https://en.wikipedia.org/wiki/Translation) | ghi
 
 ### Requirements
 - Both Linux and Windows are supported. Linux is recommended for performance and compatibility reasons.

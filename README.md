@@ -20,7 +20,7 @@ Title | Notes
 [Amino Acid](https://en.wikipedia.org/wiki/Amino_acid) | Amino acids are organic compounds but only 20 appear in the genetic code.
 [Peptide](https://en.wikipedia.org/wiki/Peptide) | Peptides are short chains of amino acids linked by peptide bonds. A polypeptide is a longer, continuous, unbranched peptide chain. Chains of fewer than twenty amino acids are called oligopeptides.
 [Transcription](https://en.wikipedia.org/wiki/Transcription_(biology)) | Transcription is the first step in gene expression. It involves copying a gene's DNA sequence to make an RNA molecule.
-[Translation](https://en.wikipedia.org/wiki/Translation) | Messenger RNA (mRNA) is decoded in a ribosome, outside the nucleus, to produce a specific amino acid chain, or polypeptide.
+[Translation](https://en.wikipedia.org/wiki/Translation) | Messenger RNA (mRNA) is decoded in a ribosome, outside the nucleus, to produce a specific amino acid chain or polypeptide.
 [Reading Frame](https://en.wikipedia.org/wiki/Reading_frame) | A reading frame is defined by the initial triplet of nucleotides from which translation starts.
 
 ### Packages

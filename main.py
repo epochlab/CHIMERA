@@ -87,7 +87,8 @@ for pid, peptide in enumerate(residue.split('*')):
         if peptide.find('W') == -1:
             print("This protein does not contain any Trp residues. Experience shows that this could result in more than 10% error in the computed extinction coefficient.")
 
-        # Calculate Theoretical pI
-        solve_pI()
+        # Calculate Theoretical pI -
+        state = solve_pI(123)
+        print(state)
 
         # Ext. coefficient, Instability index

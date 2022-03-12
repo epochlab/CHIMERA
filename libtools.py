@@ -87,15 +87,17 @@ def charged_residues(peptide):
     return pos, neg
 
 # Solve pI value with bisect algorithm
-def solve_pI():
+def solve_pI(charges):
     state = {
-        ph = 0.0,
-        charges = None
-        pI = None,
-        ph_prev = 0.0,
-        ph_next = 14.0,
-        net_charge = 0.0
+        'ph': 0.0,
+        'charges': charges,
+        'pI': None,
+        'ph_prev': 0.0,
+        'ph_next': 14.0,
+        'net_charge': 0.0
     }
 
     error = False
     epsilon = 0.001         # Pricision [pI = pH + eps]
+
+    return state

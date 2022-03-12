@@ -17,9 +17,9 @@ genome = load(SARS_CoV_2)
 codon_table = mRNA_codon()
 
 print('Nucleobases:', len(genome))
+print('[START] Frame:', reading_frame(genome))
 print('C-G Content:', round((genome.count('C') + genome.count('G')) / len(genome)*100, 3), "%")
 print('Compression:', len(zlib.compress(genome.encode("utf-8"))))
-print('[START] Frame:', reading_frame(genome))
 
 residue = translate(genome, codon_table)
 # print(residue.split('*'))

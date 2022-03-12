@@ -18,7 +18,11 @@ Title | Notes
 [Genome](https://en.wikipedia.org/wiki/Genome) | A genome is the complete set of genetic information in an organism. It provides all of the information the organism requires to function.
 [Transcription](https://en.wikipedia.org/wiki/Transcription_(biology)) | Transcription is the first step in gene expression. It involves copying a gene's DNA sequence to make an RNA molecule.
 [Translation](https://en.wikipedia.org/wiki/Translation) | Messenger RNA (mRNA) is decoded in a ribosome, outside the nucleus, to produce a specific amino acid chain, or polypeptide.
+[Codon](https://en.wikipedia.org/wiki/Genetic_code) | A codon is a way of dividing the sequence of nucleotides in a nucleic acid (DNA or RNA) molecule into a set of consecutive, non-overlapping triplets. These triplets equate to amino acids or stop signals during translation.
+[Reading Frame](https://en.wikipedia.org/wiki/Reading_frame) | A reading frame is defined by the initial triplet of nucleotides from which translation starts.
 [GC-Content](https://en.wikipedia.org/wiki/GC-content) | Higher GC content has higher thermal stability; meaning a RNA with more GC-content is highly stable due to the presence of more hydrogen bonds.
+[Compression](https://en.wikipedia.org/wiki/Data_compression) | Data compression is the process of encoding information using fewer bits than the original representation.
+
 
 ### Packages
 `numpy` `OpenMM`

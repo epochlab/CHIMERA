@@ -13,9 +13,12 @@ NCBI RefSeq SARS-CoV-2 genome sequence record - https://www.ncbi.nlm.nih.gov/nuc
 ### Table of Contents
 Title | Notes
 ------- | --------
-[Nucleotide](https://en.wikipedia.org/wiki/Nucleotide) | abc
-[Genome](https://en.wikipedia.org/wiki/Genome) | def
-[Translation](https://en.wikipedia.org/wiki/Translation) | ghi
+[Nucleotide](https://en.wikipedia.org/wiki/Nucleotide) | Nucleotides form the basic structural unit of nucleic acids such as DNA.
+[Genome](https://en.wikipedia.org/wiki/Genome) | A genome is the complete set of genetic information in an organism. It provides all of the information the organism requires to function.
+[Translation](https://en.wikipedia.org/wiki/Translation) | Messenger RNA (mRNA) is decoded in a ribosome, outside the nucleus, to produce a specific amino acid chain, or polypeptide.
+
+### Packages
+`numpy` `OpenMM`
 
 ### Requirements
 - Both Linux and Windows are supported. Linux is recommended for performance and compatibility reasons.

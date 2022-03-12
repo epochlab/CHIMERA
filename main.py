@@ -41,8 +41,7 @@ ORF10 = translate(genome[29558-1: 29674], codon_table)                          
 # print(S)
 
 # Identify FURIN cleavage site in spike protein
-FURIN_loc = S.find('PRRAR')
-print('FURIN site position (Spike):', FURIN_loc)
+print('FURIN site position (Spike):', S.find('PRRAR'))
 
 # Sequential CGG position - Does NOT align with a modulo of 3
 print('CpG Islands:', genome.find('CGGCGG'))

@@ -10,8 +10,14 @@ Abstract: *SARS-CoV-2 is the virus that causes COVID-19 (coronavirus disease 201
 ### Dataset
 NCBI RefSeq SARS-CoV-2 genome sequence record - https://www.ncbi.nlm.nih.gov/nuccore/NC_045512
 
-### Requirements
+### Table of Contents
+Title | Notes
+------- | --------
+Nucleotide | https://en.wikipedia.org/wiki/Nucleotide
+Genome | https://en.wikipedia.org/wiki/Genome
+Translation | https://en.wikipedia.org/wiki/Translation
 
+### Requirements
 - Both Linux and Windows are supported. Linux is recommended for performance and compatibility reasons.
 - 64-bit Python 3.7.9 installation.
 - SideFX Houdini

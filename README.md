@@ -13,10 +13,10 @@ NCBI RefSeq SARS-CoV-2 genome sequence record - https://www.ncbi.nlm.nih.gov/nuc
 ### Table of Contents
 Title | Notes
 ------- | -------
-[DNA](https://en.wikipedia.org/wiki/DNA) | Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions for the development.
 [RNA](https://en.wikipedia.org/wiki/DNA) | Ribonucleic acid (RNA) is a polymeric molecule essential in various biological roles in coding, decoding, regulation and expression of genes.
+[Nucleotide](https://en.wikipedia.org/wiki/Nucleotide) | A nucleotide is the   basic building block of nucleic acids. RNA and DNA are polymers made of long chains of nucleotides. They function as the fundamental units of the genetic code, with the bases A, G, C, and T being found in DNA while A, G, C, and U are found in RNA.
 [Genome](https://en.wikipedia.org/wiki/Genome) | A genome is the complete set of genetic information in an organism. It provides all of the information the organism requires to function.
-[Nucleotide](https://en.wikipedia.org/wiki/Nucleotide) | Nucleotides form the basic structural unit of nucleic acids such as DNA.
+[Transcription](https://en.wikipedia.org/wiki/Transcription_(biology)) | Transcription is the first step in gene expression. It involves copying a gene's DNA sequence to make an RNA molecule.
 [Translation](https://en.wikipedia.org/wiki/Translation) | Messenger RNA (mRNA) is decoded in a ribosome, outside the nucleus, to produce a specific amino acid chain, or polypeptide.
 
 ### Packages

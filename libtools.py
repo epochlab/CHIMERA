@@ -27,6 +27,10 @@ def translate(seq, dict):
         polypeptide += str(char)
     return polypeptide
 
+def lookup_value(input, dict):
+    result = [v for k, v in dict.items() if input in k.split('/')[1]][0]
+    return result
+
 def lookup_acid(acid):
     terminus = [k for k, v in mRNA_codon().items() if acid in k.split('/')[1]][0]
     return terminus
@@ -35,25 +39,29 @@ def lookup_weight(peptide):
     water_mass = 18.01524
     weight = 0
     for i in peptide:
-        weight += [v for k, v in molecular_weight().items() if i in k.split('/')[1]][0]
+        weight += lookup_value(i, molecular_weight())
+        # weight += [v for k, v in molecular_weight().items() if i in k.split('/')[1]][0]
     weight -= water_mass * (len(peptide)-1)
     return weight
 
 def lookup_halflife(acid):
-    period = [v for k, v in halflife().items() if acid in k.split('/')[1]][0]
+    period = lookup_value(acid, halflife())
+    # period = [v for k, v in halflife().items() if acid in k.split('/')[1]][0]
     return period
 
 def hydropathy_index(peptide):
     index = 0
     for i in peptide:
-         index += float([v for k, v in hydropathy().items() if i in k.split('/')[1]][0])
+         index += float(lookup_value(i, hydropathy()))
+         # index += float([v for k, v in hydropathy().items() if i in k.split('/')[1]][0])
     index /= len(peptide)
     return index
 
 def atomic_composition(peptide):
     chain = np.zeros((1,5), dtype=int)[0]
     for i in peptide:
-        val = [v for k, v in atomic().items() if i in k.split('/')[1]][0]
+        val = lookup_value(i, atomic())
+        # val = [v for k, v in atomic().items() if i in k.split('/')[1]][0]
         chain = np.add(chain, val)
 
     atoms = ["C", "H", "N", "O", "S"]

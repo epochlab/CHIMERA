@@ -95,12 +95,12 @@ def extinction_coefficient(peptide):
 
     for i in peptide:
         if i == "Y":
-            n_Tyr += 1
+            nY += 1
         if i == "W":
-            n_Trp += 1
+            nW += 1
         if i == "C":
-            n_Cys += 1
+            nC += 1
 
     # Ext. coefficient Tyrosine = 1490 | Tryptophan = 5500 | Cystine = 125 (Cysteine does not absorb appreciably at wavelengths >260 nm, while Cystine does)
-    ext_coeff = (n_Tyr * 1490) + (n_Trp * 5500) + (n_Cys * 125)
+    ext_coeff = (nY * 1490) + (nW * 5500) + (nC * 125)
     return ext_coeff

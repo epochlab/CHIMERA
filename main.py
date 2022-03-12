@@ -18,8 +18,8 @@ codon_table = mRNA_codon()
 
 print('Nucleobases:', len(genome))
 print('[START] Frame:', reading_frame(genome))
-print('C-G Content:', round((genome.count('C') + genome.count('G')) / len(genome)*100, 3), "%")
-print('Compression:', len(zlib.compress(genome.encode("utf-8"))))
+print('GC-Content:', round((genome.count('C') + genome.count('G')) / len(genome)*100, 3), "%")
+print('Compression (zlib):', len(zlib.compress(genome.encode("utf-8"))))
 
 residue = translate(genome, codon_table)
 # print(residue.split('*'))
@@ -58,7 +58,7 @@ for pid, peptide in enumerate(residue.split('*')):
 
         if length >= 2 and length <= 20:
             type = "Oligopeptide"
-        else:
+        elif length > 20:
             type = "Polypeptide"
 
         mw = lookup_weight(peptide)
@@ -84,15 +84,17 @@ for pid, peptide in enumerate(residue.split('*')):
         print("+ charged residues (Arg | Lys | His):", charged_residues(peptide)[0])
         print("- charged residues (Asp | Glu):", charged_residues(peptide)[1])
 
-        if peptide.find('W') == -1:
-            print("This protein does not contain any Trp residues. Experience shows that this could result in more than 10% error in the computed extinction coefficient.")
+        if ext_coeff == 0:
+            print("As there are no Trp, Tyr or Cys in the region considered, this protein should not be visible by UV spectrophotometry.")
+        else:
+            if peptide.find('W') == -1:
+                print("This protein does not contain any Trp residues. Experience shows that this could result in more than 10% error in the computed extinction coefficient.")
 
-        print("Extinction coefficients are in units of M-1 cm-1, at 280 nm measured in water.")
+            print("Extinction coefficients are in units of M-1 cm-1, at 280nm measured in water.")
+            print("Ext. coefficient:", ext_coeff)
+            print("Abs 0.1% (=1 g/l):", round(ext_coeff/mw, 3))
 
-        print("Ext. coefficient:", ext_coeff)
-        print("Abs 0.1% (=1 g/l):", round(ext_coeff/mw, 3))
-
-        # Search Function | Extinction coefficient testing.
+        # Extinction coefficient testing
         # Theoreitcal pI (Isoelectric Point) | Instability Index | Aliphatic Index
         # Protein Folding
         # Genome Evolution

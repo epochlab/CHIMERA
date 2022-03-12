@@ -16,6 +16,8 @@ Title | Notes
 [Nucleotide](https://en.wikipedia.org/wiki/Nucleotide) | Nucleotides form the basic structural unit of nucleic acids such as DNA.
 [Genome](https://en.wikipedia.org/wiki/Genome) | A genome is the complete set of genetic information in an organism. It provides all of the information the organism requires to function.
 [Translation](https://en.wikipedia.org/wiki/Translation) | Messenger RNA (mRNA) is decoded in a ribosome, outside the nucleus, to produce a specific amino acid chain, or polypeptide.
+[DNA](https://en.wikipedia.org/wiki/DNA) | Deoxyribonucleic acid (DNA) is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions for the development.
+[RNA](https://en.wikipedia.org/wiki/DNA) | Ribonucleic acid (RNA) is a polymeric molecule essential in various biological roles in coding, decoding, regulation and expression of genes.
 
 ### Packages
 `numpy` `OpenMM`

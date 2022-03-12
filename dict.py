@@ -157,21 +157,3 @@ def atomic():    # C = Carbon | H = Hydrogen | N = Nitrogen | O = Oxygen | S = S
         'STOP / *': [],
         }
     return dict
-
-# pK values from Bjellqvist, et al.
-# Taking into account the decrease in pK differences between acids and bases when going from water
-# to 8 M urea, a value of 7.5 has been assigned to the N-terminal residue.
-
-def pKa_values():
-      pKa = {
-        cterm: {
-          normal: 3.55, D: 4.55, E: 4.75
-        },
-        nterm: {
-          A: 7.59, M: 7.00, S: 6.93,  P: 8.36,
-          T: 6.82, V: 7.44, E: 7.70 , G: 7.50
-        },
-        internal: {
-          D: 4.05, E: 4.45, H: 5.98, C: 9.0, Y: 10.0, K: 10.0, R: 12.0
-        }
-      }

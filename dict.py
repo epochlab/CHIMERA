@@ -261,4 +261,4 @@ def DIWV():
           S: 1.0, G: 1.0, A: 1.0, L: 1.0
         }
       }
-      return dict
+    return dict

@@ -91,7 +91,7 @@ def charged_residues(peptide):
     return pos, neg
 
 def extinction_coefficient(peptide):
-    n_Tyr, n_Trp, n_Cys = 0, 0, 0
+    nY, nW, nC = 0, 0, 0
 
     for i in peptide:
         if i == "Y":

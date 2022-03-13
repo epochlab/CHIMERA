@@ -10,6 +10,9 @@ Abstract: *SARS-CoV-2 is the virus that causes COVID-19 (coronavirus disease 201
 ### Dataset
 NCBI RefSeq SARS-CoV-2 genome sequence record - https://www.ncbi.nlm.nih.gov/nuccore/NC_045512
 
+### Packages
+`numpy` `OpenMM`
+
 ### Table of Contents
 Title | Notes
 ------- | -------
@@ -22,9 +25,6 @@ Title | Notes
 [Transcription](https://en.wikipedia.org/wiki/Transcription_(biology)) | Transcription is the first step in gene expression. It involves copying a gene's DNA sequence to make an RNA molecule.
 [Translation](https://en.wikipedia.org/wiki/Translation) | Messenger RNA (mRNA) is decoded in a ribosome, outside the nucleus, to produce a specific amino acid chain or polypeptide.
 [Reading Frame](https://en.wikipedia.org/wiki/Reading_frame) | A reading frame is defined by the initial triplet of nucleotides from which translation starts.
-
-### Packages
-`numpy` `OpenMM`
 
 ### Requirements
 - Both Linux and Windows are supported. Linux is recommended for performance and compatibility reasons.

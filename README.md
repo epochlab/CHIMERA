@@ -32,5 +32,5 @@ Title | Notes
 - SideFX Houdini
 
 ### Acknowledgments
-Ultrastructural analysis of SARS-CoV-2 - https://www.nature.com/articles/s41598-020-73162-5<br />
-Rendering the coronavirus spike protein - https://youtu.be/M3ldQBVb-ZA
+Ultrastructural analysis of SARS-CoV-2: https://www.nature.com/articles/s41598-020-73162-5<br />
+Rendering the coronavirus spike protein: https://youtu.be/M3ldQBVb-ZA

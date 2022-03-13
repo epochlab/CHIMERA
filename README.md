@@ -27,6 +27,7 @@ Title | Notes
 [Reading Frame](https://en.wikipedia.org/wiki/Reading_frame) | A reading frame is defined by the initial triplet of nucleotides from which translation starts.
 [N-Terminus](https://en.wikipedia.org/wiki/N-terminus) | The N-terminus (also known as the amino-terminus, NH2-terminus, N-terminal end or amine-terminus) is the start of a protein or polypeptide.
 [C-Terminus](https://en.wikipedia.org/wiki/C-terminus) | The C-terminus (also known as the carboxyl-terminus, carboxy-terminus, C-terminal tail, C-terminal end, or COOH-terminus) is the end of an amino acid chain.
+[Molecular Weight](https://en.wikipedia.org/wiki/Molecular_mass) | The sum of the atomic masses of all atoms in a molecule.
 
 ### Requirements
 - Both Linux and Windows are supported. Linux is recommended for performance and compatibility reasons.

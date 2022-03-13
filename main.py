@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import zlib
-import numpy as np
 from libtools import *
 from dict import mRNA_codon
 

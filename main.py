@@ -62,8 +62,8 @@ for pid, peptide in enumerate(residue.split('*')):
 
         mw = lookup_weight(peptide)
         decay = lookup_halflife(peptide[0])
-        aa_count = amino_count(peptide)
         formula, nb_atoms = atomic_composition(peptide)
+        aa_count = amino_count(peptide)
         pos, neg = charged_residues(peptide)
         ext_coeff = extinction_coefficient(peptide)
         alp_index = aliphatic_index(peptide)

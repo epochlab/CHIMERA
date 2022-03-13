@@ -93,11 +93,11 @@ for pid, peptide in enumerate(residue.split('*')):
             print("Ext. coefficient:", ext_coeff)
             print("Abs 0.1% (=1 g/l):", round(ext_coeff/mw, 3))
 
-        # print("Aliphatic Index:", alp_index)
+        print("Aliphatic Index:", alp_index)
         print("Hydropathicity Index (GRAND Average):", round(hp, 3))
 
         # Fix Aliphatic Index
-        # Theoreitcal pI (Isoelectric Point)
+        # Theoreitcal pI (Isoelectric Point) | Instability Index
 
         # Protein Folding
         # Genome Evolution

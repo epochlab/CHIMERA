@@ -101,7 +101,8 @@ def extinction_coefficient(peptide):
         if i == "C":
             nC += 1
 
-    # Ext. coefficient Tyrosine = 1490 | Tryptophan = 5500 | Cystine = 125 (Cysteine does not absorb appreciably at wavelengths >260 nm, while Cystine does)
+    # Ext. coefficient Tyrosine = 1490 | Tryptophan = 5500 | Cystine = 125
+    # Cysteine does not absorb appreciably at wavelengths >260 nm, while Cystine does
     ext_coeff = (nY * 1490) + (nW * 5500) + (nC * 125)
     return ext_coeff
 
@@ -118,6 +119,7 @@ def aliphatic_index(peptide):
         if i == "L":
             nL += 1
 
+    # Aliphatic index = X(Ala) + a * X(Val) + b * ( X(Ile) + X(Leu) )
     # Coefficients A and B are the relative volume of the side chains (A = 2.9 | B = 3.9)
-    index = nA + (2.9 * nV) + (3.9 * (nI + nL))
+    index = (nA + (2.9 * nV) + (3.9 * (nI + nL))) * 100
     return index

@@ -62,19 +62,19 @@ for pid, peptide in enumerate(residue.split('*')):
             type = "Polypeptide"
 
         mw = lookup_weight(peptide)
-        hp = hydropathy_index(peptide)
         decay = lookup_halflife(peptide[0])
         aa_count = amino_count(peptide)
         formula, nb_atoms = atomic_composition(peptide)
         pos, neg = charged_residues(peptide)
         ext_coeff = extinction_coefficient(peptide)
+        alp_index = aliphatic_index(peptide)
+        hp = hydropathy_index(peptide)
 
         print("Chain Search:", residue.find(peptide))
         print(peptide)
 
         print("N-Terminus:", n_terminus, "| C-Terminus:", c_terminus)
         print("Sequence ID:", pid, "| Length:", length,  "| Type:", type, "| Molecular Weight (Da):", round(mw, 2), "| Half-life (N-end):", decay)
-        print("Hydropathicity Index (GRAND Average):", round(hp, 3))
         print("Atomic Formula:", formula, "| Number of Atoms:", nb_atoms)
 
         print(aa_count)
@@ -94,7 +94,11 @@ for pid, peptide in enumerate(residue.split('*')):
             print("Ext. coefficient:", ext_coeff)
             print("Abs 0.1% (=1 g/l):", round(ext_coeff/mw, 3))
 
-        # Extinction coefficient testing
-        # Theoreitcal pI (Isoelectric Point) | Instability Index | Aliphatic Index
+        # print("Aliphatic Index:", alp_index)
+        print("Hydropathicity Index (GRAND Average):", round(hp, 3))
+
+        # Fix Aliphatic Index
+        # Theoreitcal pI (Isoelectric Point)
+
         # Protein Folding
         # Genome Evolution

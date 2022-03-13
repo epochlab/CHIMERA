@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# RNA | DNA >> T | U.
+# RNA | DNA >> T | U
 nucleotides = ['A', 'C', 'G', 'T']
 
 # A: Ala, name: Alanine

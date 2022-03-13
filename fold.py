@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
 
-# >>> TEMPLATE SCRIPT FROM OPENMM - https://openmm.org
-
 from openmm.app import *
 from openmm import *
 from openmm.unit import *
 from sys import stdout
 
-pdb = PDBFile('input.pdb')
+pdb = PDBFile('pdb/input.pdb')
 forcefield = ForceField('amber99sb.xml', 'tip3p.xml')
 system = forcefield.createSystem(pdb.topology, nonbondedMethod=PME, nonbondedCutoff=1*nanometer, constraints=HBonds)
 integrator = LangevinIntegrator(300*kelvin, 1/picosecond, 0.002*picoseconds)

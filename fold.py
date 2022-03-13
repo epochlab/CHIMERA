@@ -5,11 +5,27 @@ from openmm import *
 from openmm.unit import *
 from sys import stdout
 
+try:
+  platform = Platform.getPlatformByName("CUDA")
+except Exception:
+  platform = Platform.getPlatformByName("OpenCL")
+
 pdb = PDBFile('pdb/input.pdb')
+
 forcefield = ForceField('amber99sb.xml', 'tip3p.xml')
-system = forcefield.createSystem(pdb.topology, nonbondedMethod=PME, nonbondedCutoff=1*nanometer, constraints=HBonds)
+
+modeller = Modeller(pdb.topology, pdb.positions)
+modeller.addHydrogens(forcefield)
+print(modeller.topology)
+
+system = forcefield.createSystem(modeller.topology,
+                                 nonbondedMethod=PME,
+                                 nonbondedCutoff=1*nanometer,
+                                 constraints=HBonds)
+
 integrator = LangevinIntegrator(300*kelvin, 1/picosecond, 0.002*picoseconds)
-simulation = Simulation(pdb.topology, system, integrator)
+
+simulation = Simulation(modeller.topology, system, integrator, platform)
 simulation.context.setPositions(pdb.positions)
 simulation.minimizeEnergy()
 simulation.reporters.append(PDBReporter('output.pdb', 1000))

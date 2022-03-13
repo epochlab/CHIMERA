@@ -31,8 +31,8 @@ def lookup_value(input, dict):
     result = [v for k, v in dict.items() if input in k.split('/')[1]][0]
     return result
 
-def lookup_acid(acid):
-    terminus = [k for k, v in mRNA_codon().items() if acid in k.split('/')[1]][0]
+def lookup_amino(peptide):
+    terminus = [k for k, v in mRNA_codon().items() if peptide in k.split('/')[1]][0]
     return terminus
 
 def lookup_weight(peptide):
@@ -43,8 +43,8 @@ def lookup_weight(peptide):
     weight -= water_mass * (len(peptide)-1)
     return weight
 
-def lookup_halflife(acid):
-    period = lookup_value(acid, halflife())
+def lookup_halflife(peptide):
+    period = lookup_value(peptide, halflife())
     return period
 
 def hydropathy_index(peptide):

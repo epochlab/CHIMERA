@@ -50,8 +50,8 @@ index = 0
 for pid, peptide in enumerate(residue.split('*')):
     if pid==index:
 
-        n_terminus = lookup_acid(peptide[0])
-        c_terminus = lookup_acid(peptide[-1])
+        n_terminus = lookup_amino(peptide[0])
+        c_terminus = lookup_amino(peptide[-1])
 
         length = len(peptide)
 

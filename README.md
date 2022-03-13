@@ -25,6 +25,8 @@ Title | Notes
 [Transcription](https://en.wikipedia.org/wiki/Transcription_(biology)) | Transcription is the first step in gene expression. It involves copying a gene's DNA sequence to make an RNA molecule.
 [Translation](https://en.wikipedia.org/wiki/Translation) | Messenger RNA (mRNA) is decoded in a ribosome, outside the nucleus, to produce a specific amino acid chain or polypeptide.
 [Reading Frame](https://en.wikipedia.org/wiki/Reading_frame) | A reading frame is defined by the initial triplet of nucleotides from which translation starts.
+[N-Terminus](https://en.wikipedia.org/wiki/N-terminus) | The N-terminus (also known as the amino-terminus, NH2-terminus, N-terminal end or amine-terminus) is the start of a protein or polypeptide.
+[C-Terminus](https://en.wikipedia.org/wiki/C-terminus) | The C-terminus (also known as the carboxyl-terminus, carboxy-terminus, C-terminal tail, C-terminal end, or COOH-terminus) is the end of an amino acid chain.
 
 ### Requirements
 - Both Linux and Windows are supported. Linux is recommended for performance and compatibility reasons.

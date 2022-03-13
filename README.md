@@ -8,7 +8,7 @@
 Abstract: *SARS-CoV-2 is the virus that causes COVID-19 (coronavirus disease 2019), a positive-sense single-stranded RNA virus, that is contagious in humans and responsible for the COVID-19 pandemic.*
 
 ### Dataset
-NCBI RefSeq SARS-CoV-2 genome sequence record - https://www.ncbi.nlm.nih.gov/nuccore/NC_045512
+NCBI RefSeq SARS-CoV-2 genome sequence record: https://www.ncbi.nlm.nih.gov/nuccore/NC_045512
 
 ### Packages
 `numpy` `zlib` `OpenMM`

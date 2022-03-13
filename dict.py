@@ -9,7 +9,7 @@ nucleotides = ['A', 'C', 'G', 'T']
 # N: Asn, name: Asparagine
 # K: Lys, name: Lysine
 # D: Asp, name: Aspartic Acid
-# M: Met, name: Methionine
+# M: Met, name: Methionine (START)
 # F: Phe, name: Phenylalanine
 # C: Cys, name: Cysteine
 # P: Pro, name: Proline
@@ -23,8 +23,8 @@ nucleotides = ['A', 'C', 'G', 'T']
 # H: His, name: Histidine
 # V: Val, name: Valine
 #
-# U: Sec, name: Selenocysteine # uga (STOP)
-# O: Pyl  # uag (STOP)
+# U: Sec, name: Selenocysteine | uga (STOP)
+# O: Pyl | uag (STOP)
 
 def mRNA_codon():
     dict = {
@@ -261,3 +261,4 @@ def DIWV():
           S: 1.0, G: 1.0, A: 1.0, L: 1.0
         }
       }
+      return dict

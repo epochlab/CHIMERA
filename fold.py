@@ -11,7 +11,6 @@ except Exception:
   platform = Platform.getPlatformByName("OpenCL")
 
 pdb = PDBFile('pdb/input.pdb')
-
 forcefield = ForceField('amber99sb.xml', 'tip3p.xml')
 
 modeller = Modeller(pdb.topology, pdb.positions)
@@ -26,7 +25,7 @@ system = forcefield.createSystem(modeller.topology,
 integrator = LangevinIntegrator(300*kelvin, 1/picosecond, 0.002*picoseconds)
 
 simulation = Simulation(modeller.topology, system, integrator, platform)
-simulation.context.setPositions(pdb.positions)
+simulation.context.setPositions(modeller.positions)
 simulation.minimizeEnergy()
 simulation.reporters.append(PDBReporter('output.pdb', 1000))
 simulation.reporters.append(StateDataReporter(stdout, 1000, step=True, potentialEnergy=True, temperature=True))

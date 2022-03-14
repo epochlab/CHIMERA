@@ -106,6 +106,27 @@ def extinction_coefficient(peptide):
     ext_coeff = (nY * 1490) + (nW * 5500) + (nC * 125)
     return ext_coeff
 
+def instability_index(peptide):
+    list = []
+    for pid, amino in enumerate(peptide):
+        layer = [v for k, v in DIWV().items() if amino in k][0]
+
+        x = [v for k, v in layer.items() if amino in k][0]
+        x_label = amino + amino
+
+        if pid != len(peptide)-1:
+            y = [v for k, v in layer.items() if peptide[pid+1] in k][0]
+            y_label = amino + peptide[pid+1]
+        else:
+            y = 1.0
+            y_label = 'NA'
+
+        v = x * y
+        list.append(v)
+
+    II = (10/len(peptide)) * sum(list)
+    return II
+
 def aliphatic_index(peptide):
     nA, nV, nI, nL = 0, 0, 0, 0
 

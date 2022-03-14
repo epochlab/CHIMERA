@@ -66,7 +66,8 @@ for pid, peptide in enumerate(residue.split('*')):
         aa_count = amino_count(peptide)
         pos, neg = charged_residues(peptide)
         ext_coeff = extinction_coefficient(peptide)
-        ali_index = aliphatic_index(peptide)
+        ii = instability_index(peptide)
+        ai = aliphatic_index(peptide)
         hp = hydropathy_index(peptide)
 
         print("Chain Search:", residue.find(peptide))
@@ -93,45 +94,18 @@ for pid, peptide in enumerate(residue.split('*')):
             print("Ext. coefficient:", ext_coeff)
             print("Abs 0.1% (=1 g/l):", round(ext_coeff/mw, 3))
 
-        print("Aliphatic Index:", round(ali_index, 3))
+        print("Instability Index (II):", round(ii, 3))
+        if ii <= 40:
+            print("This classifies the protein as stable.")
+        else:
+            print("This classifies the protein as unstable.")
+
+        print("Aliphatic Index:", round(ai, 3))
         print("Hydropathicity Index (GRAND Average):", round(hp, 3))
 
-        for pid, amino in enumerate(peptide):
-            layer = [v for k, v in DIWV().items() if amino in k][0]
-
-            x = [v for k, v in layer.items() if amino in k][0]
-            x_label = amino + amino
-
-            if pid != len(peptide)-1:
-                y = [v for k, v in layer.items() if peptide[pid+1] in k][0]
-                y_label = amino + peptide[pid+1]
-            else:
-                y = 1.0
-                y_label = 'NA'
-
-            print(x_label, x, "||", y_label, y)
-
-            # if pid != len(peptide)-1:
-            #     y = peptide[pid+1]
-            # else:
-            #     y = 'NA'
-
-            # print(amino,y)
-
-                # for i in fu:
-                #     print(i)
-            #     if i == y:
-            #         print(i)
-            # for i in fu:
-            #     print(i)
-
-
-            # v = [v for k, v in DIWV().items() if x in k][0]
-
-
+        # Fix instability_index
         # Theoreitcal pI (Isoelectric Point)
-        # Instability Index
 
         # Pycache
-        # Protein Folding
+        # Protein Folding - tmp dir | input files | transfer from geneExpr
         # Genome Evolution

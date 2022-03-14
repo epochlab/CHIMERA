@@ -66,7 +66,7 @@ for pid, peptide in enumerate(residue.split('*')):
         aa_count = amino_count(peptide)
         pos, neg = charged_residues(peptide)
         ext_coeff = extinction_coefficient(peptide)
-        alp_index = aliphatic_index(peptide)
+        ali_index = aliphatic_index(peptide)
         hp = hydropathy_index(peptide)
 
         print("Chain Search:", residue.find(peptide))
@@ -93,11 +93,39 @@ for pid, peptide in enumerate(residue.split('*')):
             print("Ext. coefficient:", ext_coeff)
             print("Abs 0.1% (=1 g/l):", round(ext_coeff/mw, 3))
 
-        print("Aliphatic Index:", round(alp_index, 2))
+        print("Aliphatic Index:", round(ali_index, 3))
         print("Hydropathicity Index (GRAND Average):", round(hp, 3))
+
+        NA = 1.0
+
+        for pid, amino in enumerate(peptide):
+
+            if pid != len(peptide)-1:
+                y = peptide[pid+1]
+                # print(amino+amino, amino+y)
+            else:
+                y = 'NA'
+                # print(amino+amino, y)
+
+                # print(amino,y)
+
+            fu = [v for k, v in DIWV().items() if amino in k][0]
+            bar = [v for k, v in fu.items() if amino in k][0]
+            print(amino, bar)
+                # for i in fu:
+                #     print(i)
+            #     if i == y:
+            #         print(i)
+            # for i in fu:
+            #     print(i)
+
+
+            # v = [v for k, v in DIWV().items() if x in k][0]
+
 
         # Theoreitcal pI (Isoelectric Point)
         # Instability Index
 
+        # Pycache
         # Protein Folding
         # Genome Evolution

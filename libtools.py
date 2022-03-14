@@ -121,5 +121,6 @@ def aliphatic_index(peptide):
 
     # Aliphatic index = X(Ala) + a * X(Val) + b * ( X(Ile) + X(Leu) )
     # Coefficients A and B are the relative volume of the side chains (A = 2.9 | B = 3.9)
-    index = nA + (2.9 * nV) + (3.9 * (nI + nL)) * 100
+    total_atoms = len(peptide)
+    index = nA + (2.9 * nV/total_atoms) + (3.9 * (nI/total_atoms + nL/total_atoms)) * 100
     return index

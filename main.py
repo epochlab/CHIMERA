@@ -96,22 +96,28 @@ for pid, peptide in enumerate(residue.split('*')):
         print("Aliphatic Index:", round(ali_index, 3))
         print("Hydropathicity Index (GRAND Average):", round(hp, 3))
 
-        NA = 1.0
-
         for pid, amino in enumerate(peptide):
+            layer = [v for k, v in DIWV().items() if amino in k][0]
+
+            x = [v for k, v in layer.items() if amino in k][0]
+            x_label = amino + amino
 
             if pid != len(peptide)-1:
-                y = peptide[pid+1]
-                # print(amino+amino, amino+y)
+                y = [v for k, v in layer.items() if peptide[pid+1] in k][0]
+                y_label = amino + peptide[pid+1]
             else:
-                y = 'NA'
-                # print(amino+amino, y)
+                y = 1.0
+                y_label = 'NA'
 
-                # print(amino,y)
+            print(x_label, x, "||", y_label, y)
 
-            fu = [v for k, v in DIWV().items() if amino in k][0]
-            bar = [v for k, v in fu.items() if amino in k][0]
-            print(amino, bar)
+            # if pid != len(peptide)-1:
+            #     y = peptide[pid+1]
+            # else:
+            #     y = 'NA'
+
+            # print(amino,y)
+
                 # for i in fu:
                 #     print(i)
             #     if i == y:

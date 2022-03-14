@@ -46,7 +46,7 @@ print('FURIN cleavage site (Spike):', S.find('PRRAR'))
 print('CpG Islands:', genome.find('CGGCGG'))
 
 # Compute protparams
-index = 12
+index = 0
 for pid, peptide in enumerate(residue.split('*')):
     if pid==index:
 
@@ -96,7 +96,8 @@ for pid, peptide in enumerate(residue.split('*')):
         print("Aliphatic Index:", round(alp_index, 2))
         print("Hydropathicity Index (GRAND Average):", round(hp, 3))
 
-        # Theoreitcal pI (Isoelectric Point) | Instability Index
+        # Theoreitcal pI (Isoelectric Point)
+        # Instability Index
 
         # Protein Folding
         # Genome Evolution

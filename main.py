@@ -61,11 +61,11 @@ for pid, peptide in enumerate(residue.split('*')):
             type = "Polypeptide"
 
         mw = lookup_weight(peptide)
-        decay = lookup_halflife(peptide[0])
+        hl = lookup_halflife(peptide[0])
         formula, nb_atoms = atomic_composition(peptide)
         aa_count = amino_count(peptide)
         pos, neg = charged_residues(peptide)
-        ext_coeff = extinction_coefficient(peptide)
+        ec = extinction_coefficient(peptide)
         ii = instability_index(peptide)
         ai = aliphatic_index(peptide)
         hp = hydropathy_index(peptide)
@@ -74,7 +74,7 @@ for pid, peptide in enumerate(residue.split('*')):
         print(peptide)
 
         print("N-Terminus:", n_terminus, "| C-Terminus:", c_terminus)
-        print("Sequence ID:", pid, "| Length:", length,  "| Type:", type, "| Molecular Weight (Da):", round(mw, 2), "| Half-life (N-end):", decay)
+        print("Sequence ID:", pid, "| Length:", length,  "| Type:", type, "| Molecular Weight (Da):", round(mw, 2), "| Half-life (N-end):", hl)
         print("Atomic Formula:", formula, "| Number of Atoms:", nb_atoms)
 
         print(aa_count)
@@ -84,15 +84,15 @@ for pid, peptide in enumerate(residue.split('*')):
         print("+ charged residues (Arg | Lys | His):", charged_residues(peptide)[0])
         print("- charged residues (Asp | Glu):", charged_residues(peptide)[1])
 
-        if ext_coeff == 0:
+        if ec == 0:
             print("As there are no Trp, Tyr or Cys in the region considered, this protein should not be visible by UV spectrophotometry.")
         else:
             if peptide.find('W') == -1:
                 print("This protein does not contain any Trp residues. Experience shows that this could result in more than 10% error in the computed extinction coefficient.")
 
             print("Extinction coefficients are in units of M-1 cm-1, at 280nm measured in water.")
-            print("Ext. coefficient:", ext_coeff)
-            print("Abs 0.1% (=1 g/l):", round(ext_coeff/mw, 3))
+            print("Ext. coefficient:", ec)
+            print("Abs 0.1% (=1 g/l):", round(ec/mw, 3))
 
         print("Instability Index (II):", round(ii, 3))
         if ii <= 40:

@@ -46,7 +46,7 @@ print('FURIN cleavage site (Spike):', S.find('PRRAR'))
 print('CpG Islands:', genome.find('CGGCGG'))
 
 # Compute protparams
-index = 12
+index = 0
 for pid, peptide in enumerate(residue.split('*')):
     if pid==index:
 

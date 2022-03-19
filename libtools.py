@@ -111,17 +111,13 @@ def instability_index(peptide):
     for pid, amino in enumerate(peptide):
         layer = [v for k, v in DIWV().items() if amino in k][0]
 
-        x = [v for k, v in layer.items() if amino in k][0]
-        x_label = amino + amino
-
         if pid != len(peptide)-1:
-            y = [v for k, v in layer.items() if peptide[pid+1] in k][0]
-            y_label = amino + peptide[pid+1]
+            val = [v for k, v in layer.items() if peptide[pid+1] in k][0]
+            label = amino + peptide[pid+1]
         else:
-            y = 1.0
-            y_label = 'NA'
+            val = 1.0
+            label = 'NA'
 
-        val = x * y
         list.append(val)
 
     II = (10/len(peptide)) * sum(list)

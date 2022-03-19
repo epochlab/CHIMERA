@@ -124,7 +124,6 @@ def instability_index(peptide):
         val = x * y
         list.append(val)
 
-    print(list)
     II = (10/len(peptide)) * sum(list)
     return II
 

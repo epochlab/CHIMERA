@@ -115,7 +115,7 @@ def instability_index(peptide):
             val = [v for k, v in layer.items() if peptide[pid+1] in k][0]
             label = amino + peptide[pid+1]
         else:
-            val = 1.0
+            val = 0.0
             label = 'NA'
 
         list.append(val)

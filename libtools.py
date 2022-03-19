@@ -120,7 +120,7 @@ def instability_index(peptide):
 
         list.append(val)
 
-    II = (10/len(peptide)) * sum(list)
+    II = (10/(len(peptide))) * sum(list)
     return II
 
 def aliphatic_index(peptide):

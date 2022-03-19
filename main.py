@@ -103,7 +103,6 @@ for pid, peptide in enumerate(residue.split('*')):
         print("Aliphatic Index:", round(ai, 3))
         print("Hydropathicity Index (GRAND Average):", round(hp, 3))
 
-        # Fix instability_index
         # Theoreitcal pI (Isoelectric Point)
 
         # Pycache

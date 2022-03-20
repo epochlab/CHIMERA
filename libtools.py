@@ -43,6 +43,11 @@ def lookup_weight(peptide):
     weight -= water_mass * (len(peptide)-1)
     return weight
 
+def isoelectric_point(peptide):
+    net = 1.0
+    pI = 1.0
+    return net, pI
+
 def lookup_halflife(peptide):
     period = lookup_value(peptide, halflife())
     return period

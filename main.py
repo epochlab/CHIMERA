@@ -20,8 +20,8 @@ print('[START] Frame:', reading_frame(genome))
 print('GC-Content:', round((genome.count('C') + genome.count('G')) / len(genome)*100, 3), "%")
 print('Compression (zlib):', len(zlib.compress(genome.encode("utf-8"))))
 
-residue = translate(genome, codon_table)
-# print(residue.split('*'))
+res = translate(genome, codon_table)
+# print(res.split('*'))
 
 # Reverse-engineered proteins (SARS_CoV_2 only)
 # ORF = Open Reading Frame
@@ -46,8 +46,8 @@ print('FURIN cleavage site (Spike):', S.find('PRRAR'))
 print('CpG Islands:', genome.find('CGGCGG'))
 
 # Compute protparams
-index = 12
-for pid, peptide in enumerate(residue.split('*')):
+index = 0
+for pid, peptide in enumerate(res.split('*')):
     if pid==index:
 
         n_terminus = lookup_amino(peptide[0])
@@ -60,21 +60,29 @@ for pid, peptide in enumerate(residue.split('*')):
         elif length > 20:
             type = "Polypeptide"
 
-        mw = lookup_weight(peptide)
+        Mw = lookup_weight(peptide)
+        net, pI = isoelectric_point(peptide)
         hl = lookup_halflife(peptide[0])
         formula, nb_atoms = atomic_composition(peptide)
         aa_count = amino_count(peptide)
         pos, neg = charged_residues(peptide)
         ec = extinction_coefficient(peptide)
-        ii = instability_index(peptide)
+        II = instability_index(peptide)
         ai = aliphatic_index(peptide)
         hp = hydropathy_index(peptide)
 
-        print("Chain Search:", residue.find(peptide))
+        print("Chain Search:", res.find(peptide))
         print(peptide)
 
         print("N-Terminus:", n_terminus, "| C-Terminus:", c_terminus)
-        print("Sequence ID:", pid, "| Length:", length,  "| Type:", type, "| Molecular Weight (Da):", round(mw, 2), "| Half-life (N-end):", hl)
+        print("Sequence ID:", pid,
+              "| Length:", length,
+              "| Type:", type,
+              "| Molecular Weight (Da):", round(Mw, 2),
+              "| Theoreitcal pI:", pI,
+              "| Net Charge:", net,
+              "| Half-life (N-end):", hl)
+
         print("Atomic Formula:", formula, "| Number of Atoms:", nb_atoms)
 
         print(aa_count)
@@ -92,10 +100,10 @@ for pid, peptide in enumerate(residue.split('*')):
 
             print("Extinction coefficients are in units of M-1 cm-1, at 280nm measured in water.")
             print("Ext. coefficient:", ec)
-            print("Abs 0.1% (=1 g/l):", round(ec/mw, 3))
+            print("Abs 0.1% (=1 g/l):", round(ec/Mw, 3))
 
-        print("Instability Index (II):", round(ii, 3))
-        if ii <= 40:
+        print("Instability Index (II):", round(II, 3))
+        if II <= 40:
             print("This classifies the protein as stable.")
         else:
             print("This classifies the protein as unstable.")
@@ -103,8 +111,7 @@ for pid, peptide in enumerate(residue.split('*')):
         print("Aliphatic Index:", round(ai, 3))
         print("Hydropathicity Index (GRAND Average):", round(hp, 3))
 
+        # Check Ext. coefficient
         # Theoreitcal pI (Isoelectric Point)
-
-        # Pycache
         # Protein Folding - tmp dir | input files | transfer from geneExpr
         # Genome Evolution

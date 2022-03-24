@@ -29,6 +29,14 @@ Title | Notes
 [C-Terminus](https://en.wikipedia.org/wiki/C-terminus) | The C-terminus (also known as the carboxyl-terminus, carboxy-terminus, C-terminal tail, C-terminal end, or COOH-terminus) is the end of an amino acid chain.
 [Molecular Weight](https://en.wikipedia.org/wiki/Molecular_mass) | The sum of the atomic masses of all atoms in a molecule.
 
+###TO-DO
+- Check Ext. coefficient
+- Theoreitcal pI (Isoelectric Point)
+- Measure GDT (Global Distance Test)
+- Folding (tmp dir | input files | transfer from geneExpr)
+- Genome Evolution
+
+
 ### Requirements
 - Both Linux and Windows are supported. Linux is recommended for performance and compatibility reasons.
 - 64-bit Python 3.7.9 installation.

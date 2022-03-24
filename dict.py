@@ -84,9 +84,11 @@ def molecular_weight():
 # to 8 M urea, a value of 7.5 has been assigned to the N-terminal residue.
 def pKa():
     dict = {
-        'cterm': {'normal': 3.55, 'D': 4.55, 'E': 4.75},
-        'nterm': {'A': 7.59, 'M': 7.00, 'S': 6.93, 'P': 8.36, 'T': 6.82, 'V': 7.44, 'E': 7.70 , 'G': 7.50},
-        'internal': {'D': 4.05, 'E': 4.45, 'H': 5.98, 'C': 9.0, 'Y': 10.0, 'K': 10.0, 'R': 12.0}
+        'positive_pKs': {'Nterm': 7.5, 'K': 10.0, 'R': 12.0, 'H': 5.98},
+        'negative_pKs': {'Cterm': 3.55, 'D': 4.05, 'E': 4.45, 'C': 9.0, 'Y': 10.0},
+        'pKcterminal': {'D': 4.55, 'E': 4.75},
+        'pKnterminal': {'A': 7.59, 'M': 7.0, 'S': 6.93, 'P': 8.36, 'T': 6.82, 'V': 7.44, 'E': 7.7},
+        'charged_aa': {'K', 'R', 'H', 'D', 'E', 'C', 'Y'},
       }
     return dict
 
@@ -144,7 +146,7 @@ def hydropathy():
         }
     return dict
 
- # C = Carbon | H = Hydrogen | N = Nitrogen | O = Oxygen | S = Sulfur
+# C = Carbon | H = Hydrogen | N = Nitrogen | O = Oxygen | S = Sulfur
 def atomic():
     dict = {
         'Ala / A': (3, 7, 1, 2, 0), # C3H7NO2

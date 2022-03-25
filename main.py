@@ -61,10 +61,10 @@ for pid, peptide in enumerate(res.split('*')):
             type = "Polypeptide"
 
         Mw = lookup_weight(peptide)
-        net, pI = isoelectric_point(peptide)
+        # net, pI = isoelectric_point(peptide)
         hl = lookup_halflife(peptide[0])
         formula, nb_atoms = atomic_composition(peptide)
-        aa_count = amino_count(peptide)
+        aa_content = amino_count(peptide)
         pos, neg = charged_residues(peptide)
         ec = extinction_coefficient(peptide)
         II = instability_index(peptide)
@@ -79,14 +79,14 @@ for pid, peptide in enumerate(res.split('*')):
               "| Length:", length,
               "| Type:", type,
               "| Molecular Weight (Da):", round(Mw, 2),
-              "| Theoreitcal pI:", pI,
-              "| Net Charge:", net,
+              "| Theoreitcal pI:", 1.0,
+              "| Net Charge:", 1.0,
               "| Half-life (N-end):", hl)
 
         print("Atomic Formula:", formula, "| Number of Atoms:", nb_atoms)
 
-        print(aa_count)
-        for a, c in aa_count.items():
+        print(aa_content)
+        for a, c in aa_content.items():
             print(a, round(c * (100.0/length), 1), "%")
 
         print("+ charged residues (Arg | Lys | His):", charged_residues(peptide)[0])
@@ -111,7 +111,5 @@ for pid, peptide in enumerate(res.split('*')):
         print("Aliphatic Index:", round(ai, 3))
         print("Hydropathicity Index (GRAND Average):", round(hp, 3))
 
-        # Check Ext. coefficient
-        # Theoreitcal pI (Isoelectric Point)
-        # Protein Folding - tmp dir | input files | transfer from geneExpr
-        # Genome Evolution
+        isoelectric_point = pi(peptide, 7.775, 4.05, 12)
+        print("Theoretical pI:", isoelectric_point)

@@ -43,6 +43,59 @@ def lookup_weight(peptide):
     weight -= water_mass * (len(peptide)-1)
     return weight
 
+def select_charged(aa_content):
+    charged = {}
+    charged_aa = ['K', 'R', 'H', 'D', 'E', 'C', 'Y']
+    for aa in aa_content:
+        if aa in charged_aa:
+            charged[aa] = float([v for k, v in aa_content.items() if aa in k][0])
+
+    charged['Nterm'] = 1.0
+    charged['Cterm'] = 1.0
+    return charged
+
+def update_pKs(peptide):
+    pos_pKs = [v for k, v in pKa().items() if k == 'positive_pKs'][0]
+    neg_pKs = [v for k, v in pKa().items() if k == 'negative_pKs'][0]
+    pKnterminal = [v for k, v in pKa().items() if k == 'pKnterminal'][0]
+    pKcterminal = [v for k, v in pKa().items() if k == 'pKcterminal'][0]
+
+    nterm, cterm = peptide[0], peptide[-1]
+    if nterm in pKnterminal:
+        pos_pKs['Nterm'] = pKnterminal[nterm[-1]]
+    if cterm in pKcterminal:
+        neg_pKs['Cterm'] = pKcterminal[cterm[-1]]
+
+    return pos_pKs, neg_pKs
+
+def charge_at_pH(pH, peptide):
+    charged = select_charged(amino_count(peptide))
+    pos_pKs, neg_pKs = update_pKs(peptide)
+    positive_charge = 0.0
+    for aa, pK in pos_pKs.items():
+        if aa in charged:
+            partial_charge = 1.0 / (10 ** (pH - pK) + 1.0)
+            positive_charge += charged[aa] * partial_charge
+
+    negative_charge = 0.0
+    for aa, pK in neg_pKs.items():
+        if aa in charged:
+            partial_charge = 1.0 / (10 ** (pH - pK) + 1.0)
+            negative_charge += charged[aa] * partial_charge
+
+    return positive_charge - negative_charge
+
+def pi(peptide, pH, min, max):
+    charge = charge_at_pH(pH, peptide)
+    if max - min > 0.0001:
+        if charge > 0.0:
+            min = pH
+        else:
+            max = pH
+        next_pH = (min + max) / 2
+        return pi(peptide, next_pH, min, max)
+    return pH
+
 def lookup_halflife(peptide):
     period = lookup_value(peptide, halflife())
     return period
@@ -61,7 +114,6 @@ def atomic_composition(peptide):
         chain = np.add(chain, val)
 
     atoms = ["C", "H", "N", "O", "S"]
-
     formula = []
     for tid, t in enumerate(chain):
         if tid == 1: # Hydrogen
@@ -73,7 +125,6 @@ def atomic_composition(peptide):
 
     formula = ''.join(formula)
     nb_atoms = sum(chain) - (len(peptide)-1)*3
-
     return formula, nb_atoms
 
 def amino_count(peptide):
@@ -92,7 +143,6 @@ def charged_residues(peptide):
 
 def extinction_coefficient(peptide):
     nY, nW, nC = 0, 0, 0
-
     for i in peptide:
         if i == "Y":
             nY += 1
@@ -110,14 +160,12 @@ def instability_index(peptide):
     list = []
     for pid, amino in enumerate(peptide):
         layer = [v for k, v in DIWV().items() if amino in k][0]
-
         if pid != len(peptide)-1:
             val = [v for k, v in layer.items() if peptide[pid+1] in k][0]
             label = amino + peptide[pid+1]
         else:
             val = 0.0
             label = 'NA'
-
         list.append(val)
 
     II = (10/(len(peptide))) * sum(list)
@@ -125,7 +173,6 @@ def instability_index(peptide):
 
 def aliphatic_index(peptide):
     nA, nV, nI, nL = 0, 0, 0, 0
-
     for i in peptide:
         if i == "A":
             nA += 1

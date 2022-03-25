@@ -30,12 +30,9 @@ Title | Notes
 [Molecular Weight](https://en.wikipedia.org/wiki/Molecular_mass) | The sum of the atomic masses of all atoms in a molecule.
 
 ###TO-DO
-- Check Ext. coefficient
-- Theoreitcal pI (Isoelectric Point)
-- Measure GDT (Global Distance Test)
-- Folding (tmp dir | input files | transfer from geneExpr)
+- WIP: Ext. Coefficient | Theoretical pI
+- Folding (tmp dir | input files | transfer from geneExpr | Measure Global Distance Test)
 - Genome Evolution
-
 
 ### Requirements
 - Both Linux and Windows are supported. Linux is recommended for performance and compatibility reasons.

@@ -42,11 +42,11 @@ ORF10 = translate(genome[29558-1: 29674], codon_table)                          
 # Identify FURIN cleavage site in spike protein
 print('FURIN cleavage site (Spike):', S.find('PRRAR'))
 
-# Sequential CGG position - Does NOT align with a modulo of 3
+# Sequential CGG position - Does NOT align with a modulo of 3, check reading_frame
 print('CpG Islands:', genome.find('CGGCGG'))
 
 # Compute protparams
-index = 2
+index = 0
 for pid, peptide in enumerate(res.split('*')):
     if pid==index:
 
@@ -61,7 +61,7 @@ for pid, peptide in enumerate(res.split('*')):
             type = "Polypeptide"
 
         Mw = lookup_weight(peptide)
-        pI = isoelectric_point(peptide, 7.775, 4.05, 12.0)
+        net, pI = isoelectric_point(peptide)
         hl = lookup_halflife(peptide[0])
         formula, nb_atoms = atomic_composition(peptide)
         aa_content = amino_count(peptide)
@@ -79,6 +79,7 @@ for pid, peptide in enumerate(res.split('*')):
               "| Length:", length,
               "| Type:", type,
               "| Molecular Weight (Da):", round(Mw, 2),
+              "| Net Charge:", net,
               "| Theoretical pI:", pI,
               "| Half-life (N-end):", hl)
 

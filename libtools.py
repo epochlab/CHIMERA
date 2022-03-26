@@ -62,16 +62,18 @@ def update_pKs(peptide):
 
     nterm, cterm = peptide[0], peptide[-1]
     if nterm in pKnterminal:
-        pos_pKs['Nterm'] = pKnterminal[nterm[-1]]
+        pos_pKs['Nterm'] = pKnterminal[nterm]
     if cterm in pKcterminal:
-        neg_pKs['Cterm'] = pKcterminal[cterm[-1]]
+        neg_pKs['Cterm'] = pKcterminal[cterm]
 
     return pos_pKs, neg_pKs
 
 def charge_at_pH(pH, peptide):
-    charged = select_charged(amino_count(peptide))
+    aa_content = amino_count(peptide)
+    charged = select_charged(aa_content)
     pos_pKs, neg_pKs = update_pKs(peptide)
     positive_charge = 0.0
+
     for aa, pK in pos_pKs.items():
         if aa in charged:
             partial_charge = 1.0 / (10 ** (pH - pK) + 1.0)
@@ -83,9 +85,10 @@ def charge_at_pH(pH, peptide):
             partial_charge = 1.0 / (10 ** (pH - pK) + 1.0)
             negative_charge += charged[aa] * partial_charge
 
-    return positive_charge - negative_charge
+    charge = positive_charge - negative_charge
+    return charge
 
-def pi(peptide, pH, min, max):
+def isoelectric_point(peptide, pH, min, max):
     charge = charge_at_pH(pH, peptide)
     if max - min > 0.0001:
         if charge > 0.0:
@@ -93,7 +96,7 @@ def pi(peptide, pH, min, max):
         else:
             max = pH
         next_pH = (min + max) / 2
-        return pi(peptide, next_pH, min, max)
+        return isoelectric_point(peptide, next_pH, min, max)
     return pH
 
 def lookup_halflife(peptide):

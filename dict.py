@@ -88,7 +88,6 @@ def pKa():
         'negative_pKs': {'Cterm': 3.55, 'D': 4.05, 'E': 4.45, 'C': 9.0, 'Y': 10.0},
         'pKnterminal': {'A': 7.59, 'M': 7.0, 'S': 6.93, 'P': 8.36, 'T': 6.82, 'V': 7.44, 'E': 7.7},
         'pKcterminal': {'D': 4.55, 'E': 4.75},
-        'charged_aa': {'K', 'R', 'H', 'D', 'E', 'C', 'Y'},
       }
     return dict
 

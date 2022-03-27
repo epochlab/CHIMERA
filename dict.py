@@ -82,13 +82,24 @@ def molecular_weight():
 # pK value from Bjellqvist, et al.
 # Taking into account the decrease in pK differences between acids and bases when going from water
 # to 8 M urea, a value of 7.5 has been assigned to the N-terminal residue.
+# def pKa():
+#     dict = {
+#         'positive_pKs': {'Nterm': 7.5, 'K': 10.0, 'R': 12.0, 'H': 5.98},
+#         'negative_pKs': {'Cterm': 3.55, 'D': 4.05, 'E': 4.45, 'C': 9.0, 'Y': 10.0},
+#         'pKnterminal': {'A': 7.59, 'M': 7.0, 'S': 6.93, 'P': 8.36, 'T': 6.82, 'V': 7.44, 'E': 7.7},
+#         'pKcterminal': {'D': 4.55, 'E': 4.75},
+#       }
+#     return dict
+
 def pKa():
     dict = {
-        'positive_pKs': {'Nterm': 7.5, 'K': 10.0, 'R': 12.0, 'H': 5.98},
-        'negative_pKs': {'Cterm': 3.55, 'D': 4.05, 'E': 4.45, 'C': 9.0, 'Y': 10.0},
-        'pKnterminal': {'A': 7.59, 'M': 7.0, 'S': 6.93, 'P': 8.36, 'T': 6.82, 'V': 7.44, 'E': 7.7},
-        'pKcterminal': {'D': 4.55, 'E': 4.75},
-      }
+        'alpha_amino': {'G': 9.60, 'A': 9.69, 'V': 9.62, 'L': 9.60, 'I': 9.68, 'M': 9.21, 'F': 9.13, 'W': 9.39, 'P': 10.60, 'S': 9.15,
+                       'T': 9.10, 'C': 10.78, 'Y': 9.11, 'N': 8.84, 'Q': 9.13, 'D': 9.82, 'E': 9.67, 'K': 8.95, 'R': 9.04, 'H': 9.17},
+        'alpha_carboxy': {'G': 2.34, 'A': 2.34, 'V': 2.32, 'L': 2.36, 'I': 2.36, 'M': 2.28, 'F': 1.83, 'W': 2.38, 'P': 1.99, 'S': 2.21,
+                          'T': 2.63, 'C': 1.71, 'Y': 2.2, 'N': 2.02, 'Q': 2.17, 'D': 2.09, 'E': 2.19, 'K': 2.18, 'R': 2.17, 'H': 1.82},
+        'sidechain_positive': {'K': 10.79, 'R': 12.48, 'H': 6.04},
+        'sidechain_negative': {'D': 3.86, 'E': 4.25, 'C': 8.33, 'Y': 10.07},
+        }
     return dict
 
 # HostID: Mammalian | Yeast | E.Coli

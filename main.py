@@ -46,7 +46,7 @@ print('FURIN cleavage site (Spike):', S.find('PRRAR'))
 print('CpG Islands:', genome.find('CGGCGG'))
 
 # Compute protparams
-index = 0
+index = 1
 for pid, peptide in enumerate(res.split('*')):
     if pid==index:
 
@@ -61,7 +61,8 @@ for pid, peptide in enumerate(res.split('*')):
             type = "Polypeptide"
 
         Mw = lookup_weight(peptide)
-        net, pI = isoelectric_point(peptide)
+        net = charge_at_pH(7.0, peptide)
+        pI = isoelectric_point(peptide)
         hl = lookup_halflife(peptide[0])
         formula, nb_atoms = atomic_composition(peptide)
         aa_content = amino_count(peptide)
@@ -79,8 +80,8 @@ for pid, peptide in enumerate(res.split('*')):
               "| Length:", length,
               "| Type:", type,
               "| Molecular Weight (Da):", round(Mw, 2),
-              "| Net Charge:", net,
-              "| Theoretical pI:", pI,
+              "| Net Charge (pH = 7.0):", round(net, 2),
+              "| Theoretical pI:", round(pI, 2),
               "| Half-life (N-end):", hl)
 
         print("Atomic Formula:", formula, "| Number of Atoms:", nb_atoms)

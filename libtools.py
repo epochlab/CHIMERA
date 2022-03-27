@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import numpy as np
-import collections
+import collections, math
 from dict import *
 
 def load(input):
@@ -43,61 +43,80 @@ def lookup_weight(peptide):
     weight -= water_mass * (len(peptide)-1)
     return weight
 
-def select_charged(aa_content):
-    charged = {}
-    charged_aa = ['K', 'R', 'H', 'D', 'E', 'C', 'Y']
-    for aa in aa_content:
-        if aa in charged_aa:
-            charged[aa] = float([v for k, v in aa_content.items() if aa in k][0])
-
-    charged['Nterm'] = 1.0
-    charged['Cterm'] = 1.0
-    return charged
-
-def update_pKs(peptide):
-    pos_pKs = [v for k, v in pKa().items() if k == 'positive_pKs'][0]
-    neg_pKs = [v for k, v in pKa().items() if k == 'negative_pKs'][0]
-    pKnterminal = [v for k, v in pKa().items() if k == 'pKnterminal'][0]
-    pKcterminal = [v for k, v in pKa().items() if k == 'pKcterminal'][0]
-
-    nterm, cterm = peptide[0], peptide[-1]
-    if nterm in pKnterminal:
-        pos_pKs['Nterm'] = pKnterminal[nterm]
-    if cterm in pKcterminal:
-        neg_pKs['Cterm'] = pKcterminal[cterm]
-
-    return pos_pKs, neg_pKs
+# def select_charged(aa_content):
+#     charged = {}
+#     charged_aa = ['K', 'R', 'H', 'D', 'E', 'C', 'Y']
+#     for aa in aa_content:
+#         if aa in charged_aa:
+#             charged[aa] = float([v for k, v in aa_content.items() if aa in k][0])
+#
+#     charged['Nterm'] = 1.0
+#     charged['Cterm'] = 1.0
+#     return charged
+#
+# def update_pKs(peptide):
+#     pos_pKs = [v for k, v in pKa().items() if k == 'positive_pKs'][0]
+#     neg_pKs = [v for k, v in pKa().items() if k == 'negative_pKs'][0]
+#     pKnterminal = [v for k, v in pKa().items() if k == 'pKnterminal'][0]
+#     pKcterminal = [v for k, v in pKa().items() if k == 'pKcterminal'][0]
+#
+#     nterm, cterm = peptide[0], peptide[-1]
+#     if nterm in pKnterminal:
+#         pos_pKs['Nterm'] = pKnterminal[nterm]
+#     if cterm in pKcterminal:
+#         neg_pKs['Cterm'] = pKcterminal[cterm]
+#
+#     return pos_pKs, neg_pKs
 
 def charge_at_pH(pH, peptide):
-    aa_content = amino_count(peptide)
-    charged = select_charged(aa_content)
-    pos_pKs, neg_pKs = update_pKs(peptide)
+    alpha_amino = [v for k, v in pKa().items() if k == 'alpha_amino'][0]
+    alpha_carboxy = [v for k, v in pKa().items() if k == 'alpha_carboxy'][0]
+    sidechain_positive = [v for k, v in pKa().items() if k == 'sidechain_positive'][0]
+    sidechain_negative = [v for k, v in pKa().items() if k == 'sidechain_negative'][0]
 
-    positive_charge = 0.0
-    for aa, pK in pos_pKs.items():
-        if aa in charged:
-            partial_charge = 1.0 / (10 ** (pH - pK) + 1.0)
-            positive_charge += charged[aa] * partial_charge
+    net_charge = 0.0
+    nterm, cterm = peptide[0], peptide[-1]
+    net_charge += math.pow(10, alpha_amino[nterm]) / (math.pow(10, alpha_amino[nterm]) + math.pow(10, pH))
+    net_charge -= math.pow(10, pH) / (math.pow(10, alpha_carboxy[cterm]) + math.pow(10, pH))
 
-    negative_charge = 0.0
-    for aa, pK in neg_pKs.items():
-        if aa in charged:
-            partial_charge = 1.0 / (10 ** (pH - pK) + 1.0)
-            negative_charge += charged[aa] * partial_charge
+    for aa in peptide:
+        if aa in sidechain_positive:
+            net_charge += math.pow(10, sidechain_positive[aa]) / (math.pow(10, sidechain_positive[aa]) + math.pow(10, pH))
+        if aa in sidechain_negative:
+            net_charge -= math.pow(10, pH) / (math.pow(10, sidechain_negative[aa]) + math.pow(10, pH))
 
-    net = positive_charge - negative_charge
-    return net
+    return net_charge
 
-def isoelectric_point(peptide, pH=7.7775, min=4.05, max=12):
-    net_charge = charge_at_pH(pH, peptide)
+# def charge_at_pH(pH, peptide):
+#     aa_content = amino_count(peptide)
+#     charged = select_charged(aa_content)
+#     pos_pKs, neg_pKs = update_pKs(peptide)
+#
+#     positive_charge = 0.0
+#     for aa, pK in pos_pKs.items():
+#         if aa in charged:
+#             partial_charge = 1.0 / (10 ** (pH - pK) + 1.0)
+#             positive_charge += charged[aa] * partial_charge
+#
+#     negative_charge = 0.0
+#     for aa, pK in neg_pKs.items():
+#         if aa in charged:
+#             partial_charge = 1.0 / (10 ** (pH - pK) + 1.0)
+#             negative_charge += charged[aa] * partial_charge
+#
+#     net = positive_charge - negative_charge
+#     return net
+#
+def isoelectric_point(peptide, pH=7.0, min=4.05, max=12):
+    charge = charge_at_pH(pH, peptide)
     if max - min > 0.0001:
-        if net_charge > 0.0:
+        if charge > 0.0:
             min = pH
         else:
             max = pH
         next_pH = (min + max) / 2
         return isoelectric_point(peptide, next_pH, min, max)
-    return net_charge, pH
+    return pH
 
 def lookup_halflife(peptide):
     period = lookup_value(peptide, halflife())

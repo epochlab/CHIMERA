@@ -22,11 +22,12 @@ print('Compression (zlib):', len(zlib.compress(genome.encode("utf-8"))))
 print('CpG Islands:', genome.find('CGGCGG'))
 
 res = translate(genome, codon_table)
-# print(res.split('*'))
+res_filtered = list(filter(None, res.split('*')))
+# print(res_filtered)
 
 # Compute protparams
 index = 0
-for pid, peptide in enumerate(res.split('*')):
+for pid, peptide in enumerate(res_filtered):
     if pid==index:
 
         n_terminus = lookup_amino(peptide[0])
@@ -52,7 +53,6 @@ for pid, peptide in enumerate(res.split('*')):
         hp = hydropathy_index(peptide)
 
         print(peptide)
-        
         print("Chain Search:", res.find(peptide))
         print("N-Terminus:", n_terminus, "| C-Terminus:", c_terminus)
         print("Sequence ID:", pid,

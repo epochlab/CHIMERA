@@ -30,7 +30,6 @@ Title | Notes
 [Molecular Weight](https://en.wikipedia.org/wiki/Molecular_mass) | The sum of the atomic masses of all atoms in a molecule.
 
 ###TO-DO
-- WIP: Ext. Coefficient | Theoretical pI
 - Folding (tmp dir | input files | transfer from geneExpr | Measure Global Distance Test)
 - Genome Evolution
 

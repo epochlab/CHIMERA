@@ -51,9 +51,9 @@ for pid, peptide in enumerate(res.split('*')):
         ai = aliphatic_index(peptide)
         hp = hydropathy_index(peptide)
 
-        print("Chain Search:", res.find(peptide))
         print(peptide)
-
+        
+        print("Chain Search:", res.find(peptide))
         print("N-Terminus:", n_terminus, "| C-Terminus:", c_terminus)
         print("Sequence ID:", pid,
               "| Length:", length,

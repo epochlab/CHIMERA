@@ -19,7 +19,6 @@ print('Nucleobases:', len(genome))
 print('[START] Frame:', reading_frame(genome))
 print('GC-Content:', round((genome.count('C') + genome.count('G')) / len(genome)*100, 3), "%")
 print('Compression (zlib):', len(zlib.compress(genome.encode("utf-8"))))
-print('CpG Islands:', genome.find('CGGCGG'))
 
 res = translate(genome, codon_table)
 res_filtered = list(filter(None, res.split('*')))

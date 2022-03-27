@@ -46,7 +46,7 @@ print('FURIN cleavage site (Spike):', S.find('PRRAR'))
 print('CpG Islands:', genome.find('CGGCGG'))
 
 # Compute protparams
-index = 1
+index = 0
 for pid, peptide in enumerate(res.split('*')):
     if pid==index:
 
@@ -91,7 +91,7 @@ for pid, peptide in enumerate(res.split('*')):
             print(a, round(c * (100.0/length), 1), "%")
 
         print("+ charged residues (Arg | Lys | His):", charged_residues(peptide)[0])
-        print("- charged residues (Asp | Glu):", charged_residues(peptide)[1])
+        print("- charged residues (Asp | Glu | Cys | Tyr):", charged_residues(peptide)[1])
 
         if ec == 0:
             print("As there are no Trp, Tyr or Cys in the region considered, this protein should not be visible by UV spectrophotometry.")

@@ -1,14 +1,14 @@
-# SARS-CoV-2
+# CODONEXPR
 
 **Project ID:** ehrZl0nn
 
-![alt text](https://github.com/epochlab/SARS-Cov-2/blob/main/sample.png)
+![alt text](https://github.com/epochlab/CODONEXPR/blob/main/sample.png)
 
-#### Severe acute respiratory syndrome coronavirus 2 (COVID-19)
-Abstract: *SARS-CoV-2 is the virus that causes COVID-19 (coronavirus disease 2019), a positive-sense single-stranded RNA virus, that is contagious in humans and responsible for the COVID-19 pandemic.*
+#### Genome expression and protein analysis.
+Abstract: *The genetic code is the set of rules used by living cells to translate information encoded within genetic material (DNA or mRNA sequences of nucleotide triplets, or codons) into proteins.*
 
 ### Dataset
-NCBI RefSeq SARS-CoV-2 genome sequence record: https://www.ncbi.nlm.nih.gov/nuccore/NC_045512
+NCBI Nucleotide database (GenBank, RefSeq, TPA and PDB): https://www.ncbi.nlm.nih.gov/nuccore/
 
 ### Packages
 `numpy` `zlib` `OpenMM`

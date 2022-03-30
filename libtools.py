@@ -6,11 +6,12 @@ from dict import *
 
 def load(input):
     nucleotides = ['A', 'C', 'G', 'T']
-    file = open(input[0])
-    data = str(file.readlines()[input[1][0]:input[1][1]])
-    genome = [x for x in data.upper() if (x in nucleotides)]
-    genome = ''.join(genome)
-    return genome
+    with open(input) as f:
+        label = f.readline().rstrip()
+        data = f.read()
+        genome = [x for x in data if (x in nucleotides)]
+        genome = ''.join(genome)
+    return label, genome
 
 def reading_frame(seq):
     for i in range(3, len(seq)+1, 3):

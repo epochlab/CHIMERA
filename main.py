@@ -4,17 +4,18 @@ import zlib
 from libtools import *
 from dict import mRNA_codon
 
-SARS_CoV_2 = ('data/SARS_CoV_2.txt', (692, 1191))
-SARS_Tor2 = ('data/SARS_Tor2.txt', (640, 1136))
-MERS = ('data/MERS.txt', (611, 1113))
-HIV = ('data/HIV.txt', (454, 608))
-Ebola = ('data/Ebola.txt', (371, 686))
+SARS_CoV_2 = ('data/NC_045512.2.txt')
+SARS_Tor2 = ('data/NC_004718.3.txt')
+MERS = ('data/NC_019843.3.txt')
+HIV = ('data/NC_001802.1.txt')
+Ebola = ('data/NC_006432.1.txt')
 
-genome = load(SARS_CoV_2)
-# print(genome)
+label, genome = load(Ebola)
+# print(label, genome)
 
 codon_table = mRNA_codon()
 
+print(label.upper())
 print('Nucleobases:', len(genome))
 print('[START] Frame:', reading_frame(genome))
 print('GC-Content:', round((genome.count('C') + genome.count('G')) / len(genome)*100, 3), "%")

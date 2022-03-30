@@ -11,7 +11,7 @@ Abstract: *The genetic code is the set of rules used by living cells to translat
 [NCBI Nucleotide Database (GenBank, RefSeq, TPA and PDB)](https://www.ncbi.nlm.nih.gov/nuccore/)
 
 ### Packages
-`requests` `argparse` `sys` `numpy` `zlib` `OpenMM`
+`requests` `argparse` `sys` `numpy` `zlib` `OpenMM` `NGLView`
 
 ### Table of Contents
 Title | Notes
@@ -29,8 +29,8 @@ Title | Notes
 [C-Terminus](https://en.wikipedia.org/wiki/C-terminus) | The C-terminus (also known as the carboxyl-terminus, carboxy-terminus, C-terminal tail, C-terminal end, or COOH-terminus) is the end of an amino acid chain.
 [Molecular Weight](https://en.wikipedia.org/wiki/Molecular_mass) | The sum of the atomic masses of all atoms in a molecule.
 
-###TO-DO
-- Folding (tmp dir | input files | Measure Global Distance Test)
+### Progress :wrench:
+- Folding (Missing Atoms | Measure Global Distance Test)
 - Genome Evolution
 
 ### Requirements

@@ -11,7 +11,7 @@ Abstract: *The genetic code is the set of rules used by living cells to translat
 [NCBI Nucleotide Database (GenBank, RefSeq, TPA and PDB)](https://www.ncbi.nlm.nih.gov/nuccore/)
 
 ### Packages
-`numpy` `zlib` `OpenMM`
+`requests` `argparse` `sus` `numpy` `zlib` `OpenMM`
 
 ### Table of Contents
 Title | Notes
@@ -30,7 +30,7 @@ Title | Notes
 [Molecular Weight](https://en.wikipedia.org/wiki/Molecular_mass) | The sum of the atomic masses of all atoms in a molecule.
 
 ###TO-DO
-- Folding (tmp dir | input files | transfer from geneExpr | Measure Global Distance Test)
+- Folding (tmp dir | input files | Measure Global Distance Test)
 - Genome Evolution
 
 ### Requirements

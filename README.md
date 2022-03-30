@@ -11,7 +11,7 @@ Abstract: *The genetic code is the set of rules used by living cells to translat
 [NCBI Nucleotide Database (GenBank, RefSeq, TPA and PDB)](https://www.ncbi.nlm.nih.gov/nuccore/)
 
 ### Packages
-`requests` `argparse` `sus` `numpy` `zlib` `OpenMM`
+`requests` `argparse` `sys` `numpy` `zlib` `OpenMM`
 
 ### Table of Contents
 Title | Notes

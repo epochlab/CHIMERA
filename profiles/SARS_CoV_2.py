@@ -11,8 +11,7 @@ import zlib
 from libtools import *
 from dict import mRNA_codon
 
-SARS_CoV_2 = ('data/NC_045512.2.txt')
-label, genome = load(SARS_CoV_2)
+label, genome = load('data/NC_045512.2.txt')
 # print(label, genome)
 
 codon_table = mRNA_codon()

@@ -29,15 +29,13 @@ Title | Notes
 [C-Terminus](https://en.wikipedia.org/wiki/C-terminus) | The C-terminus (also known as the carboxyl-terminus, carboxy-terminus, C-terminal tail, C-terminal end, or COOH-terminus) is the end of an amino acid chain.
 [Molecular Weight](https://en.wikipedia.org/wiki/Molecular_mass) | The sum of the atomic masses of all atoms in a molecule.
 
-### Progress :wrench:
-- Folding (Missing Atoms | Measure Global Distance Test)
-- Genome Evolution
-
 ### Requirements
 - Both Linux and Windows are supported. Linux is recommended for performance and compatibility reasons.
 - 64-bit Python 3.7.9 installation.
 - SideFX Houdini
 
-### Acknowledgments
-Ultrastructural analysis of SARS-CoV-2: https://www.nature.com/articles/s41598-020-73162-5<br />
-Rendering the coronavirus spike protein: https://youtu.be/M3ldQBVb-ZA
+### :bulb: Work In Progress
+- Multi-Sequence Comparison
+- Folding (Missing Atoms | Measure Global Distance Test | CASP)
+- Genome Evolution
+- Rendering and Visualisation

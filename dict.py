@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 
-# RNA | DNA >> T | U
-nucleotides = ['A', 'C', 'G', 'T']
-
 # A: Ala, name: Alanine
 # I: Ile, name: Isoleucine
 # R: Arg, name: Arginine
@@ -79,9 +76,6 @@ def molecular_weight():
         }
     return dict
 
-# pK value from Bjellqvist, et al.
-# Taking into account the decrease in pK differences between acids and bases when going from water
-# to 8 M urea, a value of 7.5 has been assigned to the N-terminal residue.
 def pKa():
     dict = {
         'alpha_amino': {'G': 9.60, 'A': 9.69, 'V': 9.62, 'L': 9.60, 'I': 9.68, 'M': 9.21, 'F': 9.13, 'W': 9.39, 'P': 10.60, 'S': 9.15,

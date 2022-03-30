@@ -26,6 +26,8 @@ def translate(seq, dict):
         amino = [k for k, v in dict.items() if codon in v]
         char = str(amino).split('/')[1].replace("']", "").strip()
         polypeptide += str(char)
+
+    polypeptide = polypeptide.replace("**", "*")
     return polypeptide
 
 def lookup_value(input, dict):

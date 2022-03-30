@@ -10,24 +10,26 @@ MERS = ('data/NC_019843.3.txt')
 HIV = ('data/NC_001802.1.txt')
 Ebola = ('data/NC_006432.1.txt')
 
-label, genome = load(Ebola)
+label, genome = load(SARS_CoV_2)
 # print(label, genome)
 
 codon_table = mRNA_codon()
 
-print(label.upper())
-print('Nucleobases:', len(genome))
+print("\n" + label.upper())
+print("\n" + ">> GENOME PROFILE")
+print('Base Pairs:', len(genome))
 print('[START] Frame:', reading_frame(genome))
 print('GC-Content:', round((genome.count('C') + genome.count('G')) / len(genome)*100, 3), "%")
 print('Compression (zlib):', len(zlib.compress(genome.encode("utf-8"))))
+print("\n" + genome)
 
+print("\n" + ">> RESIDUE CHAIN")
 res = translate(genome, codon_table)
-res_filtered = list(filter(None, res.split('*')))
-# print(res_filtered)
+print(res.split('*'))
 
 # Compute protparams
 index = 0
-for pid, peptide in enumerate(res_filtered):
+for pid, peptide in enumerate(res.split('*')):
     if pid==index:
 
         n_terminus = lookup_amino(peptide[0])
@@ -52,8 +54,9 @@ for pid, peptide in enumerate(res_filtered):
         ai = aliphatic_index(peptide)
         hp = hydropathy_index(peptide)
 
-        print(peptide)
+        print("\n" + ">> PEPTIDE ANALSIS")
         print("Chain Search:", res.find(peptide))
+        print(peptide)
         print("N-Terminus:", n_terminus, "| C-Terminus:", c_terminus)
         print("Sequence ID:", pid,
               "| Length:", length,

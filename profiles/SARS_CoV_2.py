@@ -11,12 +11,13 @@ import zlib
 from libtools import *
 from dict import mRNA_codon
 
-SARS_CoV_2 = ('data/SARS_CoV_2.txt', (692, 1191))
-genome = load(SARS_CoV_2)
-# print(genome)
+SARS_CoV_2 = ('data/NC_045512.2.txt')
+label, genome = load(SARS_CoV_2)
+# print(label, genome)
 
 codon_table = mRNA_codon()
 
+print(label.upper())
 print('Nucleobases:', len(genome))
 print('[START] Frame:', reading_frame(genome))
 print('GC-Content:', round((genome.count('C') + genome.count('G')) / len(genome)*100, 3), "%")

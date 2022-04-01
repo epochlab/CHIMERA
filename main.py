@@ -4,11 +4,11 @@ import zlib
 from libtools import *
 from dict import mRNA_codon
 
-SARS_CoV_2 = ('data/NC_045512.2.txt')
-SARS_Tor2 = ('data/NC_004718.3.txt')
-MERS = ('data/NC_019843.3.txt')
-HIV = ('data/NC_001802.1.txt')
-Ebola = ('data/NC_006432.1.txt')
+SARS_CoV_2 = ('genome/NC_045512.2.txt')
+SARS_Tor2 = ('genome/NC_004718.3.txt')
+MERS = ('genome/NC_019843.3.txt')
+HIV = ('genome/NC_001802.1.txt')
+Ebola = ('genome/NC_006432.1.txt')
 
 label, genome = load(SARS_CoV_2)
 # print(label, genome)

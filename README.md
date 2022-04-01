@@ -4,7 +4,7 @@
 
 ![alt text](https://github.com/epochlab/CODONEXPR/blob/main/sample.png)
 
-#### Genome expression and protein analysis.
+#### Gene expression and protein analysis.
 Abstract: *The genetic code is the set of rules used by living cells to translate information encoded within genetic material (DNA or mRNA sequences of nucleotide triplets, or codons) into proteins.*
 
 ### Dataset
@@ -35,7 +35,7 @@ Title | Notes
 - SideFX Houdini
 
 ### :bulb: Work In Progress
-- Multi-Sequence Comparison
+- Multi-sequence comparison
 - Folding (Missing Atoms | Measure Global Distance Test | CASP)
-- Genome Evolution
-- Rendering and Visualisation
+- Genome evolution
+- Rendering and visualisation

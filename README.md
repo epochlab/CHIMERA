@@ -8,7 +8,7 @@
 Abstract: *The genetic code is the set of rules used by living cells to translate information encoded within genetic material (DNA or mRNA sequences of nucleotide triplets, or codons) into proteins.*
 
 ### Dataset
-[NCBI Nucleotide Database (GenBank, RefSeq, TPA and PDB)](https://www.ncbi.nlm.nih.gov/nuccore/)
+[NCBI Nucleotide Database (GenBank, RefSeq, TPA and PDB)](https://www.ncbi.nlm.nih.gov/nuccore/)<br />
 [RCSB: Protein Data Bank](https://www.rcsb.org)
 
 ### Packages

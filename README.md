@@ -29,7 +29,7 @@ Title | Notes
 [N-Terminus](https://en.wikipedia.org/wiki/N-terminus) | The N-terminus (also known as the amino-terminus, NH2-terminus, N-terminal end or amine-terminus) is the start of a protein or polypeptide.
 [C-Terminus](https://en.wikipedia.org/wiki/C-terminus) | The C-terminus (also known as the carboxyl-terminus, carboxy-terminus, C-terminal tail, C-terminal end, or COOH-terminus) is the end of an amino acid chain.
 [Molecular Weight](https://en.wikipedia.org/wiki/Molecular_mass) | The sum of the atomic masses of all atoms in a molecule.
-[Isoelectric Point (pI)](https://en.wikipedia.org/wiki/Isoelectric_point) | The the pH at which a molecule carries no net electrical charge.
+[Isoelectric Point (pI)](https://en.wikipedia.org/wiki/Isoelectric_point) | The pH at which a molecule carries no net electrical charge.
 [N-end rule (Halflife)](https://en.wikipedia.org/wiki/N-end_rule) | A rule which governs the rate of protein degradation, operating differently across yeast, mammals and e.coli.
 [Hydropathy Index](https://en.wikipedia.org/wiki/Hydrophobicity_scales) | A number representing the hydrophobic or hydrophilic properties of an amino acid sidechain. The larger the number is, the more hydrophobic the amino acid.
 

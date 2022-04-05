@@ -39,7 +39,7 @@ Title | Notes
 - 64-bit Python 3.7.9 installation.
 - SideFX Houdini
 
-### :bulb: Work In Progress
+### Work In Progress :bulb:
 - Glossary
 - Multi-sequence comparison
 - Folding (Missing Atoms | Measure Global Distance Test | CASP)

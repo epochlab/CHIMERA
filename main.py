@@ -4,6 +4,8 @@ import zlib
 from libtools import *
 from dict import mRNA_codon
 
+codon_table = mRNA_codon()
+
 SARS_CoV_2 = ('genome/NC_045512.2.txt')
 SARS_Tor2 = ('genome/NC_004718.3.txt')
 MERS = ('genome/NC_019843.3.txt')
@@ -13,14 +15,15 @@ Ebola = ('genome/NC_006432.1.txt')
 label, genome = load(SARS_CoV_2)
 # print(label, genome)
 
-codon_table = mRNA_codon()
+init = 265
+genome = genome[init:]
 
 print("\n" + label.upper())
 print("\n" + ">> GENOME PROFILE")
 print('Base Pairs:', len(genome))
 # print('[START] Frame:', reading_frame(genome))
-print('[START] Frame:', genome.find('ATG'))
-print('GC-Content:', round((genome.count('C') + genome.count('G')) / len(genome)*100, 3), "%")
+print('[START] Frame:', init)
+print('CG-Content:', round((genome.count('C') + genome.count('G')) / len(genome)*100, 3), "%")
 print('Compression (zlib):', len(zlib.compress(genome.encode("utf-8"))))
 print("\n" + genome)
 

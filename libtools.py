@@ -18,15 +18,15 @@ def load(input):
 #             return i//3
 
 def translate(seq, dict):
-    polypeptide = ""
+    peptide = ""
     for i in range(0, len(seq)-3, 3):
         codon = seq[i:i + 3].replace('T', 'U')                                  # DNA to RNA transcription - Thymine is replaced with Uracil.
         amino = [k for k, v in dict.items() if codon in v]
         char = str(amino).split('/')[1].replace("']", "").strip()
-        polypeptide += str(char)
+        peptide += str(char)
 
-    polypeptide = polypeptide.replace("**", "*")
-    return polypeptide
+    peptide = peptide.replace("**", "*")
+    return peptide
 
 def lookup_value(input, dict):
     result = [v for k, v in dict.items() if input in k.split('/')[1]][0]

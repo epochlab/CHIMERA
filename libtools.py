@@ -9,15 +9,14 @@ def load(input):
     with open(input) as f:
         label = f.readline().rstrip()
         data = f.read()
-        genome = [x for x in data if (x in nucleotides)]
-        genome = ''.join(genome)
+        genome = "".join(line.strip() for line in data)
     return label, genome
 
-def reading_frame(seq):
-    for i in range(3, len(seq)+1, 3):
-        codon = seq[i-3:i]
-        if codon == 'ATG':
-            return i//3
+# def reading_frame(seq):
+#     for i in range(3, len(seq)+1, 3):
+#         codon = seq[i-3:i]
+#         if codon == 'ATG':
+#             return i//3
 
 def translate(seq, dict):
     polypeptide = ""

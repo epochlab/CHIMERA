@@ -5,7 +5,6 @@ import collections, math
 from dict import *
 
 def load(input):
-    nucleotides = ['A', 'C', 'G', 'T']
     with open(input) as f:
         label = f.readline().rstrip()
         data = f.read()

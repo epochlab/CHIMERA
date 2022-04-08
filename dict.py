@@ -24,6 +24,8 @@
 # U: Sec, name: Selenocysteine | uga (STOP)
 # O: Pyl | uag (STOP)
 
+nucleotides = ['A', 'C', 'G', 'T']
+
 def mRNA_codon():
     dict = {
         'Ala / A': ['GCU', 'GCC', 'GCA', 'GCG'],

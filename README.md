@@ -40,6 +40,7 @@ Title | Notes
 - SideFX Houdini
 
 ### Work In Progress
+- Fix ORF and Residue List
 - Glossary
 - Multi-sequence comparison
 - Folding (Missing Atoms | Measure Global Distance Test | CASP)

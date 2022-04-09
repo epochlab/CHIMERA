@@ -14,7 +14,7 @@ def load(input):
 def translate(seq, dict):
     i = 0
     count = 1
-    res = ""
+    res = ''
 
     while i < len(seq):
         codon = seq[i:i + 3].replace('T', 'U')                                  # DNA to RNA transcription - Thymine is replaced with Uracil.

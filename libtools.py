@@ -21,13 +21,11 @@ def translate(seq, dict):
         amino = [k for k, v in dict.items() if codon in v]
 
         if len(codon)==3:
-            if codon == 'AUG':
+            if codon == 'AUG':                                                  # START open reading frame
                 counter = 3
-
             if counter == 3:
                 res += str(amino).split('/')[1].replace("']", "").strip()
-
-            if codon == 'UAG' or codon == 'UAA' or codon == 'UGA':
+            if codon == 'UAG' or codon == 'UAA' or codon == 'UGA':              # STOP open reading frame
                 i += 2
                 counter = 1
 

@@ -17,9 +17,8 @@ label, genome = load('genome/NC_045512.2.txt')
 codon_table = mRNA_codon()
 
 print(label.upper())
-print('Nucleobases:', len(genome))
-print('[START] Frame:', reading_frame(genome))
-print('GC-Content:', round((genome.count('C') + genome.count('G')) / len(genome)*100, 3), "%")
+print('Base Pairs:', len(genome))
+print('CG-Content:', round((genome.count('C') + genome.count('G')) / len(genome)*100, 3), "%")
 print('Compression (zlib):', len(zlib.compress(genome.encode("utf-8"))))
 
 # Sequential CGG position - Does NOT align with a modulo of 3, check reading_frame

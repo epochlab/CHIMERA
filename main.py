@@ -8,14 +8,15 @@ codon_table = mRNA_codon()
 
 fasta = 'NC_001563.2'
 label, genome = load('genome/' + fasta + '.txt')
-# print(label, genome)
 
 print("\n" + label.upper())
-print("\n" + ">> GENOME PROFILE")
+
 print("\n" + "Base Pairs:", len(genome))
 print("CG-Content:", round((genome.count('C') + genome.count('G')) / len(genome)*100, 3), '%')
 print("Compression (zlib):", len(zlib.compress(genome.encode('utf-8'))))
-print("\n" + genome)
+
+print("\n" + ">> GENOME PROFILE")
+print(genome)
 
 print("\n" + ">> BINARY ENCODING")
 print(binary_encoding(genome))

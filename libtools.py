@@ -13,7 +13,7 @@ def load(input):
 
 def translate(seq, dict):
     i = 0
-    counter = 1
+    count = 1
     res = ""
 
     while i < len(seq):
@@ -22,14 +22,14 @@ def translate(seq, dict):
 
         if len(codon)==3:
             if codon == 'AUG':                                                  # START open reading frame
-                counter = 3
-            if counter == 3:
+                count = 3
+            if count == 3:
                 res += str(amino).split('/')[1].replace("']", "").strip()
             if codon == 'UAG' or codon == 'UAA' or codon == 'UGA':              # STOP open reading frame
                 i += 2
-                counter = 1
+                count = 1
 
-        i += counter
+        i += count
     return res
 
 def lookup_value(input, dict):

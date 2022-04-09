@@ -11,22 +11,28 @@ def load(input):
         genome = "".join(line.strip() for line in data)
     return label, genome
 
-# def reading_frame(seq):
-#     for i in range(3, len(seq)+1, 3):
-#         codon = seq[i-3:i]
-#         if codon == 'ATG':
-#             return i//3
-
 def translate(seq, dict):
-    peptide = ""
-    for i in range(0, len(seq)-3, 3):
+    i = 0
+    counter = 1
+    res = ""
+
+    while i < len(seq):
         codon = seq[i:i + 3].replace('T', 'U')                                  # DNA to RNA transcription - Thymine is replaced with Uracil.
         amino = [k for k, v in dict.items() if codon in v]
-        char = str(amino).split('/')[1].replace("']", "").strip()
-        peptide += str(char)
 
-    peptide = peptide.replace("**", "*")
-    return peptide
+        if len(codon)==3:
+            if codon == 'AUG':
+                counter = 3
+
+            if counter == 3:
+                res += str(amino).split('/')[1].replace("']", "").strip()
+
+            if codon == 'UAG' or codon == 'UAA' or codon == 'UGA':
+                i += 2
+                counter = 1
+
+        i += counter
+    return res
 
 def lookup_value(input, dict):
     result = [v for k, v in dict.items() if input in k.split('/')[1]][0]

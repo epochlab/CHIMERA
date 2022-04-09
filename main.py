@@ -15,14 +15,9 @@ Ebola = ('genome/NC_006432.1.txt')
 label, genome = load(SARS_CoV_2)
 # print(label, genome)
 
-init = 265
-genome = genome[init:]
-
 print("\n" + label.upper())
 print("\n" + ">> GENOME PROFILE")
 print('Base Pairs:', len(genome))
-# print('[START] Frame:', reading_frame(genome))
-print('[START] Frame:', init)
 print('CG-Content:', round((genome.count('C') + genome.count('G')) / len(genome)*100, 3), "%")
 print('Compression (zlib):', len(zlib.compress(genome.encode("utf-8"))))
 print("\n" + genome)
@@ -32,8 +27,9 @@ res = translate(genome, codon_table)
 print(res.split('*'))
 
 # Compute protparams
-index = 0
+index = 1
 for pid, peptide in enumerate(res.split('*')):
+
     if pid==index:
 
         n_terminus = lookup_amino(peptide[0])

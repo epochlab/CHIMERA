@@ -171,7 +171,7 @@ def aliphatic_index(peptide):
 
 def binary_encoding(seq):
     encoded = ''
-    for id, i in enumerate(seq):
+    for i in seq:
         if i == "A":
             encoded += "10"
         if i == "C":

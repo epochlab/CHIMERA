@@ -27,7 +27,7 @@ res = translate(genome, codon_table)
 print(res.split('*'))
 
 # Compute protparams
-index = 1
+index = 0
 for pid, peptide in enumerate(res.split('*')):
 
     if pid==index:

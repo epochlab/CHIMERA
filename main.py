@@ -7,14 +7,14 @@ from dict import mRNA_codon
 codon_table = mRNA_codon()
 
 fasta = 'NC_001563.2'
-label, genome = load("genome/" + fasta + ".txt")
+label, genome = load('genome/' + fasta + '.txt')
 # print(label, genome)
 
 print("\n" + label.upper())
 print("\n" + ">> GENOME PROFILE")
-print('Base Pairs:', len(genome))
-print('CG-Content:', round((genome.count('C') + genome.count('G')) / len(genome)*100, 3), "%")
-print('Compression (zlib):', len(zlib.compress(genome.encode("utf-8"))))
+print("\n" + "Base Pairs:", len(genome))
+print("CG-Content:", round((genome.count('C') + genome.count('G')) / len(genome)*100, 3), '%')
+print("Compression (zlib):", len(zlib.compress(genome.encode('utf-8'))))
 print("\n" + genome)
 
 print("\n" + ">> BINARY ENCODING")
@@ -68,7 +68,7 @@ for pid, peptide in enumerate(res.split('*')):
 
         print(aa_content)
         for a, c in aa_content.items():
-            print(a, round(c * (100.0/length), 1), "%")
+            print(a, round(c * (100.0/length), 1), '%')
 
         print("+ charged residues (Arg | Lys | His):", charged_residues(peptide)[0])
         print("- charged residues (Asp | Glu | Cys | Tyr):", charged_residues(peptide)[1])

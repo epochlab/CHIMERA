@@ -12,8 +12,7 @@ def load(input):
     return label, genome
 
 def translate(seq, dict):
-    i = 0
-    count = 1
+    i, count = 0, 1
     res = ''
 
     while i < len(seq):

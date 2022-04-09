@@ -168,3 +168,16 @@ def aliphatic_index(peptide):
     total_atoms = len(peptide)
     index = nA + (2.9 * nV/total_atoms) + (3.9 * (nI/total_atoms + nL/total_atoms)) * 100
     return index
+
+def binary_encoding(seq):
+    encoded = ''
+    for id, i in enumerate(seq):
+        if i == "A":
+            encoded += "10"
+        if i == "C":
+            encoded += "01"
+        if i == "G":
+            encoded += "11"
+        if i == "T":
+            encoded += "00"
+    return encoded

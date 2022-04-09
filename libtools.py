@@ -19,14 +19,13 @@ def translate(seq, dict):
         codon = seq[i:i + 3].replace('T', 'U')                                  # DNA to RNA transcription - Thymine is replaced with Uracil.
         amino = [k for k, v in dict.items() if codon in v]
 
-        if len(codon)==3:
-            if codon == 'AUG':                                                  # START open reading frame
-                count = 3
-            if count == 3:
-                res += str(amino).split('/')[1].replace("']", "").strip()
-            if codon == 'UAG' or codon == 'UAA' or codon == 'UGA':              # STOP open reading frame
-                i += 2
-                count = 1
+        if codon=='AUG':                                                  # START open reading frame
+            count = 3
+        if count==3 and len(codon)==3:
+            res += str(amino).split('/')[1].replace("']", "").strip()
+        if codon=='UAG' or codon=='UAA' or codon=='UGA':              # STOP open reading frame
+            i += 2
+            count = 1
 
         i += count
     return res

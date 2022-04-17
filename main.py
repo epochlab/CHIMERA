@@ -8,6 +8,7 @@ codon_table = mRNA_codon()
 
 fasta = 'NC_001563.2'
 label, genome = load('genome/' + fasta + '.txt')
+res = translate(genome, codon_table)
 
 print("\n" + label.upper())
 
@@ -22,7 +23,6 @@ print("\n" + ">> BINARY ENCODING")
 print(binary_encoding(genome))
 
 print("\n" + ">> RESIDUE CHAIN")
-res = translate(genome, codon_table)
 print(res.split('*'))
 
 # Compute protparams

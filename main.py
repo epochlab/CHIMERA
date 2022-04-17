@@ -67,9 +67,8 @@ for pid, peptide in enumerate(res.split('*')):
 
         print("Atomic Formula:", formula, "| Number of Atoms:", nb_atoms)
 
-        print(aa_content)
         for a, c in aa_content.items():
-            print(a, round(c * (100.0/length), 1), '%')
+            print(a, round(c * (100.0/length), 1), '%', c)
 
         print("+ charged residues (Arg | Lys | His):", charged_residues(peptide)[0])
         print("- charged residues (Asp | Glu | Cys | Tyr):", charged_residues(peptide)[1])

@@ -40,8 +40,8 @@ Title | Notes
 - SideFX Houdini
 
 ### Work In Progress
+- Graphics: Barcode, Structure & Protein Turntable
 - Glossary
 - Multi-sequence comparison
 - Folding (Missing Atoms | Measure Global Distance Test | CASP)
 - Genome evolution
-- Rendering and visualisation

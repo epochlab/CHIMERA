@@ -6,13 +6,13 @@ from dict import mRNA_codon
 
 codon_table = mRNA_codon()
 
-fasta = 'NC_001563.2'
+fasta = 'NC_045512.2'
 label, genome = load('genome/' + fasta + '.txt')
 res = translate(genome, codon_table)
 
 print("\n" + label.upper())
 
-print("\n" + "Base Pairs:", len(genome))
+print("\n" + "Nucleobases:", len(genome))
 print("CG-Content:", round((genome.count('C') + genome.count('G')) / len(genome)*100, 3), '%')
 print("Compression (zlib):", len(zlib.compress(genome.encode('utf-8'))))
 
@@ -22,7 +22,7 @@ print(genome)
 print("\n" + ">> BINARY ENCODING")
 print(binary_encoding(genome))
 
-print("\n" + ">> RESIDUE CHAIN")
+print("\n" + ">> RESIDUE CHAIN", len(res))
 print(res.split('*'))
 
 # Compute protparams

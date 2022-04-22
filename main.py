@@ -6,8 +6,8 @@ from dict import mRNA_codon
 
 codon_table = mRNA_codon()
 
-fasta = 'NC_045512.2'
-label, genome = load('genome/' + fasta + '.txt')
+UID = 'NC_001474.2'
+label, genome = load('genome/' + UID + '.fasta')
 res = translate(genome, codon_table)
 
 print("\n" + label.upper())

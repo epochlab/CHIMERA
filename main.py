@@ -10,11 +10,15 @@ UID = 'NC_001474.2'
 label, genome = load('genome/' + UID + '.fasta')
 res = translate(genome, codon_table)
 
+img = seq_to_pixels(genome)
+# img.save(UID + '.png')
+
 print("\n" + label.upper())
 
 print("\n" + "Nucleobases:", len(genome))
 print("GC-Content:", gc_content(genome), '%')
 print("Compression (zlib):", len(zlib.compress(genome.encode('utf-8'))))
+print("Average Hash:", average_hash(img))
 
 print("\n" + ">> GENOME PROFILE")
 print(genome)

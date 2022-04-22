@@ -4,7 +4,7 @@ from PIL import Image
 import numpy as np
 import math
 
-from libtools import *
+from libtools import load
 
 def binary_array_to_hex(arr):
 	bit_string = ''.join(str(b) for b in 1 * arr.flatten())
@@ -43,4 +43,4 @@ hash = average_hash(img)
 
 img.save(UID + "_" + hash + '.png')
 
-print("Hashing complete:", hash)
+print("Average Hash:", hash)

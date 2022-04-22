@@ -14,9 +14,7 @@ def binary_array_to_hex(arr):
 def average_hash(image, hash_size=8, mean=np.mean):
     image = image.convert('L').resize((hash_size, hash_size), Image.ANTIALIAS)
     pixels = np.asarray(image)
-    avg = mean(pixels)
-
-    diff = pixels > avg
+    diff = pixels > mean(pixels)
     return binary_array_to_hex(diff)
 
 UID = 'NC_001474.2'

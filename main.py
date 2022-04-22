@@ -13,7 +13,7 @@ res = translate(genome, codon_table)
 print("\n" + label.upper())
 
 print("\n" + "Nucleobases:", len(genome))
-print("CG-Content:", round((genome.count('C') + genome.count('G')) / len(genome)*100, 3), '%')
+print("GC-Content:", round((genome.count('G') + genome.count('C')) / len(genome)*100, 3), '%')
 print("Compression (zlib):", len(zlib.compress(genome.encode('utf-8'))))
 
 print("\n" + ">> GENOME PROFILE")

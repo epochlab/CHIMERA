@@ -38,6 +38,10 @@ def lookup_amino(peptide):
     terminus = [k for k, v in mRNA_codon().items() if peptide in k.split('/')[1]][0]
     return terminus
 
+def gc_content(seq):
+    val = round((seq.count('G') + seq.count('C')) / len(seq)*100, 3)
+    return val
+
 def lookup_weight(peptide):
     water_mass = 18.01524
     weight = 0

@@ -40,7 +40,7 @@ Title | Notes
 - SideFX Houdini
 
 ### Work In Progress
-- Graphics: Barcode | ORF Structure | Protein Turntable | Huffman Graph | Gates Method | Extend Hash Function
+- Graphics: Barcode | ORF Structure | Protein Turntable | Huffman Graph | Gates Method | Net Charge Graph
 - Glossary
 - Multi-sequence comparison
 - Folding (Missing Atoms | Measure Global Distance Test | CASP)

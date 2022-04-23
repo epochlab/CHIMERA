@@ -1,4 +1,4 @@
-uid,name,length,size,hash
+uid,name,length,zlib,hash
 NC_001474.2,"Dengue virus 2, complete genome",10723,3287,68980f8a7ef460fd
 NC_001498.1,"Measles virus, complete genome",15894,4871,a5ffff87c0800000
 NC_001542.1,"Rabies virus, complete genome",11932,3714,283bcb250dbbb7bc

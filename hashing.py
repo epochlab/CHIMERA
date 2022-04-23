@@ -12,13 +12,13 @@ length = len(genome)
 size = compress(genome)
 hash =  average_hash(pixels)
 
-fieldnames = ['uid', 'name', 'length', 'size', 'hash']
+fieldnames = ['uid', 'name', 'length', 'zlib', 'hash']
 
 rows = [
     {'uid': UID,
     'name': (" ").join(label.split(" ")[1:]),
     'length': length,
-    'size': size,
+    'zlib': size,
     'hash': hash},
 ]
 

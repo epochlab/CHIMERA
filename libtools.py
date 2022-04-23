@@ -24,7 +24,7 @@ def translate(seq, dict):
             count = 3
         if count==3 and len(codon)==3:
             res += str(amino).split('/')[1].replace("']", "").strip()
-        if codon=='UAG' or codon=='UAA' or codon=='UGA':                         # STOP open reading frame
+        if codon=='UAG' or codon=='UAA' or codon=='UGA':                        # STOP open reading frame
             i += 2
             count = 1
 

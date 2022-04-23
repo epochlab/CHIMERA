@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import numpy as np
-import collections, math
+import collections, math, zlib
 from PIL import Image
 from dict import *
 
@@ -174,6 +174,10 @@ def aliphatic_index(peptide):
     index = nA + (2.9 * nV/total_atoms) + (3.9 * (nI/total_atoms + nL/total_atoms)) * 100
     return index
 
+def compress(seq):
+    size = len(zlib.compress(seq.encode('utf-8')))
+    return size
+
 def binary_encoding(seq):
     encoded = ''
     for i in seq:
@@ -192,18 +196,12 @@ def binary_array_to_hex(arr):
 	width = int(np.ceil(len(bit_string)/4))
 	return '{:0>{width}x}'.format(int(bit_string, 2), width=width)
 
-def average_hash(image, hash_size=8, mean=np.mean):
-    image = image.convert('L').resize((hash_size, hash_size), Image.ANTIALIAS)
-    pixels = np.asarray(image)
-    diff = pixels > mean(pixels)
-    return binary_array_to_hex(diff)
-
 def seq_to_pixels(seq):
     pixels = []
 
     for n in seq:
         if n == 'A':
-            pixels.append((10,10,10))
+            pixels.append((30,30,30))
         if n == 'C':
             pixels.append((255,255,255))
         if n == 'G':
@@ -211,10 +209,19 @@ def seq_to_pixels(seq):
         if n == 'T':
             pixels.append((0,50,140))
 
+    dim = round(math.sqrt(len(seq)))
+    diff = dim ** 2 - len(seq)
+
+    for i in range(diff):
+        pixels.append((255,255,0))
+
     array = np.array(pixels, dtype=np.uint8)
 
-    width = round(math.sqrt(len(seq)))
-    height = len(seq) // width
-
-    img = Image.frombytes("RGB", (width, height), bytes(array))
+    img = Image.frombytes("RGB", (dim, dim), bytes(array))
     return img
+
+def average_hash(image, hash_size=8, mean=np.mean):
+    image = image.convert('L').resize((hash_size, hash_size), Image.ANTIALIAS)
+    pixels = np.asarray(image)
+    diff = pixels > mean(pixels)
+    return binary_array_to_hex(diff)

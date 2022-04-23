@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import zlib
 from libtools import *
 from dict import mRNA_codon
 
@@ -8,17 +7,19 @@ codon_table = mRNA_codon()
 
 UID = 'NC_001474.2'
 label, genome = load('genome/' + UID + '.fasta')
-res = translate(genome, codon_table)
 
-img = seq_to_pixels(genome)
-# img.save(UID + '.png')
+res = translate(genome, codon_table)
+f_res = list(filter(None,res.split('*')))
+
+pixels = seq_to_pixels(genome)
+# pixels.save(UID + '.png')
 
 print("\n" + label.upper())
 
 print("\n" + "Nucleobases:", len(genome))
 print("GC-Content:", gc_content(genome), '%')
-print("Compression (zlib):", len(zlib.compress(genome.encode('utf-8'))))
-print("Average Hash:", average_hash(img))
+print("Compression (zlib):", compress(genome))
+print("Average Hash:", average_hash(pixels))
 
 print("\n" + ">> GENOME PROFILE")
 print(genome)
@@ -27,11 +28,11 @@ print("\n" + ">> BINARY ENCODING")
 print(binary_encoding(genome))
 
 print("\n" + ">> RESIDUE CHAIN", len(res))
-print(res.split('*'))
+print(f_res)
 
 # Compute protparams
 index = 0
-for pid, peptide in enumerate(res.split('*')):
+for pid, peptide in enumerate(f_res):
 
     if pid==index:
 
@@ -60,7 +61,7 @@ for pid, peptide in enumerate(res.split('*')):
         print("\n" + ">> PEPTIDE ANALSIS")
         print("Chain Search:", res.find(peptide))
         print(peptide)
-        print("N-Terminus:", n_terminus, "| C-Terminus:", c_terminus)
+
         print("Sequence ID:", pid,
               "| Length:", length,
               "| Type:", type,
@@ -68,6 +69,8 @@ for pid, peptide in enumerate(res.split('*')):
               "| Net Charge (pH = 7.0):", round(net, 2),
               "| Theoretical pI:", round(pI, 2),
               "| Half-life (N-end):", hl)
+
+        print("N-Terminus:", n_terminus, "| C-Terminus:", c_terminus)
 
         print("Atomic Formula:", formula, "| Number of Atoms:", nb_atoms)
 

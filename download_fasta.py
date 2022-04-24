@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-import requests, argparse, sys
+import requests, argparse, sys, os, csv, math
+from libtools import *
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-uid', type=str, default='NC_045512.2')
@@ -16,4 +17,33 @@ filename = "genome/" + UID + ".fasta"
 with open(filename, 'w') as f:
     f.write(content.text)
 
-print("Download complete", UID)
+label, genome = load(filename)
+pixels = seq_to_pixels(genome)
+
+length = len(genome)
+size = compress(genome)
+hash =  average_hash(pixels)
+
+fieldnames = ['uid', 'name', 'length', 'zlib', 'hash']
+
+rows = [
+    {'uid': UID,
+    'name': (" ").join(label.split(" ")[1:]),
+    'length': length,
+    'zlib': size,
+    'hash': hash},
+]
+
+database = 'hash_db.csv'
+valid = os.path.exists(database)
+
+with open(database, 'a', encoding='UTF8') as f:
+    writer = csv.DictWriter(f, fieldnames=fieldnames)
+    if  valid == False:
+        writer.writeheader()
+    writer.writerows(rows)
+
+print(label)
+print(length, size, hash)
+
+# pixels.save(UID + "_" + hash + '.png')

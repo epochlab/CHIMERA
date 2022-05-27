@@ -3,47 +3,57 @@
 import requests, argparse, sys, os, csv, math
 from libtools import *
 
+database = 'hash_db.csv'
+valid = os.path.exists(database)
+
 parser = argparse.ArgumentParser()
 parser.add_argument('-uid', type=str, default='NC_045512.2')
 args = parser.parse_args(sys.argv[1:])
 
 UID = args.uid
 
-content = requests.get("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id={fasta}&rettype=fasta".format(fasta=UID))
-content.raise_for_status()
+stored = False
+with open(database, 'r') as f:
+    reader = csv.reader(f)
+    for row in reader:
+        if row[0] == UID:
+            stored = True
+            print(row[0], "found in genome library.")
+            break
 
-filename = "genome/" + UID + ".fasta"
+if stored == False:
+    content = requests.get("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id={fasta}&rettype=fasta".format(fasta=UID))
+    content.raise_for_status()
 
-with open(filename, 'w') as f:
-    f.write(content.text)
+    filename = "genome/" + UID + ".fasta"
 
-label, genome = load(filename)
-pixels = seq_to_pixels(genome)
+    with open(filename, 'w') as f:
+        f.write(content.text)
 
-length = len(genome)
-size = compress(genome)
-hash =  average_hash(pixels)
+    label, genome = load(filename)
+    pixels = seq_to_pixels(genome)
 
-fieldnames = ['uid', 'name', 'length', 'zlib', 'hash']
+    length = len(genome)
+    size = compress(genome)
+    hash =  average_hash(pixels)
 
-rows = [
-    {'uid': UID,
-    'name': (" ").join(label.split(" ")[1:]),
-    'length': length,
-    'zlib': size,
-    'hash': hash},
-]
+    fieldnames = ['uid', 'name', 'length', 'zlib', 'hash']
 
-database = 'hash_db.csv'
-valid = os.path.exists(database)
+    rows = [
+        {'uid': UID,
+        'name': (" ").join(label.split(" ")[1:]),
+        'length': length,
+        'zlib': size,
+        'hash': hash},
+    ]
 
-with open(database, 'a', encoding='UTF8') as f:
-    writer = csv.DictWriter(f, fieldnames=fieldnames)
-    if  valid == False:
-        writer.writeheader()
-    writer.writerows(rows)
+    with open(database, 'a', encoding='UTF8') as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        if  valid == False:
+            writer.writeheader()
+        writer.writerows(rows)
 
-print(label)
-print(length, size, hash)
+    print(label)
+    print(length, size, hash)
 
-# pixels.save(UID + "_" + hash + '.png')
+    # pixels.save(UID + "_" + hash + '.png')

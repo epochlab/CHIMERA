@@ -12,6 +12,8 @@ UID = args.uid
 database = 'hash_db.csv'
 valid = os.path.exists(database)
 
+fieldnames = ['uid', 'name', 'length', 'zlib', 'hash']
+
 stored = False
 with open(database, 'r') as f:
     reader = csv.reader(f)
@@ -37,8 +39,6 @@ if stored == False:
     size = compress(genome)
     hash =  average_hash(pixels)
 
-    fieldnames = ['uid', 'name', 'length', 'zlib', 'hash']
-
     rows = [
         {'uid': UID,
         'name': (" ").join(label.split(" ")[1:]),
@@ -55,5 +55,11 @@ if stored == False:
 
     print(label)
     print(length, size, hash)
+
+with open(database, 'r') as f:
+    reader = csv.reader(f)
+    ordered = sorted(reader, key=lambda column: column[0], reverse=False)[:-1]
+    for i in ordered:
+        print(i)
 
     # pixels.save(UID + "_" + hash + '.png')

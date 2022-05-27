@@ -56,10 +56,4 @@ if stored == False:
     print(label)
     print(length, size, hash)
 
-with open(database, 'r') as f:
-    reader = csv.reader(f)
-    ordered = sorted(reader, key=lambda column: column[0], reverse=False)[:-1]
-    for i in ordered:
-        print(i)
-
     # pixels.save(UID + "_" + hash + '.png')

@@ -3,14 +3,14 @@
 import requests, argparse, sys, os, csv, math
 from libtools import *
 
-database = 'hash_db.csv'
-valid = os.path.exists(database)
-
 parser = argparse.ArgumentParser()
 parser.add_argument('-uid', type=str, default='NC_045512.2')
 args = parser.parse_args(sys.argv[1:])
 
 UID = args.uid
+
+database = 'hash_db.csv'
+valid = os.path.exists(database)
 
 stored = False
 with open(database, 'r') as f:
@@ -18,7 +18,7 @@ with open(database, 'r') as f:
     for row in reader:
         if row[0] == UID:
             stored = True
-            print(row[0], "found in genome library.")
+            print(row[0], "found in library.")
             break
 
 if stored == False:

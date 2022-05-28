@@ -182,13 +182,13 @@ def binary_encoding(seq):
     encoded = ''
     for i in seq:
         if i == "A":
-            encoded += "10"
-        if i == "C":
-            encoded += "01"
-        if i == "G":
-            encoded += "11"
-        if i == "T":
             encoded += "00"
+        if i == "G":
+            encoded += "01"
+        if i == "C":
+            encoded += "10"
+        if i == "T":
+            encoded += "11"
     return encoded
 
 def binary_array_to_hex(arr):

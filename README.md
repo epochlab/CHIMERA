@@ -33,13 +33,13 @@ Title | Notes
 [N-end rule (Halflife)](https://en.wikipedia.org/wiki/N-end_rule) | A rule which governs the rate of protein degradation, operating differently across yeast, mammals and e.coli.
 [Hydropathy Index](https://en.wikipedia.org/wiki/Hydrophobicity_scales) | A number representing the hydrophobic or hydrophilic properties of an amino acid sidechain. The larger the number is, the more hydrophobic the amino acid.
 
-
 ### Requirements
 - Both Linux and Windows are supported. Linux is recommended for performance and compatibility reasons.
 - 64-bit Python 3.7.9 installation.
 - SideFX Houdini
 
 ### Work In Progress
+- RNA 2 DNA
 - Graphics: Protein Turntable | Huffman Graph | Gates Method | Net Charge Graph
 - Glossary
 - Multi-sequence comparison

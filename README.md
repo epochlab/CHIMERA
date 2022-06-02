@@ -31,7 +31,7 @@ Title | Notes
 [Molecular Weight](https://en.wikipedia.org/wiki/Molecular_mass) | The sum of the atomic masses of all atoms in a molecule.
 [Isoelectric Point (pI)](https://en.wikipedia.org/wiki/Isoelectric_point) | The pH at which a molecule carries no net electrical charge.
 [N-end rule (Halflife)](https://en.wikipedia.org/wiki/N-end_rule) | A rule which governs the rate of protein degradation, operating differently across yeast, mammals and e.coli.
-[Hydropathy Index](https://en.wikipedia.org/wiki/Hydrophobicity_scales) | A number representing the hydrophobic or hydrophilic properties of an amino acid sidechain. The larger the number is, the more hydrophobic the amino acid.
+[Hydropathy Index](https://en.wikipedia.org/wiki/Hydrophobicity_scales) | The hydrophobic or hydrophilic scale of an amino acid sidechain. The larger the number is, the more hydrophobic the amino acid.
 
 ### Requirements
 - Both Linux and Windows are supported. Linux is recommended for performance and compatibility reasons.
@@ -39,7 +39,7 @@ Title | Notes
 - SideFX Houdini
 
 ### Work In Progress
-- RNA 2 DNA
+- RNA >> DNA Helix
 - Graphics: Protein Turntable | Huffman Graph | Gates Method | Net Charge Graph
 - Glossary
 - Multi-sequence comparison

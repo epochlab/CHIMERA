@@ -36,7 +36,7 @@ for pid, peptide in enumerate(f_res):
 
     if pid==index:
 
-        n_terminus = lookup_amino(peptide[0])
+        n_terminus = lookup_amino(peptide[1])
         c_terminus = lookup_amino(peptide[-1])
 
         length = len(peptide)

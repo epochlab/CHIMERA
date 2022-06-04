@@ -32,6 +32,13 @@ Title | Notes
 [Isoelectric Point (pI)](https://en.wikipedia.org/wiki/Isoelectric_point) | The pH at which a molecule carries no net electrical charge.
 [N-end rule (Halflife)](https://en.wikipedia.org/wiki/N-end_rule) | A rule which governs the rate of protein degradation, operating differently across yeast, mammals and e.coli.
 [Hydropathy Index](https://en.wikipedia.org/wiki/Hydrophobicity_scales) | The hydrophobic or hydrophilic scale of an amino acid sidechain. The larger the number is, the more hydrophobic the amino acid.
+[Isoelectric Point (pI)](https://en.wikipedia.org/wiki/Isoelectric_point) | The pH at which a molecule carries no net electrical charge.
+[Atomic Formula](https://en.wikipedia.org/wiki/Chemical_element) | The general formula of protein is RCH(NH2)COOH, where C is carbon, H is hydrogen, N is nitrogen, O is oxygen and R is a group.
+[Charged Residues](https://en.wikipedia.org/wiki/Proteinogenic_amino_acid) | The sum of positively charged residues (Arg | Lys | His) and negatively charged residues (Asp | Glu | Cys | Tyr).
+[Extinction Co-efficient](https://en.wikipedia.org/wiki/Molar_attenuation_coefficient) | How strongly a protein or molecular species absorbs light at a given wavelength.
+[Instability Index](https://en.wikipedia.org/wiki/Instability_index) | An estimate of the stability of your protein in a test tube. A protein whose instability index is smaller than 40 is predicted as stable.
+[Aliphatic Index](http://www.russelllab.org/aas/aliphatic.html) | The relative volume occupied by aliphatic side chains. (Ala | Val | Ile | Leu).
+[Hydropathicity Index (GRAND Average)](https://en.wikipedia.org/wiki/Hydrophobicity_scales) | The sum of the hydropathy values of all the amino acids divided by the sequence length.
 
 ### Requirements
 - Both Linux and Windows are supported. Linux is recommended for performance and compatibility reasons.

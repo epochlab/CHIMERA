@@ -46,6 +46,7 @@ Title | Notes
 
 ### Work In Progress
 - RNA >> DNA Helix
+- Hydrophobicity Scale
 - Graphics: Protein Turntable | Huffman Graph | Gates Method | Net Charge Graph
 - Glossary
 - Multi-sequence comparison

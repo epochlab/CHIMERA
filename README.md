@@ -17,7 +17,7 @@ Abstract: *The genetic code is the set of rules used by living cells to translat
 ### Glossary
 Title | Notes
 ------- | -------
-[Genome](https://en.wikipedia.org/wiki/Genome) | A genome is the complete set of genetic information in an organism. It provides all of the information the organism requires to function and formed as a sequential string of characters.
+[Genome](https://en.wikipedia.org/wiki/Genome) | A genome is the complete set of genetic information in an organism. It provides all of the information the organism requires to function.
 [DNA](https://en.wikipedia.org/wiki/DNA) | Deoxyribonucleic acid (DNA)  is a polymer composed of two polynucleotide chains that coil around each other to form a double helix carrying genetic instructions for the development, functioning, growth and reproduction of all known organisms and many viruses.
 [RNA](https://en.wikipedia.org/wiki/RNA) | Ribonucleic acid (RNA) is a polymeric molecule essential in various biological roles in coding, decoding, regulation and expression of genes.
 [Nucleotide](https://en.wikipedia.org/wiki/Nucleotide) | A nucleotide is the basic building block of nucleic acids. RNA and DNA are polymers made of long chains of nucleotides. They function as the fundamental units of the genetic code, with the bases A, G, C, and U being found in RNA while A, G, C, and T are found in DNA.

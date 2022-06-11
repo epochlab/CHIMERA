@@ -1,14 +1,6 @@
+#!/usr/bin/env python3
+
 import string
-
-from libtools import binary_encoding
-
-UID = 'NC_001542.1'
-label, genome = load('genome/' + UID + '.fasta')
-
-print("\n" + ">> BINARY ENCODING")
-print(binary_encoding(genome))
-
-#----
 
 chars = string.ascii_uppercase + string.digits
 

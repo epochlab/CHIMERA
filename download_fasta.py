@@ -4,12 +4,12 @@ import requests, argparse, sys, os, csv, math
 from libtools import *
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-uid', type=str, default='NC_045512.2')
+parser.add_argument('-uid', type=str, default='NC_001542.1')
 args = parser.parse_args(sys.argv[1:])
 
 UID = args.uid
 
-database = 'hash_db.csv'
+database = 'vault_db.csv'
 valid = os.path.exists(database)
 
 fieldnames = ['uid', 'name', 'length', 'zlib', 'hash']

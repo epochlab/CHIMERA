@@ -45,9 +45,9 @@ Title | Notes
 - SideFX Houdini
 
 ### Work In Progress
-- RNA >> DNA Helix
+- RNA > DNA Base Pairs
 - Hydrophobicity Scale
-- Graphics: Protein Turntable | Huffman Graph | Net Charge Graph
+- Graphics: Protein Turntable | Huffman Coding | Net Charge Graph
 - Glossary
 - Multi-sequence comparison
 - Folding (Missing Atoms | Measure Global Distance Test | CASP)

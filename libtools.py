@@ -202,10 +202,10 @@ def seq_to_pixels(seq):
     for n in seq:
         if n == 'A':
             pixels.append((30,30,30))
-        if n == 'C':
-            pixels.append((255,255,255))
         if n == 'G':
             pixels.append((65,150,65))
+        if n == 'C':
+            pixels.append((255,255,255))
         if n == 'T':
             pixels.append((0,50,140))
 

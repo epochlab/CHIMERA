@@ -24,9 +24,6 @@ print("Average Hash:", average_hash(pixels))
 print("\n" + ">> GENOME PROFILE")
 print(genome)
 
-print("\n" + ">> BINARY ENCODING")
-print(binary_encoding(genome))
-
 print("\n" + ">> RESIDUE CHAIN", len(res))
 print(f_res)
 

@@ -1,44 +1,55 @@
 #!/usr/bin/env python3
 
 from libtools import *
+from collections import Counter
 
 UID = 'NC_001542.1'
-label, genome = load('genome/' + UID + '.fasta')
+_, string = load('genome/' + UID + '.fasta')
 
-def frequency_sort(genome):
-    freq = {}
-    for n in genome:
-        if n in freq:
-            freq[n] += 1
-        else:
-            freq[n] = 1
+class NodeTree(object):
+    def __init__(self, left=None, right=None):
+        self.left = left
+        self.right = right
 
-    chars = freq.keys()
-    tuples = []
-    for n in chars:
-        tuples.append((freq[n], n))
-    tuples.sort()
-    return tuples
+    def children(self):
+        return self.left, self.right
 
-def buildTree(tuples):
-    while len(tuples)>1:
-        x0 = tuple(tuples[0:2])
-        x1 = tuples[2:]
-        x = x0[0][0] + x0[1][0]
-        tuples = x1 + [(x, x0)]
-        tuples.sort()
-    return tuples[0]
+    def __str__(self):
+        return self.left, self.right
 
-def trimTree (tree) :
-    p = tree[1]
-    if type(p) == type(""):
-        return p
-    else:
-        return(trimTree(p[0]), trimTree(p[1]))
+def build_tree(nodes):
+    while len(nodes) > 1:
+        (key1, c1) = nodes[-1]
+        (key2, c2) = nodes[-2]
+        nodes = nodes[:-2]
+        node = NodeTree(key1, key2)
+        nodes.append((node, c1 + c2))
+        nodes = sorted(nodes, key=lambda x: x[1], reverse=True)
+    return nodes[0][0]
 
-queue = frequency_sort(genome)
-tree = buildTree(queue)
-trim = trimTree(tree)
+def huffman_code(node, bin=''):
+    if type(node) is str:
+        return {node: bin}
+    (l, r) = node.children()
+    d = dict()
+    d.update(huffman_code(l, bin+'0'))
+    d.update(huffman_code(r, bin+'1'))
+    return d
 
-print(tree)
-print(trim)
+def encode(str, dict):
+    output = ''
+    for ch in str: output += encoding[ch]
+    return output
+
+freq = dict(Counter(string))
+queue = sorted(freq.items(), key=lambda x: x[1], reverse=True)
+print(queue)
+
+node = build_tree(queue)
+encoding = huffman_code(node)
+
+for i in encoding:
+    print(f'{i} : {encoding[i]}')
+
+bit_string = encode(string, encoding)
+print(bit_string)

@@ -178,19 +178,6 @@ def compress(seq):
     size = len(zlib.compress(seq.encode('utf-8')))
     return size
 
-def binary_encoding(seq):
-    encoded = ''
-    for i in seq:
-        if i == "A":
-            encoded += "00"
-        if i == "G":
-            encoded += "01"
-        if i == "C":
-            encoded += "10"
-        if i == "T":
-            encoded += "11"
-    return encoded
-
 def binary_array_to_hex(arr):
 	bit_string = ''.join(str(b) for b in 1 * arr.flatten())
 	width = int(np.ceil(len(bit_string)/4))

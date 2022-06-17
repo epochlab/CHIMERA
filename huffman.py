@@ -41,6 +41,9 @@ def encode(str, dict):
     for ch in str: output += encoding[ch]
     return output
 
+length = len(string)
+print(length)
+
 freq = dict(Counter(string))
 queue = sorted(freq.items(), key=lambda x: x[1], reverse=True)
 print(queue)

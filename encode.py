@@ -2,19 +2,6 @@
 
 import string
 
-# def binary_encoding(seq):
-#     encoded = ''
-#     for i in seq:
-#         if i == "A":
-#             encoded += "00"
-#         if i == "G":
-#             encoded += "01"
-#         if i == "C":
-#             encoded += "10"
-#         if i == "T":
-#             encoded += "11"
-#     return encoded
-
 chars = string.ascii_uppercase + string.digits
 
 binary_str = ''.join(format(x, '08b') for x in bytearray(chars, 'utf-8'))
@@ -27,13 +14,14 @@ DNA_encoding = {
     "11": "T"
 }
 
-nucleo = []
-for num in binary_list:
+string = []
+for n in binary_list:
     for key in list(DNA_encoding.keys()):
-        if num == key:
-            nucleo.append(DNA_encoding.get(key))
+        if n == key:
+            string.append(DNA_encoding.get(key))
 
-DNA = "".join(nucleo)
+DNA = "".join(string)
 
 print(chars)
+print(binary_str)
 print(DNA)

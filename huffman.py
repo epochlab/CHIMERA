@@ -27,13 +27,13 @@ def build_tree(nodes):
         nodes = sorted(nodes, key=lambda x: x[1], reverse=True)
     return nodes[0][0]
 
-def huffman_code(node, bin=''):
+def assign_code(node, bin=''):
     if type(node) is str:
         return {node: bin}
     (l, r) = node.children()
     d = dict()
-    d.update(huffman_code(l, bin+'0'))
-    d.update(huffman_code(r, bin+'1'))
+    d.update(assign_code(l, bin+'0'))
+    d.update(assign_code(r, bin+'1'))
     return d
 
 def encode(str, dict):
@@ -49,7 +49,7 @@ queue = sorted(freq.items(), key=lambda x: x[1], reverse=True)
 print(queue)
 
 node = build_tree(queue)
-encoding = huffman_code(node)
+encoding = assign_code(node)
 
 for i in encoding:
     print(f'{i} : {encoding[i]}')

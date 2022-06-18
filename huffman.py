@@ -14,9 +14,6 @@ class NodeTree(object):
     def children(self):
         return self.left, self.right
 
-    def __str__(self):
-        return self.left, self.right
-
 def build_tree(nodes):
     while len(nodes) > 1:
         (key1, c1) = nodes[-1]
@@ -38,7 +35,7 @@ def assign_code(node, bin=''):
 
 def encode(str, dict):
     output = ''
-    for ch in str: output += encoding[ch]
+    for ch in str: output += dict[ch]
     return output
 
 length = len(string)

@@ -47,8 +47,8 @@ Title | Notes
 ### Work In Progress
 - RNA > DNA Base Pairs
 - Hydrophobicity Scale
-- Graphics: Protein Turntable | Huffman Tree | Net Charge Graph
+- Graphics: Multi-sequence Comparison Disc | Net Charge Graph
 - Glossary
-- Multi-sequence comparison
+-
 - Folding (Missing Atoms | Measure Global Distance Test | CASP)
 - Genome evolution

@@ -49,6 +49,5 @@ Title | Notes
 - Hydrophobicity Scale
 - Graphics: Multi-sequence Comparison | Net Charge Graph
 - Glossary
--
 - Folding (Missing Atoms | Measure Global Distance Test | CASP)
 - Genome evolution

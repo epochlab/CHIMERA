@@ -32,10 +32,11 @@ if stored == False:
         f.write(content.text)
 
     label, genome = load(filename)
-    pixels = seq_to_pixels(genome)
 
     length = len(genome)
     size = compress(genome)
+    
+    pixels = seq_to_pixels(genome)
     hash =  average_hash(pixels)
 
     new_row = pd.DataFrame(

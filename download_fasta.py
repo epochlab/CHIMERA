@@ -13,16 +13,13 @@ UID = args.uid
 database = 'genome_db.csv'
 valid = os.path.exists(database)
 
-fieldnames = ['uid', 'name', 'length', 'zlib', 'hash']
-
 reader = pd.read_csv(database)
-# print(reader.to_string())
 
 stored = False
 for row in reader["uid"]:
     if row == UID:
         stored = True
-        print(row, "found in library.")
+        print(row, "found in library")
         break
 
 if stored == False:
@@ -52,8 +49,6 @@ if stored == False:
     new_frame = pd.concat([new_row, reader.loc[:]])
     new_frame = new_frame.sort_values(by='uid').reset_index(drop=True)
     new_frame.to_csv(database, index=False)
-
-    print(label)
-    print(length, size, hash)
+    print(label, "added to library")
 
     # print(new_frame.to_string())

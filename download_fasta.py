@@ -35,7 +35,7 @@ if stored == False:
 
     length = len(genome)
     size = compress(genome)
-    
+
     pixels = seq_to_pixels(genome)
     hash =  average_hash(pixels)
 
@@ -49,6 +49,7 @@ if stored == False:
 
     new_frame = pd.concat([new_row, reader.loc[:]])
     new_frame = new_frame.sort_values(by='uid').reset_index(drop=True)
+    
     new_frame.to_csv(database, index=False)
     print(label, "added to library")
 

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-import requests, argparse, sys, os, csv, math
+import requests, argparse, sys, os, csv
+import pandas as pd
 from libtools import *
 
 parser = argparse.ArgumentParser()
@@ -9,19 +10,20 @@ args = parser.parse_args(sys.argv[1:])
 
 UID = args.uid
 
-database = 'vault_db.csv'
+database = 'genome_db.csv'
 valid = os.path.exists(database)
 
 fieldnames = ['uid', 'name', 'length', 'zlib', 'hash']
 
+reader = pd.read_csv(database)
+# print(reader.to_string())
+
 stored = False
-with open(database, 'r') as f:
-    reader = csv.reader(f)
-    for row in reader:
-        if row[0] == UID:
-            stored = True
-            print(row[0], "found in library.")
-            break
+for row in reader["uid"]:
+    if row == UID:
+        stored = True
+        print(row, "found in library.")
+        break
 
 if stored == False:
     content = requests.get("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id={fasta}&rettype=fasta".format(fasta=UID))
@@ -39,21 +41,19 @@ if stored == False:
     size = compress(genome)
     hash =  average_hash(pixels)
 
-    rows = [
+    new_row = pd.DataFrame(
         {'uid': UID,
         'name': (" ").join(label.split(" ")[1:]),
         'length': length,
         'zlib': size,
-        'hash': hash},
-    ]
+        'hash': hash}, index=[0]
+    )
 
-    with open(database, 'a', encoding='UTF8') as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        if  valid == False:
-            writer.writeheader()
-        writer.writerows(rows)
+    new_frame = pd.concat([new_row, reader.loc[:]])
+    new_frame = new_frame.sort_values(by='uid').reset_index(drop=True)
+    new_frame.to_csv(database, index=False)
 
     print(label)
     print(length, size, hash)
 
-    # pixels.save(UID + "_" + hash + '.png')
+    # print(new_frame.to_string())

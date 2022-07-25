@@ -33,17 +33,14 @@ if stored == False:
 
     label, genome = load(filename)
 
-    length = len(genome)
-    size = compress(genome)
-
     pixels = seq_to_pixels(genome)
     hash =  average_hash(pixels)
 
     new_row = pd.DataFrame(
         {'uid': UID,
         'name': (" ").join(label.split(" ")[1:]),
-        'length': length,
-        'zlib': size,
+        'length': len(genome),
+        'zlib': compress(genome),
         'hash': hash}, index=[0]
     )
 

@@ -1,4 +1,4 @@
-# codon
+# CODON
 
 **Project ID:** ehrZl0nn
 

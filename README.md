@@ -2,7 +2,11 @@
 
 **Project ID:** ehrZl0nn
 
-![alt text](https://github.com/epochlab/CODONEXPR/blob/main/sample.png)
+<p align="center">
+  <img src="https://github.com/epochlab/CODONEXPR/blob/main/sample.png">
+</p>
+
+--------------------------------------------------------------------
 
 #### Gene expression and protein analysis.
 Abstract: *The genetic code is the set of rules used by living cells to translate information encoded within genetic material (DNA or RNA sequences of nucleotide triplets, or codons) into proteins.*

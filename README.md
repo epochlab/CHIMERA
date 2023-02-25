@@ -13,6 +13,7 @@ Abstract: *The genetic code is the set of rules used by living cells to translat
 
 ### Dataset
 [NCBI Nucleotide Database (GenBank, RefSeq, TPA and PDB)](https://www.ncbi.nlm.nih.gov/nuccore/)<br />
+[NCBI Virus Database](https://www.ncbi.nlm.nih.gov/genomes/GenomesGroup.cgi)
 [RCSB: Protein Data Bank](https://www.rcsb.org)
 
 ### Packages

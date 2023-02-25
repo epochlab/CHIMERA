@@ -51,7 +51,6 @@ Title | Notes
 
 ### Work In Progress
 - RNA > DNA Base Pairs
-- Hydrophobicity Scale
 - Graphics: Multi-sequence Comparison | Net Charge Graph
 - Glossary
 - Folding (Missing Atoms | Measure Global Distance Test | CASP)

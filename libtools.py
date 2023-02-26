@@ -5,19 +5,21 @@ import collections, math, zlib
 from PIL import Image
 from dict import *
 
-def load(input):
-    with open(input) as f:
-        label = f.readline().rstrip()
-        data = f.read()
-        genome = "".join(line.strip() for line in data)
-    return label, genome
+def load(fasta):
+    with open(fasta) as f:
+        header = f.readline().rstrip()
+        seq = ''.join(line.strip() for line in f)
+    return header, seq
+
+def transcribe(seq):
+    return seq.replace('T', 'U') # DNA to RNA transcription - Thymine is replaced with Uracil.
 
 def translate(seq, dict):
     i, count = 0, 1
     res = ''
 
     while i < len(seq):
-        codon = seq[i:i + 3].replace('T', 'U')                                  # DNA to RNA transcription - Thymine is replaced with Uracil.
+        codon = transcribe(seq[i:i + 3])
         amino = [k for k, v in dict.items() if codon in v]
 
         if codon=='AUG':                                                        # START open reading frame
@@ -36,7 +38,7 @@ def lookup_value(input, dict):
     return result
 
 def lookup_amino(peptide):
-    terminus = [k for k, v in mRNA_codon().items() if peptide in k.split('/')[1]][0]
+    terminus = [k for k, _ in mRNA_codon().items() if peptide in k.split('/')[1]][0]
     return terminus
 
 def gc_content(seq):

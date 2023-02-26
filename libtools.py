@@ -12,15 +12,15 @@ def load(fasta):
     return header, seq
 
 def transcribe(seq):
-    return seq.replace('T', 'U') # DNA to RNA transcription - Thymine is replaced with Uracil.
+    return seq.replace('T', 'U') # DNA > RNA transcription - Thymine is replaced with Uracil.
 
-def translate(seq, dict):
+def translate(seq, codon_table):
     i, count = 0, 1
     res = ''
 
     while i < len(seq):
-        codon = transcribe(seq[i:i + 3])
-        amino = [k for k, v in dict.items() if codon in v]
+        codon = transcribe(seq[i:i+3])
+        amino = [k for k, v in codon_table.items() if codon in v]
 
         if codon=='AUG':                                                        # START open reading frame
             count = 3

@@ -50,8 +50,7 @@ Title | Notes
 - SideFX Houdini
 
 ### Work In Progress
-- RNA > DNA Base Pairs
-- Graphics: Multi-sequence Comparison | Net Charge Graph
 - Glossary
+- Graphics: Multi-sequence Comparison | Net Charge Graph
 - Folding (Missing Atoms | Measure Global Distance Test | CASP)
 - Genome evolution

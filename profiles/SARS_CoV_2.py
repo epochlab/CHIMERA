@@ -39,18 +39,18 @@
 # Severe reactions can trigger 'cytokine storm'.
 # Inflammation caused by overracting immune system leading to irresversible tissue damage.
 # Affects other organs inc. intestines, heart, eyes, blood, sperm and CNS.
-# The infection is systemic and damage kidney, liver and spleen.
+# The infection is systemic, causing damage to kidney, liver and spleen.
 
 # -----
 
 import sys
-sys.path.append('.')
+sys.path.append('..')
 
 import zlib
 from libtools import *
 from dict import mRNA_codon
 
-label, genome = load('genome/NC_045512.2.txt')
+label, genome = load('/Users/James/Documents/codon/genome/NC_045512.2.fasta')
 # print(label, genome)
 
 codon_table = mRNA_codon()
@@ -60,11 +60,17 @@ print('Base Pairs:', len(genome))
 print('CG-Content:', round((genome.count('C') + genome.count('G')) / len(genome)*100, 3), "%")
 print('Compression (zlib):', len(zlib.compress(genome.encode("utf-8"))))
 
-# Sequential CGG position - Does NOT align with a modulo of 3, check reading_frame
+# Sequential CGG position - Does NOT align with a modulo of 3, check reading_frame - ???
 print('CpG Islands:', genome.find('CGGCGG'))
 
-res = translate(genome, codon_table)
-print(res.split('*'))
+res = translate(genome, codon_table).split('*')
+# print(res)
+
+# 15 genes encode 29 proteins
+# 16 non-structural proteins which transform host cell into virus factory.
+# nsp12, RNA-dependant RNA-polymerase (RdRp) - Copy / Generator Function
+# nsp3, nsp4 and nsp6 recognise the internal structure of the host cell
+# nsp14 proof reads the duplicate virus for error-checking 
 
 # Reverse-engineered proteins
 ORF1a = translate(genome[266-1: 13483], codon_table)                                         # ORF1a polyprotein - 4405
@@ -79,7 +85,7 @@ ORF7b = translate(genome[27756-1: 27887], codon_table)                          
 ORF8 = translate(genome[27894-1: 28259], codon_table)                                        # ORF8 protein - 121
 N = translate(genome[28274-1: 29533], codon_table)                                           # ORF9 nucleocapsid phosphoprotein (structural) - 419
 ORF10 = translate(genome[29558-1: 29674], codon_table)                                       # ORF10 protein - 38
-# print(S)
+print(S)
 
 # Angiotensin Converting Enzyme-II (ACE2)
 # Receptor-Binding-Domain (RBD)

@@ -37,7 +37,7 @@
 # Affecting alveoli resulting in opaque shadows on scans.
 
 # Severe reactions can trigger 'cytokine storm'.
-# Inflammation caused by overracting immune system leading to irresversible tissue damage.
+# Inflammation caused by overreacting immune system leading to irreversible tissue damage.
 # Affects other organs inc. intestines, heart, eyes, blood, sperm and CNS.
 # The infection is systemic, causing damage to kidney, liver and spleen.
 
@@ -70,7 +70,7 @@ res = translate(genome, codon_table).split('*')
 # 16 non-structural proteins which transform host cell into virus factory.
 # nsp12, RNA-dependant RNA-polymerase (RdRp) - Copy / Generator Function
 # nsp3, nsp4 and nsp6 recognise the internal structure of the host cell
-# nsp14 proof reads the duplicate virus for error-checking 
+# nsp14 proof reads the duplicate virus for error-checking. 
 
 # Reverse-engineered proteins
 ORF1a = translate(genome[266-1: 13483], codon_table)                                         # ORF1a polyprotein - 4405

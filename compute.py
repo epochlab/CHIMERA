@@ -3,12 +3,10 @@
 from libtools import *
 from dict import mRNA_codon
 
-codon_table = mRNA_codon()
-
 UID = 'NC_001542.1'
 label, genome = load('genome/' + UID + '.fasta')
 
-res = translate(genome, codon_table)
+res = translate(genome, mRNA_codon())
 f_res = list(filter(None,res.split('*')))
 
 pixels = seq_to_pixels(genome)

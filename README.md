@@ -3,7 +3,7 @@
 **Project ID:** ehrZl0nn
 
 <p align="center">
-  <img src="https://github.com/epochlab/CODONEXPR/blob/main/sample.png">
+  <img src="https://github.com/epochlab/CODON/blob/main/sample.png">
 </p>
 
 --------------------------------------------------------------------

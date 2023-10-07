@@ -2,7 +2,8 @@
 
 import requests, argparse, sys, os
 import pandas as pd
-from libtools import FastaIO, Signal
+from chimera.fasta import FastaIO
+from chimera.measure import Signal
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-uid', type=str, default='NC_001542.1')
@@ -35,16 +36,16 @@ if stored == False:
     with open(filename, 'w') as f:
         f.write(content.text)
 
-    label, genome = FastaIO().load(filename)
-
-    pixels = Signal().seq_to_pixels(genome)
+    FASTA = FastaIO(UID)
+    
+    pixels = Signal().seq_to_pixels(FASTA.genome)
     hash =  Signal().average_hash(pixels)
 
     new_row = pd.DataFrame(
         {'uid': UID,
-        'name': (" ").join(label.split(" ")[1:]),
-        'length': len(genome),
-        'zlib': Signal().compress(genome),
+        'name': (" ").join(FASTA.label.split(" ")[1:]),
+        'length': len(FASTA.genome),
+        'zlib': Signal().compress(FASTA.genome),
         'hash': hash}, index=[0]
         )
 
@@ -52,4 +53,4 @@ if stored == False:
     new_frame = new_frame.sort_values(by='uid').reset_index(drop=True)
     
     new_frame.to_csv(db, index=False)
-    print(f"{label} added to library")
+    print(f"{FASTA.label} added to library")

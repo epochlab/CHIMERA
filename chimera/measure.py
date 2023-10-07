@@ -3,37 +3,7 @@
 import numpy as np
 import collections, math, zlib
 from PIL import Image
-from codon import *
-
-class FastaIO():
-    def __init__(self) -> None:
-        pass
-    def load(self, fasta):
-        with open(fasta) as f:
-            header = f.readline().rstrip()
-            seq = ''.join(line.strip() for line in f)
-        return header, seq
-
-    def transcribe(self, seq):
-        return seq.replace('T', 'U') # DNA > RNA transcription - Thymine is replaced with Uracil.
-
-    def translate(self, seq, codon_table):
-        i, count = 0, 1
-        res = ''
-        while i < len(seq):
-            codon = self.transcribe(seq[i:i+3])
-            amino = [k for k, v in codon_table.items() if codon in v]
-
-            if codon=='AUG':                                                        # START open reading frame
-                count = 3
-            if count==3 and len(codon)==3:
-                res += str(amino).split('/')[1].replace("']", "").strip()
-            if codon=='UAG' or codon=='UAA' or codon=='UGA':                        # STOP open reading frame
-                i += 2
-                count = 1
-
-            i += count
-        return res
+from chimera.codon import *
 
 class Molecule():
     def __init__(self) -> None:

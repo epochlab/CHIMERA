@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from libtools import FastaIO
+from chimera.measure import FastaIO
 
 UID_1 = 'NC_001542.1'
 UID_2 = 'MN996532.2'

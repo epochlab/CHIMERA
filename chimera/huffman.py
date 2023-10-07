@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 
-from libtools import FastaIO
-from collections import Counter
-
 class NodeTree(object):
     def __init__(self, left=None, right=None):
         self.left = left
@@ -34,21 +31,3 @@ def encode(str, dict):
     output = ''
     for ch in str: output += dict[ch]
     return output
-
-UID = 'NC_001542.1'
-label, genome = FastaIO().load(f"genome/{UID}.fasta")
-
-print(label.upper())
-print(f"Nucleobases: {len(genome)}")
-
-freq = dict(Counter(genome))
-count = sorted(freq.items(), key=lambda x: x[1], reverse=True)
-print("Count:", count)
-
-node = build_tree(count)
-encoding = assign_code(node)
-
-for i in encoding:
-    print(f'{i} : {encoding[i]}')
-
-print(encode(genome, encoding))

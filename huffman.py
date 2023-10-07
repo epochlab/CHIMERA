@@ -3,9 +3,6 @@
 from libtools import FastaIO
 from collections import Counter
 
-UID = 'NC_001542.1'
-_, string = FastaIO().load('genome/' + UID + '.fasta')
-
 class NodeTree(object):
     def __init__(self, left=None, right=None):
         self.left = left
@@ -38,18 +35,20 @@ def encode(str, dict):
     for ch in str: output += dict[ch]
     return output
 
-length = len(string)
-print(length)
+UID = 'NC_001542.1'
+label, genome = FastaIO().load(f"genome/{UID}.fasta")
 
-freq = dict(Counter(string))
-queue = sorted(freq.items(), key=lambda x: x[1], reverse=True)
-print(queue)
+print(label.upper())
+print(f"Nucleobases: {len(genome)}")
 
-node = build_tree(queue)
+freq = dict(Counter(genome))
+count = sorted(freq.items(), key=lambda x: x[1], reverse=True)
+print("Count:", count)
+
+node = build_tree(count)
 encoding = assign_code(node)
 
 for i in encoding:
     print(f'{i} : {encoding[i]}')
 
-bit_string = encode(string, encoding)
-print(bit_string)
+print(encode(genome, encoding))

@@ -38,7 +38,7 @@ sys.path.append('..')
 
 import zlib
 from libtools import *
-from dict import mRNA_codon
+from molecule import mRNA_codon
 
 label, genome = load('/Users/James/Documents/codon/genome/NC_045512.2.fasta')
 # print(label, genome)

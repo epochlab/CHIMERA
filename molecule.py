@@ -52,7 +52,7 @@ def mRNA_codon():
         }
     return dict
 
-def molecular_weight():
+def amino_weight():
     dict = {
         'Ala / A': 89.09,
         'Ile / I': 131.18,

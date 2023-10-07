@@ -3,7 +3,7 @@
 import numpy as np
 import collections, math, zlib
 from PIL import Image
-from dict import *
+from molecule import *
 
 def load(fasta):
     with open(fasta) as f:
@@ -45,11 +45,19 @@ def gc_content(seq):
     val = round((seq.count('G') + seq.count('C')) / len(seq)*100, 3)
     return val
 
-def lookup_weight(peptide):
+def peptype(peptide):
+    length = len(peptide)
+    if length >= 2 and length <= 20:
+        type = "Oligopeptide"
+    elif length > 20:
+        type = "Polypeptide"
+    return type
+
+def molecular_weight(peptide):
     water_mass = 18.01524
     weight = 0
     for i in peptide:
-        weight += lookup_value(i, molecular_weight())
+        weight += lookup_value(i, amino_weight())
     weight -= water_mass * (len(peptide)-1)
     return weight
 
@@ -84,7 +92,7 @@ def isoelectric_point(peptide, pH=7.0, min=4, max=12):
     return pH
 
 def lookup_halflife(peptide):
-    period = lookup_value(peptide, halflife())
+    period = lookup_value(peptide[0], halflife())
     return period
 
 def hydropathy_index(peptide):

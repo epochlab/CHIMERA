@@ -3,7 +3,6 @@
 import numpy as np
 
 from libtools import *
-from molecule import mRNA_codon
 
 UID_1 = 'NC_001542.1'
 UID_2 = 'MN996532.2'

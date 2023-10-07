@@ -3,7 +3,7 @@
 import numpy as np
 import collections, math, zlib
 from PIL import Image
-from molecule import *
+from codon import *
 
 def load(fasta):
     with open(fasta) as f:
@@ -36,7 +36,7 @@ def lookup_value(input, dict):
     return [v for k, v in dict.items() if input in k.split('/')[1]][0]
 
 def lookup_amino(peptide):
-    return [k for k, _ in mRNA_codon().items() if peptide in k.split('/')[1]][0]
+    return [k for k, _ in RNA().items() if peptide in k.split('/')[1]][0]
 
 def gc_content(seq):
     return (seq.count('G') + seq.count('C')) / len(seq)*100

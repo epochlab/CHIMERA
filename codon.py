@@ -24,10 +24,10 @@
 # U: Sec, name: Selenocysteine | uga (STOP)
 # O: Pyl | uag (STOP)
 
-nucleotides = ['A', 'C', 'G', 'T', 'N'] # N = Unknown
+nucleotides = ['A', 'C', 'G', 'T', 'N'] # N = Unknown | T (DNA) > U (RNA) in transcription
 
-def mRNA_codon():
-    dict = {
+def RNA():
+    table = {
         'Ala / A': ['GCU', 'GCC', 'GCA', 'GCG'],
         'Ile / I': ['AUU', 'AUC', 'AUA'],
         'Arg / R': ['CGU', 'CGC', 'CGA', 'CGG', 'AGA', 'AGG'],
@@ -50,10 +50,10 @@ def mRNA_codon():
         'Val / V': ['GUU', 'GUC', 'GUA', 'GUG'],
         'STOP / *': ['UAA', 'UGA', 'UAG'],
         }
-    return dict
+    return table
 
 def amino_weight():
-    dict = {
+    table = {
         'Ala / A': 89.09,
         'Ile / I': 131.18,
         'Arg / R': 174.20,
@@ -76,10 +76,10 @@ def amino_weight():
         'Val / V': 117.15,
         'STOP / *': [],
         }
-    return dict
+    return table
 
 def pKa():
-    dict = {
+    table = {
         'alpha_amino': {'G': 9.60, 'A': 9.69, 'V': 9.62, 'L': 9.60, 'I': 9.68, 'M': 9.21, 'F': 9.13, 'W': 9.39, 'P': 10.60, 'S': 9.15,
                        'T': 9.10, 'C': 10.78, 'Y': 9.11, 'N': 8.84, 'Q': 9.13, 'D': 9.82, 'E': 9.67, 'K': 8.95, 'R': 9.04, 'H': 9.17},
         'alpha_carboxy': {'G': 2.34, 'A': 2.34, 'V': 2.32, 'L': 2.36, 'I': 2.36, 'M': 2.28, 'F': 1.83, 'W': 2.38, 'P': 1.99, 'S': 2.21,
@@ -87,12 +87,12 @@ def pKa():
         'sidechain_positive': {'K': 10.79, 'R': 12.48, 'H': 6.04},
         'sidechain_negative': {'D': 3.86, 'E': 4.25, 'C': 8.33, 'Y': 10.07},
         }
-    return dict
+    return table
 
 # Host: Mammalian | Yeast | E.Coli
 # Unit: Minutes
 def halflife():
-    dict = {
+    table = {
         'Ala / A': [264, 1200, 600],
         'Ile / I': [1200, 30, 600],
         'Arg / R': [60, 2, 2],
@@ -115,10 +115,10 @@ def halflife():
         'Val / V': [6000, 1200, 600],
         'STOP / *': [],
         }
-    return dict
+    return table
 
 def hydropathy():
-    dict = {
+    table = {
         'Ala / A': 1.8,
         'Ile / I': 4.5,
         'Arg / R': -4.5,
@@ -141,11 +141,11 @@ def hydropathy():
         'Val / V': 4.2,
         'STOP / *': [],
         }
-    return dict
+    return table
 
 # C = Carbon | H = Hydrogen | N = Nitrogen | O = Oxygen | S = Sulfur
 def atomic():
-    dict = {
+    table = {
         'Ala / A': (3, 7, 1, 2, 0), # C3H7NO2
         'Ile / I': [6, 13, 1, 2, 0], # C6H13NO2
         'Arg / R': [6, 14, 4, 2, 0], # C6H14N4O2
@@ -168,10 +168,10 @@ def atomic():
         'Val / V': [5, 11, 1, 2, 0], # C5H11NO2
         'STOP / *': [],
         }
-    return dict
+    return table
 
 def DIWV():
-    dict = {
+    table = {
         'W': {'W':    1.0, 'C':   1.0, 'M': 24.68, 'H': 24.68, 'Y':   1.0, 'F':    1.0, 'Q':   1.0, 'N':  13.34, 'I':   1.0, 'R':    1.0, 'D':    1.0, 'P':   1.0, 'T': -14.03, 'K':    1.0, 'E':   1.0, 'V': -7.49, 'S':   1.0, 'G':  -9.37, 'A': -14.03, 'L': 13.34},
         'C': {'W':  24.68, 'C':   1.0, 'M':  33.6, 'H':  33.6, 'Y':   1.0, 'F':    1.0, 'Q': -6.54, 'N':    1.0, 'I':   1.0, 'R':    1.0, 'D':  20.26, 'P': 20.26, 'T':   33.6, 'K':    1.0, 'E':   1.0, 'V': -6.54, 'S':   1.0, 'G':    1.0, 'A':    1.0, 'L': 20.26},
         'M': {'W':    1.0, 'C':   1.0, 'M': -1.88, 'H': 58.28, 'Y': 24.68, 'F':    1.0, 'Q': -6.54, 'N':    1.0, 'I':   1.0, 'R':  -6.54, 'D':    1.0, 'P': 44.94, 'T':  -1.88, 'K':    1.0, 'E':   1.0, 'V':   1.0, 'S': 44.94, 'G':    1.0, 'A':  13.34, 'L':   1.0},
@@ -193,4 +193,4 @@ def DIWV():
         'A': {'W':    1.0, 'C': 44.94, 'M':   1.0, 'H': -7.49, 'Y':   1.0, 'F':    1.0, 'Q':   1.0, 'N':    1.0, 'I':   1.0, 'R':    1.0, 'D':  -7.49, 'P': 20.26, 'T':    1.0, 'K':    1.0, 'E':   1.0, 'V':   1.0, 'S':   1.0, 'G':    1.0, 'A':    1.0, 'L':   1.0},
         'L': {'W':  24.68, 'C':   1.0, 'M':   1.0, 'H':   1.0, 'Y':   1.0, 'F':    1.0, 'Q':  33.6, 'N':    1.0, 'I':   1.0, 'R':  20.26, 'D':    1.0, 'P': 20.26, 'T':    1.0, 'K':  -7.49, 'E':   1.0, 'V':   1.0, 'S':   1.0, 'G':    1.0, 'A':    1.0, 'L':   1.0}
       }
-    return dict
+    return table

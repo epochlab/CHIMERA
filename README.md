@@ -51,6 +51,7 @@ Title | Notes
 
 ### Work In Progress
 - Glossary
+- Update Half-Life
 - Graphics: Multi-sequence Comparison | Net Charge Graph
 - Folding (Missing Atoms | Measure Global Distance Test | CASP)
 - Genome evolution

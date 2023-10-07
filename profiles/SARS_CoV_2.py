@@ -38,12 +38,12 @@ sys.path.append('..')
 
 import zlib
 from libtools import *
-from molecule import mRNA_codon
+from codon import RNA
 
-label, genome = load('/Users/James/Documents/codon/genome/NC_045512.2.fasta')
+label, genome = load('../genome/NC_045512.2.fasta')
 # print(label, genome)
 
-codon_table = mRNA_codon()
+codon_table = RNA()
 
 print(label.upper())
 print('Base Pairs:', len(genome))

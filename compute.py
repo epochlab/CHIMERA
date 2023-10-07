@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
 from libtools import *
-from molecule import mRNA_codon
+from codon import RNA
 
 def main(UID):
     label, genome = load(f'genome/{UID}.fasta')
 
-    res = translate(genome, mRNA_codon())
+    res = translate(genome, RNA())
     f_res = list(filter(None,res.split('*')))
 
     print("\n" + label.upper())
@@ -24,13 +24,12 @@ def main(UID):
     index = 0
     for pid, peptide in enumerate(f_res):
         if pid==index:
-
             n_terminus = lookup_amino(peptide[1])
             c_terminus = lookup_amino(peptide[-1])
             Mw = molecular_weight(peptide)
             net = charge_at_pH(7.0, peptide)
             pI = isoelectric_point(peptide)
-            hl = lookup_value(peptide[0], halflife())
+            hl = lookup_value(peptide[0], halflife()) # Needs to address whole FASTA
             formula, nb_atoms = atomic_composition(peptide)
             aa_content = amino_count(peptide)
             pos, neg = charged_residues(peptide)
@@ -54,7 +53,7 @@ def main(UID):
             print(f"Atomic Formula: {formula}| Number of Atoms: {nb_atoms}")
 
             for a, c in aa_content.items():
-                print(a, round(c * (100.0/len(peptide)), 1), '%', c)
+                print(f"{a} {c * (100.0/len(peptide)):.1f} % {c}")
 
             print(f"+ charged residues (Arg | Lys | His): {charged_residues(peptide)[0]}")
             print(f"- charged residues (Asp | Glu | Cys | Tyr): {charged_residues(peptide)[1]}")
@@ -78,6 +77,6 @@ def main(UID):
             print(f"Aliphatic Index: {ai:.3f}")
             print(f"Hydropathicity Index (GRAND Average): {hp:.3f}")
 
-UID = 'NC_001542.1'
+UID = 'NC_001542.1' # RABIES VIRUS, COMPLETE GENOME
 if __name__ == "__main__":
     main(UID)

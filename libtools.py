@@ -17,7 +17,6 @@ def transcribe(seq):
 def translate(seq, codon_table):
     i, count = 0, 1
     res = ''
-
     while i < len(seq):
         codon = transcribe(seq[i:i+3])
         amino = [k for k, v in codon_table.items() if codon in v]
@@ -34,16 +33,13 @@ def translate(seq, codon_table):
     return res
 
 def lookup_value(input, dict):
-    result = [v for k, v in dict.items() if input in k.split('/')[1]][0]
-    return result
+    return [v for k, v in dict.items() if input in k.split('/')[1]][0]
 
 def lookup_amino(peptide):
-    terminus = [k for k, _ in mRNA_codon().items() if peptide in k.split('/')[1]][0]
-    return terminus
+    return [k for k, _ in mRNA_codon().items() if peptide in k.split('/')[1]][0]
 
 def gc_content(seq):
-    val = round((seq.count('G') + seq.count('C')) / len(seq)*100, 3)
-    return val
+    return (seq.count('G') + seq.count('C')) / len(seq)*100
 
 def peptype(peptide):
     length = len(peptide)
@@ -90,10 +86,6 @@ def isoelectric_point(peptide, pH=7.0, min=4, max=12):
         next_pH = (min + max) / 2
         return isoelectric_point(peptide, next_pH, min, max)
     return pH
-
-def lookup_halflife(peptide):
-    period = lookup_value(peptide[0], halflife())
-    return period
 
 def hydropathy_index(peptide):
     index = 0
@@ -185,8 +177,7 @@ def aliphatic_index(peptide):
     return index
 
 def compress(seq):
-    size = len(zlib.compress(seq.encode('utf-8')))
-    return size
+    return len(zlib.compress(seq.encode('utf-8')))
 
 def binary_array_to_hex(arr):
 	bit_string = ''.join(str(b) for b in 1 * arr.flatten())
@@ -209,16 +200,13 @@ def seq_to_pixels(seq):
     dim = round(math.sqrt(len(seq)))
     diff = dim ** 2 - len(seq)
 
-    for i in range(diff):
+    for _ in range(diff):
         pixels.append((255,255,0))
 
     array = np.array(pixels, dtype=np.uint8)
-
-    img = Image.frombytes("RGB", (dim, dim), bytes(array))
-    return img
+    return Image.frombytes("RGB", (dim, dim), bytes(array))
 
 def average_hash(image, hash_size=8, mean=np.mean):
     image = image.convert('L').resize((hash_size, hash_size), Image.ANTIALIAS)
     pixels = np.asarray(image)
-    diff = pixels > mean(pixels)
-    return binary_array_to_hex(diff)
+    return binary_array_to_hex(pixels > mean(pixels))

@@ -9,20 +9,16 @@ label, genome = load(f'genome/{UID}.fasta')
 res = translate(genome, mRNA_codon())
 f_res = list(filter(None,res.split('*')))
 
-pixels = seq_to_pixels(genome)
-# pixels.save(UID + '.png')
-
 print("\n" + label.upper())
-
-print("\n" + "Nucleobases:", len(genome))
-print("GC-Content:", gc_content(genome), '%')
-print("Compression (zlib):", compress(genome))
-print("Average Hash:", average_hash(pixels))
+print("\n" + f"Nucleobases: {len(genome)}")
+print(f"GC-Content: {gc_content(genome):.3f} %")
+print(f"Compression (zlib): {compress(genome)}")
+print(f"Average Hash: {average_hash(seq_to_pixels(genome))}")
 
 print("\n" + ">> GENOME PROFILE")
 print(genome)
 
-print("\n" + ">> RESIDUE CHAIN", len(res))
+print("\n" + f">> RESIDUE CHAIN {len(res)}")
 print(f_res)
 
 index = 0
@@ -34,7 +30,7 @@ for pid, peptide in enumerate(f_res):
         Mw = molecular_weight(peptide)
         net = charge_at_pH(7.0, peptide)
         pI = isoelectric_point(peptide)
-        hl = lookup_halflife(peptide)
+        hl = lookup_value(peptide[0], halflife())
         formula, nb_atoms = atomic_composition(peptide)
         aa_content = amino_count(peptide)
         pos, neg = charged_residues(peptide)
@@ -55,7 +51,6 @@ for pid, peptide in enumerate(f_res):
               f"| Half-life (N-end): {hl}")
 
         print(f"N-Terminus: {n_terminus} | C-Terminus: {c_terminus}")
-
         print(f"Atomic Formula: {formula}| Number of Atoms: {nb_atoms}")
 
         for a, c in aa_content.items():

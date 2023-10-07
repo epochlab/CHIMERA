@@ -1,9 +1,9 @@
-# CODON
+# CHIMERA
 
 **Project ID:** ehrZl0nm
 
 <p align="center">
-  <img src="https://github.com/epochlab/CODON/blob/main/sample.png">
+  <img src="https://github.com/epochlab/CHIMERA/blob/main/sample.png">
 </p>
 
 --------------------------------------------------------------------

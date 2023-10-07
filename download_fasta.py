@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import requests, argparse, sys, os, csv
+import requests, argparse, sys, os
 import pandas as pd
 from libtools import FastaIO, Signal
 
@@ -10,24 +10,28 @@ args = parser.parse_args(sys.argv[1:])
 
 UID = args.uid
 
-database = 'genome_db.csv'
-valid = os.path.exists(database)
+db = 'genome_db.csv'
 
-reader = pd.read_csv(database)
+# Check database exists
+if os.path.exists(db):
+    reader = pd.read_csv(db)
+else:
+    print("No directory found")
 
-stored = False
+# Check for duplicates
 for row in reader["uid"]:
     if row == UID:
         stored = True
         print(row, "found in library")
-        break
+    else:
+        stored = False
 
+# Download and store FASTA
 if stored == False:
-    content = requests.get("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id={fasta}&rettype=fasta".format(fasta=UID))
+    content = requests.get(f"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id={UID}&rettype=fasta")
     content.raise_for_status()
 
-    filename = "genome/" + UID + ".fasta"
-
+    filename = f"genome/{UID}.fasta"
     with open(filename, 'w') as f:
         f.write(content.text)
 
@@ -42,12 +46,10 @@ if stored == False:
         'length': len(genome),
         'zlib': Signal().compress(genome),
         'hash': hash}, index=[0]
-    )
+        )
 
     new_frame = pd.concat([new_row, reader.loc[:]])
     new_frame = new_frame.sort_values(by='uid').reset_index(drop=True)
     
-    new_frame.to_csv(database, index=False)
-    print(label, "added to library")
-
-    # print(new_frame.to_string())
+    new_frame.to_csv(db, index=False)
+    print(f"{label} added to library")

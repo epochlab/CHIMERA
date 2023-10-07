@@ -34,48 +34,46 @@
 # -----
 
 import sys
-sys.path.append('..')
+sys.path.append('../CHIMERA')
 
 import zlib
 from chimera.fasta import FastaIO
-from chimera.measure import Molecule
+from chimera.measure import Signal
+from chimera.codon import RNA
 
 FASTA = FastaIO('NC_045512.2')
 
-# label, genome = FASTA.load('../genome/NC_045512.2.fasta')
-# print(label, genome)
+print("\n" + FASTA.label.upper())
+print('Base Pairs:', len(FASTA.genome))
+print('CG-Content:', round((FASTA.genome.count('C') + FASTA.genome.count('G')) / len(FASTA.genome)*100, 3), "%")
+print('Compression (zlib):', Signal().compress(FASTA.genome))
 
-# print(FASTA.label.upper())
-# print('Base Pairs:', len(M.genome))
-# print('CG-Content:', round((M.genome.count('C') + M.genome.count('G')) / len(M.genome)*100, 3), "%")
-# print('Compression (zlib):', len(zlib.compress(M.genome.encode("utf-8"))))
+# Sequential CGG position - Does NOT align with a modulo of 3, check reading_frame - ???
+print('CpG Islands:', FASTA.genome.find('CGGCGG'))
 
-# # Sequential CGG position - Does NOT align with a modulo of 3, check reading_frame - ???
-# print('CpG Islands:', M.genome.find('CGGCGG'))
+print("\n" + FASTA.res)
 
-# # print(M.res)
+# 15 genes encode 29 proteins
+# 16 non-structural proteins which transform host cell into virus factory.
+# nsp12, RNA-dependant RNA-polymerase (RdRp) - Copy / Generator Function
+# nsp3, nsp4 and nsp6 recognise the internal structure of the host cell
+# nsp14 proof reads the duplicate virus for error-checking. 
 
-# # 15 genes encode 29 proteins
-# # 16 non-structural proteins which transform host cell into virus factory.
-# # nsp12, RNA-dependant RNA-polymerase (RdRp) - Copy / Generator Function
-# # nsp3, nsp4 and nsp6 recognise the internal structure of the host cell
-# # nsp14 proof reads the duplicate virus for error-checking. 
-
-# # Reverse-engineered proteins
-# ORF1a = M._translate(M.genome[266-1: 13483], RNA())                                         # ORF1a polyprotein - 4405
-# ORF1b = M._translate(M.genome[13468-1: 21555], RNA())                                       # ORF1b polyprotein - 2695 overlapping sequence w/ ORF1a
-# S = M._translate(M.genome[21563-1: 25384], RNA())                                           # Spike glycoprotein (structural) - 1273
-# ORF3a = M._translate(M.genome[25393-1: 26220], RNA())                                       # ORF3a protein - 275
-# E = M._translate(M.genome[26245-1: 26472], RNA())                                           # ORF4 envelope protein (structural) - 75
-# M = M._translate(M.genome[26523-1: 27191], RNA())                                           # ORF5 membrane glycoprotein (structural) - 222
-# ORF6 = M._translate(M.genome[27202-1: 27387], RNA())                                        # ORF6 protein - 61
-# ORF7a = M._translate(M.genome[27394-1: 27759], RNA())                                       # ORF7a protein - 121
-# ORF7b = M._translate(M.genome[27756-1: 27887], RNA())                                       # ORF7b protein - 43
-# ORF8 = M._translate(M.genome[27894-1: 28259], RNA())                                        # ORF8 protein - 121
-# N = M._translate(M.genome[28274-1: 29533], RNA())                                           # ORF9 nucleocapsid phosphoprotein (structural) - 419
-# ORF10 = M._translate(M.genome[29558-1: 29674], RNA())                                       # ORF10 protein - 38
+# Reverse-engineered proteins
+ORF1a = FASTA.translate(FASTA.genome[266-1: 13483])                                         # ORF1a polyprotein - 4405
+ORF1b = FASTA.translate(FASTA.genome[13468-1: 21555])                                       # ORF1b polyprotein - 2695 overlapping sequence w/ ORF1a
+S = FASTA.translate(FASTA.genome[21563-1: 25384])                                           # Spike glycoprotein (structural) - 1273
+ORF3a = FASTA.translate(FASTA.genome[25393-1: 26220])                                       # ORF3a protein - 275
+E = FASTA.translate(FASTA.genome[26245-1: 26472])                                           # ORF4 envelope protein (structural) - 75
+M = FASTA.translate(FASTA.genome[26523-1: 27191])                                           # ORF5 membrane glycoprotein (structural) - 222
+ORF6 = FASTA.translate(FASTA.genome[27202-1: 27387])                                        # ORF6 protein - 61
+ORF7a = FASTA.translate(FASTA.genome[27394-1: 27759])                                       # ORF7a protein - 121
+ORF7b = FASTA.translate(FASTA.genome[27756-1: 27887])                                       # ORF7b protein - 43
+ORF8 = FASTA.translate(FASTA.genome[27894-1: 28259])                                        # ORF8 protein - 121
+N = FASTA.translate(FASTA.genome[28274-1: 29533])                                           # ORF9 nucleocapsid phosphoprotein (structural) - 419
+ORF10 = FASTA.translate(FASTA.genome[29558-1: 29674])                                       # ORF10 protein - 38
 # print(S)
 
-# # Angiotensin Converting Enzyme-II (ACE2)
-# # Receptor-Binding-Domain (RBD)
-# # ACE2 modulates blood pressure
+# Angiotensin Converting Enzyme-II (ACE2)
+# Receptor-Binding-Domain (RBD)
+# ACE2 modulates blood pressure

@@ -2,13 +2,13 @@
 
 import numpy as np
 
-from libtools import *
+from libtools import FastaIO
 
 UID_1 = 'NC_001542.1'
 UID_2 = 'MN996532.2'
 
-_, genome1 = load('genome/' + UID_1 + '.fasta')
-_, genome2 = load('genome/' + UID_2 + '.fasta')
+_, genome1 = FastaIO().load(f"genome/{UID_1}.fasta")
+_, genome2 = FastaIO().load(f"genome/{UID_2}.fasta")
 
 n = len(genome1)
 m = len(genome2)

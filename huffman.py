@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-from libtools import *
+from libtools import FastaIO
 from collections import Counter
 
 UID = 'NC_001542.1'
-_, string = load('genome/' + UID + '.fasta')
+_, string = FastaIO().load('genome/' + UID + '.fasta')
 
 class NodeTree(object):
     def __init__(self, left=None, right=None):

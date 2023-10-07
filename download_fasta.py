@@ -2,7 +2,7 @@
 
 import requests, argparse, sys, os, csv
 import pandas as pd
-from libtools import *
+from libtools import FastaIO, Signal
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-uid', type=str, default='NC_001542.1')
@@ -31,16 +31,16 @@ if stored == False:
     with open(filename, 'w') as f:
         f.write(content.text)
 
-    label, genome = load(filename)
+    label, genome = FastaIO().load(filename)
 
-    pixels = seq_to_pixels(genome)
-    hash =  average_hash(pixels)
+    pixels = Signal().seq_to_pixels(genome)
+    hash =  Signal().average_hash(pixels)
 
     new_row = pd.DataFrame(
         {'uid': UID,
         'name': (" ").join(label.split(" ")[1:]),
         'length': len(genome),
-        'zlib': compress(genome),
+        'zlib': Signal().compress(genome),
         'hash': hash}, index=[0]
     )
 

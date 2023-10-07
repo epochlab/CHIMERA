@@ -32,7 +32,6 @@ def main(UID):
             hl = lookup_value(peptide[0], halflife()) # Needs to address whole FASTA
             formula, nb_atoms = atomic_composition(peptide)
             aa_content = amino_count(peptide)
-            pos, neg = charged_residues(peptide)
             ec = extinction_coefficient(peptide)
             II = instability_index(peptide)
             ai = aliphatic_index(peptide)

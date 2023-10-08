@@ -3,7 +3,7 @@
 import requests, argparse, sys, os
 import pandas as pd
 from chimera.fasta import FastaIO
-from chimera.measure import Signal
+from chimera.measure import seq_to_pixels, average_hash, compress
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-uid', type=str, default='NC_001542.1')
@@ -38,14 +38,14 @@ if stored == False:
 
     FASTA = FastaIO(UID)
     
-    pixels = Signal().seq_to_pixels(FASTA.genome)
-    hash =  Signal().average_hash(pixels)
+    pixels = seq_to_pixels(FASTA.genome)
+    hash =  average_hash(pixels)
 
     new_row = pd.DataFrame(
         {'uid': UID,
         'name': (" ").join(FASTA.label.split(" ")[1:]),
         'length': len(FASTA.genome),
-        'zlib': Signal().compress(FASTA.genome),
+        'zlib': compress(FASTA.genome),
         'hash': hash}, index=[0]
         )
 

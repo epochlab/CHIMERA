@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from chimera.fasta import FastaIO
-from chimera.measure import Molecule, Signal
+from chimera.measure import *
 from chimera.codon import halflife
 
 def main(UID):
@@ -9,9 +9,9 @@ def main(UID):
 
     print("\n" + FASTA.label.upper())
     print("\n" + f"Nucleobases: {len(FASTA.genome)}")
-    print(f"GC-Content: {Molecule().gc_content(FASTA.genome):.3f} %")
-    print(f"Compression (zlib): {Signal().compress(FASTA.genome)}")
-    print(f"Average Hash: {Signal().average_hash(Signal().seq_to_pixels(FASTA.genome))}")
+    print(f"GC-Content: {gc_content(FASTA.genome):.3f} %")
+    print(f"Compression (zlib): {compress(FASTA.genome)}")
+    print(f"Average Hash: {average_hash(seq_to_pixels(FASTA.genome))}")
 
     print("\n" + ">> GENOME PROFILE")
     print(FASTA.genome)
@@ -23,25 +23,25 @@ def main(UID):
     index = 0
     for pid, peptide in enumerate(f_res):
         if pid==index:
-            n_terminus = Molecule().lookup_amino(peptide[1])
-            c_terminus = Molecule().lookup_amino(peptide[-1])
-            Mw = Molecule().molecular_weight(peptide)
-            net = Molecule().charge_at_pH(7.0, peptide)
-            pI = Molecule().isoelectric_point(peptide)
-            hl = Molecule().lookup_value(peptide[0], halflife()) # Needs to address whole FASTA
-            formula, nb_atoms = Molecule().atomic_composition(peptide)
-            aa_content = Molecule().amino_count(peptide)
-            ec = Molecule().extinction_coefficient(peptide)
-            II = Molecule().instability_index(peptide)
-            ai = Molecule().aliphatic_index(peptide)
-            hp = Molecule().hydropathy_index(peptide)
+            n_terminus = lookup_amino(peptide[1])
+            c_terminus = lookup_amino(peptide[-1])
+            Mw = molecular_weight(peptide)
+            net = charge_at_pH(7.0, peptide)
+            pI = isoelectric_point(peptide)
+            hl = lookup_value(peptide[0], halflife()) # Needs to address whole FASTA
+            formula, nb_atoms = atomic_composition(peptide)
+            aa_content = amino_count(peptide)
+            ec = extinction_coefficient(peptide)
+            II = instability_index(peptide)
+            ai = aliphatic_index(peptide)
+            hp = hydropathy_index(peptide)
 
             print("\n" + ">> PEPTIDE ANALSIS")
             print("Chain Search:", FASTA.res.find(peptide))
             print(peptide)
             print(f"Sequence ID: {pid}",
                 f"| Length: {len(peptide)}",
-                f"| Type: {Molecule().peptype(peptide)}",
+                f"| Type: {peptype(peptide)}",
                 f"| Molecular Weight (Da): {Mw:.2f}",
                 f"| Net Charge (pH = 7.0): {net:.2f}",
                 f"| Theoretical pI: {pI:.2f}",
@@ -53,8 +53,8 @@ def main(UID):
             for a, c in aa_content.items():
                 print(f"{a} {c * (100.0/len(peptide)):.1f} % {c}")
 
-            print(f"+ charged residues (Arg | Lys | His): {Molecule().charged_residues(peptide)[0]}")
-            print(f"- charged residues (Asp | Glu | Cys | Tyr): {Molecule().charged_residues(peptide)[1]}")
+            print(f"+ charged residues (Arg | Lys | His): {charged_residues(peptide)[0]}")
+            print(f"- charged residues (Asp | Glu | Cys | Tyr): {charged_residues(peptide)[1]}")
 
             if ec == 0:
                 print("As there are no Trp, Tyr or Cys in the region considered, this protein should not be visible by UV spectrophotometry.")

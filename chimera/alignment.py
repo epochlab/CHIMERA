@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import numpy as np
-
 from chimera.measure import FastaIO
 
 UID_1 = 'NC_001542.1'

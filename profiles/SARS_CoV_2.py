@@ -40,8 +40,6 @@
 # https://s3.documentcloud.org/documents/6981198/Analysis-of-Six-Patients-With-Unknown-Viruses.pdf - Lu Xi, Masters Thesis (2013)
 # 1,885km Bengpinghe > WIV
 
-
-
 # -----
 
 import sys

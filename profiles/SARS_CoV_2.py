@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 
+# Severe acute respiratory syndrome coronavirus 2 (COVID-19)
+# SARS-CoV-2 is the virus that causes COVID-19 (coronavirus disease 2019), a positive-sense single-stranded RNA virus, that is contagious in humans and responsible for the COVID-19 pandemic.
+# Dataset: NCBI RefSeq SARS-CoV-2 genome sequence record: https://www.ncbi.nlm.nih.gov/nuccore/NC_045512
+
 # Immunoglobulin-M (IgM) Antibodies = Recent exposure
 # IgG Antibodies = Created during initial infection but last for months
 
+# June Almeida (1963)
 # Coronavirus' are divided into 4 groups based on genetic difference
 # Alpha, Beta, Gamma & Delta
 
@@ -31,6 +36,12 @@
 # Affects other organs inc. intestines, heart, eyes, blood, sperm and CNS.
 # The infection is systemic, causing damage to kidney, liver and spleen.
 
+# Mojiang (Bengping) Copper Mine: N23°10'36' E101°21'28'
+# https://s3.documentcloud.org/documents/6981198/Analysis-of-Six-Patients-With-Unknown-Viruses.pdf - Lu Xi, Masters Thesis (2013)
+# 1,885km Bengpinghe > WIV
+
+
+
 # -----
 
 import sys
@@ -58,6 +69,9 @@ print("\n" + FASTA.res)
 # nsp12, RNA-dependant RNA-polymerase (RdRp) - Copy / Generator Function
 # nsp3, nsp4 and nsp6 recognise the internal structure of the host cell
 # nsp14 proof reads the duplicate virus for error-checking. 
+
+# Identify FURIN cleavage site in spike protein
+print('FURIN cleavage site (Spike):', S.find('PRRAR'))
 
 # Reverse-engineered proteins
 ORF1a = FASTA.translate(FASTA.genome[266-1: 13483])                                         # ORF1a polyprotein - 4405
